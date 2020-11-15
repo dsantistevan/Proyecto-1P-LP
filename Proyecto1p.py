@@ -5,7 +5,8 @@ tokens = [
     'NAME','NUMBER',
     'PLUS','MINUS','TIMES','DIVIDE','EQUALS','EQUALSBOOL',
     'LPAREN','RPAREN','ignore','var','nombrevar','var2',
-    'MENE','MAYE','MAY','MEN','DIF','LLAVEA','LLAVEC','CORCHEA','CORCHEC'
+    'MENE','MAYE','MAY','MEN','DIF','LLAVEA','LLAVEC',#'CORCHEA',
+    'CORCHEC','MOD'
     ]
 
 # Tokens
@@ -28,7 +29,7 @@ t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_LLAVEA=r'{'
 t_LLAVEC=r'}'
-t_CORCHEA=r'['
+#t_CORCHEA=r'['
 t_CORCHEC=r']'
 #OTROS
 t_NUMBER = r'\d+'
@@ -42,7 +43,6 @@ def t_nombrevar(t):
     t.type=reservadas.get(t.value,'nombrevar')
     return t
 
-    return t
 
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])
@@ -52,7 +52,7 @@ def t_newline(t):
     #t.lexer.lineno += t.value.count("\n")
 
 
-archivo = open("archivo.txt")
+archivo = open("codigoSantistevan.txt")
 for linea in archivo:
     print(">>"+linea)
     #analizar(linea)
