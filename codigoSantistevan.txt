@@ -6,7 +6,9 @@ fun bajarValor(asd : int){
    while(asd > 3 && ! (asd < 20)) {
    /* Esto es otro comentario
    probando
-   */ int j; //Los comentarios con /**/ solo funcionan en 1 linea por como se lee el archivo.
-    asd = asd - 1;
-    }
+   */
+       var j = listOf(2,5.53,3,5,6, .23, -12.3); //Los comentarios con /**/ solo funcionan en 1 linea por como se lee el archivo.
+       println(j[asd]);
+       asd = asd - 1;
+   }
 }

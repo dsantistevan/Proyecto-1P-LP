@@ -48,7 +48,7 @@ t_AND = r'\&\&'
 t_LSBRACKET = r'\['
 t_RSBRACKET = r'\]'
 
-literals = [';', ':']
+literals = [';', ':', ".", ","]
 
 def t_STRING(t):
     r'(\"[\w\W]\"|\'[\w\W]\')'
