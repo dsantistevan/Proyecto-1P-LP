@@ -8,7 +8,8 @@ reservadas={'var':'VAR','while':'WHILE','if':'IF','else':'ELSE','for':'FOR', "tr
 
 tokens = (
     'ID',
-    'NUMBER',
+    'FLOATV',
+    'INTV',
     'PLUS',
     'MINUS',
     'TIMES',
@@ -59,8 +60,15 @@ def t_ID(t):
     return t
 
 
-t_NUMBER  =r'(-|\+)?\d+(\.\d*)?'
+def t_FLOATV(t):
+    r'(-|\+)?\d*(\.\d*)'
+    t.value = float(t.value)
+    return t
 
+def t_INTV(t):
+    r'(-|\+)?\d+'
+    t.value = int(t.value)
+    return t
 
 def t_newline(t):
     r'\n+'
@@ -81,7 +89,7 @@ def t_error(t):
 # Build the lexer
 lexer = lex.lex()
 # Test it out
-f = open("codigoSantistevan.txt", "r")
+
 
 # Give the lexer some input
 
@@ -94,8 +102,19 @@ def analizar(data):
             break  # No more input
         print(tok)
 
-for linea in f:
-    print(">>" + linea)
-    analizar(linea)
-    if len(linea) ==0:
-        break
+
+def analizarArchivo(nombre= "codigoSantistevan.txt"):
+    f = open(nombre, "r")
+    linea = f.readline()
+    while linea != "":
+        if linea.find("/*") != -1:
+            while linea.find("*/") == -1:
+                linea+=f.readline()
+        print(">>" + linea)
+        analizar(linea)
+        linea= f.readline()
+
+
+    f.close()
+
+analizarArchivo()

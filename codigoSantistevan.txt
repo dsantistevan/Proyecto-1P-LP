@@ -1,6 +1,12 @@
 3 + 4 * 10 a
    + -20 *2 / 9 % 23 // Esto en adelante es un comentario/// + (9) %
+
+
+fun bajarValor(asd : int){
    while(asd > 3 && ! (asd < 20)) {
-   /* Esto es otro comentario */ int j; //Los comentarios con /**/ solo funcionan en 1 linea por como se lee el archivo.
+   /* Esto es otro comentario
+   probando
+   */ int j; //Los comentarios con /**/ solo funcionan en 1 linea por como se lee el archivo.
     asd = asd - 1;
     }
+}
