@@ -22,6 +22,7 @@ tokens = (
     'LCBRACKET',
     'RCBRACKET',
     'ASSIGN',
+    'EQUALS',
     'GREATER',
     'LOWER',
     'NOT',
@@ -38,6 +39,7 @@ t_MODULE= r'\%'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_ASSIGN = r'\='
+t_EQUALS = r'\=\='
 t_GREATER = r'\>'
 t_LOWER = r'\<'
 t_LCBRACKET = r'\{'
