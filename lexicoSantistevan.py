@@ -51,8 +51,8 @@ t_RSBRACKET = r'\]'
 literals = [';', ':', ".", ",",'\\']
 
 def t_STRING(t):
-    r'(\"[\w\W]\"|\'[\w\W]\')'
-    #t.type = reservadas.get(t.value, 'STRING')
+    r'((\"[^(\")]*\")|(\'[^(\')]*\'))'
+    t.type = reservadas.get(t.value, 'STRING')
     return t
 
 def t_ID(t):
