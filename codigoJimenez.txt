@@ -1,0 +1,19 @@
+for 
+fun if else for while var
+\ > < >= <= || ; : 
+"hola" variable
+var numero
+val numero
+-100
+1.2
+5.31
+2 % 3 == 2
+/* 
+This
+is 
+a
+multi
+line
+comment
+*/
+//comment
