@@ -103,7 +103,7 @@ def analizar(data):
         print(tok)
 
 
-def analizarArchivo(nombre= "codigoEscala.txt"):
+def analizarArchivo(nombre= "codigoTodos.txt"):
     f = open(nombre, "r")
     linea = f.readline()
     while linea != "":
@@ -118,4 +118,4 @@ def analizarArchivo(nombre= "codigoEscala.txt"):
     f.close()
 
 analizarArchivo()
-analizarArchivo('codigoJimenez.txt')
+#analizarArchivo('codigoJimenez.txt')

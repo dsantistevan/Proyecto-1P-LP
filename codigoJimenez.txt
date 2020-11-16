@@ -4,6 +4,7 @@ fun if else for while var
 "hola" variable
 var numero
 val numero
+val variable = 1
 -100
 1.2
 5.31
