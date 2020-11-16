@@ -48,10 +48,11 @@ t_AND = r'\&\&'
 t_LSBRACKET = r'\['
 t_RSBRACKET = r'\]'
 
-literals = [';', ':', ".", ","]
+literals = [';', ':', ".", ",",'\\']
 
 def t_STRING(t):
     r'(\"[\w\W]\"|\'[\w\W]\')'
+    #t.type = reservadas.get(t.value, 'STRING')
     return t
 
 def t_ID(t):
