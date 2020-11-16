@@ -1,0 +1,11 @@
+1 + 2 *%()[]{}-=\\
+fun if else for while var
+\ > < >= <= || ; : 
+"hola" variable
+1.2
+-1
+
+/* hola mundo
+
+chao*/
+//bai
