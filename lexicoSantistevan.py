@@ -4,7 +4,7 @@ from ply import lex
 
 reservadas={'var':'VAR','while':'WHILE','if':'IF','else':'ELSE','for':'FOR', "true" : "TRUE", 'false':'FALSE',
             'return': 'RETURN', 'null':'NULL', 'int':'INT', 'byte':'BYTE', 'float':'FLOAT', 'short':'SHORT',
-            'long':'LONG', 'double':'DOUBLE', 'boolean':'BOOLEAN', 'char':'CHAR', 'fun':'FUNCTION'}
+            'long':'LONG', 'double':'DOUBLE', 'boolean':'BOOLEAN', 'char':'CHAR', 'fun':'FUNCTION', 'val':'VAL'}
 
 tokens = (
     'ID',
@@ -22,6 +22,7 @@ tokens = (
     'LCBRACKET',
     'RCBRACKET',
     'ASSIGN',
+    'EQUALS',
     'GREATER',
     'LOWER',
     'NOT',
@@ -38,6 +39,7 @@ t_MODULE= r'\%'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_ASSIGN = r'\='
+t_EQUALS = r'\=\='
 t_GREATER = r'\>'
 t_LOWER = r'\<'
 t_LCBRACKET = r'\{'
@@ -48,10 +50,11 @@ t_AND = r'\&\&'
 t_LSBRACKET = r'\['
 t_RSBRACKET = r'\]'
 
-literals = [';', ':', ".", ","]
+literals = [';', ':', ".", ",",'\\']
 
 def t_STRING(t):
-    r'(\"[\w\W]\"|\'[\w\W]\')'
+    r'((\"[^(\")]*\")|(\'[^(\')]*\'))'
+    t.type = reservadas.get(t.value, 'STRING')
     return t
 
 def t_ID(t):
@@ -85,4 +88,34 @@ def t_error(t):
     t.lexer.skip(1)
 
 lexer = lex.lex()
+# Test it out
+
+# Give the lexer some input
+
+def analizar(data):
+    lexer.input(data)
+# Tokenize
+    while True:
+        tok = lexer.token()
+        if not tok:
+            break  # No more input
+        print(tok)
+
+
+def analizarArchivo(nombre= "codigoTodos.txt"):
+    f = open(nombre, "r")
+    linea = f.readline()
+    while linea != "":
+        if linea.find("/*") != -1:
+            while linea.find("*/") == -1:
+                linea+=f.readline()
+        print(">>" + linea)
+        analizar(linea)
+        linea= f.readline()
+
+
+    f.close()
+
+analizarArchivo()
+#analizarArchivo('codigoJimenez.txt')
 
