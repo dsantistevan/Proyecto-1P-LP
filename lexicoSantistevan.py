@@ -1,5 +1,5 @@
 #David Santistevan - Kotlin 1
-
+import ply.yacc as yacc
 from ply import lex
 
 reservadas={'var':'VAR','while':'WHILE','if':'IF','else':'ELSE','for':'FOR', "true" : "TRUE", 'false':'FALSE',
@@ -84,37 +84,5 @@ def t_error(t):
     print("No es reconocido '%s'" % t.value[0])
     t.lexer.skip(1)
 
-
-
-# Build the lexer
 lexer = lex.lex()
-# Test it out
 
-
-# Give the lexer some input
-
-def analizar(data):
-    lexer.input(data)
-# Tokenize
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break  # No more input
-        print(tok)
-
-
-def analizarArchivo(nombre= "codigoEscala.txt"):
-    f = open(nombre, "r")
-    linea = f.readline()
-    while linea != "":
-        if linea.find("/*") != -1:
-            while linea.find("*/") == -1:
-                linea+=f.readline()
-        print(">>" + linea)
-        analizar(linea)
-        linea= f.readline()
-
-
-    f.close()
-
-analizarArchivo()
