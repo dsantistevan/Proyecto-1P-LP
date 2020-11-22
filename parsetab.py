@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "AND ASSIGN BOOLEAN BYTE CHAR DIVIDE DOUBLE ELSE EQUALS FALSE FLOAT FLOATV FOR FUNCTION GREATER ID IF IN INT INTV LCBRACKET LONG LOWER LPAREN LSBRACKET MINUS MODULE NOT NOTEQUALS NULL OR PLUS RCBRACKET RETURN RPAREN RSBRACKET SHORT STRING TIMES TRUE VAL VAR WHILEcuerpo : asignacion\n                | expresion\n                | sentencia\n                | buclesinstrucciones : LCBRACKET cuerpo RCBRACKET\n                | cuerpo sentencia : IF LPAREN expresion RPAREN instrucciones sentencia : ELSE instrucciones bucles : while instrucciones\n                | for instrucciones while : WHILE LPAREN expresion RPAREN for : FOR LPAREN ID IN ID RPAREN valor : number\n            | ID\n            | STRINGvalor : NOT valor asignacion : ID ASSIGN expresion ';' expresion : valor expresion : expresion operadoresMat expresion expresion : expresion operadoresLog expresion operadoresLog :  OR\n                    | AND\n                    | EQUALS\n                    | NOTEQUALS operadoresMat : MINUS\n                    | PLUS\n                    | TIMES\n                    | DIVIDE\n                    | MODULE number : INTV\n            | FLOATV "
+_lr_signature = "AND ASSIGN BOOLEAN BYTE CHAR DIVIDE DOUBLE ELSE EQUALS FALSE FLOAT FLOATV FOR FUNCTION GREATER ID IF IN INT INTV LCBRACKET LONG LOWER LPAREN LSBRACKET MINUS MODULE NOT NOTEQUALS NULL OR PLUS RCBRACKET RETURN RPAREN RSBRACKET SHORT STRING TIMES TRUE VAL VAR WHILEcuerpo : cuerpo sentencia\n\t\t| sentencia\n\t\t| DOUBLEsentencia : asignacion\n                | expresion\n                | estructuraControl\n                | buclesinstrucciones : LCBRACKET cuerpo RCBRACKET\n                | cuerpo estructuraControl : IF LPAREN expresion RPAREN instrucciones estructuraControl : ELSE instrucciones bucles : while instrucciones\n                | for instrucciones while : WHILE LPAREN expresion RPAREN for : FOR LPAREN ID IN ID RPAREN valor : number\n            | ID\n            | STRINGvalor : NOT valor asignacion : ID ASSIGN expresion ';' expresion : valor expresion : expresion operadoresMat expresion expresion : expresion operadoresLog expresion operadoresLog :  OR\n                    | AND\n                    | EQUALS\n                    | NOTEQUALS operadoresMat : MINUS\n                    | PLUS\n                    | TIMES\n                    | DIVIDE\n                    | MODULE number : INTV\n            | FLOATV "
     
-_lr_action_items = {'ID':([0,9,10,11,14,19,20,21,22,23,24,25,26,27,28,29,30,31,33,39,40,49,51,52,55,],[6,6,6,6,38,38,38,-25,-26,-27,-28,-29,-21,-22,-23,-24,38,38,6,38,47,6,-11,54,-12,]),'IF':([0,9,10,11,33,49,51,55,],[8,8,8,8,8,8,-11,-12,]),'ELSE':([0,9,10,11,33,49,51,55,],[9,9,9,9,9,9,-11,-12,]),'STRING':([0,9,10,11,14,19,20,21,22,23,24,25,26,27,28,29,30,31,33,39,49,51,55,],[13,13,13,13,13,13,13,-25,-26,-27,-28,-29,-21,-22,-23,-24,13,13,13,13,13,-11,-12,]),'NOT':([0,9,10,11,14,19,20,21,22,23,24,25,26,27,28,29,30,31,33,39,49,51,55,],[14,14,14,14,14,14,14,-25,-26,-27,-28,-29,-21,-22,-23,-24,14,14,14,14,14,-11,-12,]),'WHILE':([0,9,10,11,33,49,51,55,],[15,15,15,15,15,15,-11,-12,]),'FOR':([0,9,10,11,33,49,51,55,],[16,16,16,16,16,16,-11,-12,]),'INTV':([0,9,10,11,14,19,20,21,22,23,24,25,26,27,28,29,30,31,33,39,49,51,55,],[17,17,17,17,17,17,17,-25,-26,-27,-28,-29,-21,-22,-23,-24,17,17,17,17,17,-11,-12,]),'FLOATV':([0,9,10,11,14,19,20,21,22,23,24,25,26,27,28,29,30,31,33,39,49,51,55,],[18,18,18,18,18,18,18,-25,-26,-27,-28,-29,-21,-22,-23,-24,18,18,18,18,18,-11,-12,]),'$end':([1,2,3,4,5,6,7,12,13,17,18,32,34,35,36,37,38,41,42,48,50,53,],[0,-1,-2,-3,-4,-14,-18,-13,-15,-30,-31,-8,-6,-9,-10,-16,-14,-19,-20,-17,-5,-7,]),'RCBRACKET':([2,3,4,5,6,7,12,13,17,18,32,34,35,36,37,38,41,42,45,48,50,53,],[-1,-2,-3,-4,-14,-18,-13,-15,-30,-31,-8,-6,-9,-10,-16,-14,-19,-20,50,-17,-5,-7,]),'MINUS':([3,6,7,12,13,17,18,37,38,41,42,43,44,46,],[21,-14,-18,-13,-15,-30,-31,-16,-14,21,21,21,21,21,]),'PLUS':([3,6,7,12,13,17,18,37,38,41,42,43,44,46,],[22,-14,-18,-13,-15,-30,-31,-16,-14,22,22,22,22,22,]),'TIMES':([3,6,7,12,13,17,18,37,38,41,42,43,44,46,],[23,-14,-18,-13,-15,-30,-31,-16,-14,23,23,23,23,23,]),'DIVIDE':([3,6,7,12,13,17,18,37,38,41,42,43,44,46,],[24,-14,-18,-13,-15,-30,-31,-16,-14,24,24,24,24,24,]),'MODULE':([3,6,7,12,13,17,18,37,38,41,42,43,44,46,],[25,-14,-18,-13,-15,-30,-31,-16,-14,25,25,25,25,25,]),'OR':([3,6,7,12,13,17,18,37,38,41,42,43,44,46,],[26,-14,-18,-13,-15,-30,-31,-16,-14,26,26,26,26,26,]),'AND':([3,6,7,12,13,17,18,37,38,41,42,43,44,46,],[27,-14,-18,-13,-15,-30,-31,-16,-14,27,27,27,27,27,]),'EQUALS':([3,6,7,12,13,17,18,37,38,41,42,43,44,46,],[28,-14,-18,-13,-15,-30,-31,-16,-14,28,28,28,28,28,]),'NOTEQUALS':([3,6,7,12,13,17,18,37,38,41,42,43,44,46,],[29,-14,-18,-13,-15,-30,-31,-16,-14,29,29,29,29,29,]),'ASSIGN':([6,],[30,]),';':([7,12,13,17,18,37,38,41,42,43,],[-18,-13,-15,-30,-31,-16,-14,-19,-20,48,]),'RPAREN':([7,12,13,17,18,37,38,41,42,44,46,54,],[-18,-13,-15,-30,-31,-16,-14,-19,-20,49,51,55,]),'LPAREN':([8,15,16,],[31,39,40,]),'LCBRACKET':([9,10,11,49,51,55,],[33,33,33,33,-11,-12,]),'IN':([47,],[52,]),}
+_lr_action_items = {'DOUBLE':([0,11,12,13,36,52,54,58,],[3,3,3,3,3,3,-14,-15,]),'ID':([0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,48,51,52,53,54,55,56,58,],[8,8,-2,-3,-4,-5,-6,-7,-17,-21,8,8,8,-16,-18,41,-33,-34,-1,41,41,-28,-29,-30,-31,-32,-24,-25,-26,-27,41,41,-11,8,8,-12,-13,-19,-17,41,50,-22,-23,8,-20,8,-8,-14,57,-10,-15,]),'IF':([0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,19,20,21,35,36,37,38,39,40,41,44,45,48,51,52,53,54,56,58,],[10,10,-2,-3,-4,-5,-6,-7,-17,-21,10,10,10,-16,-18,-33,-34,-1,-11,10,10,-12,-13,-19,-17,-22,-23,10,-20,10,-8,-14,-10,-15,]),'ELSE':([0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,19,20,21,35,36,37,38,39,40,41,44,45,48,51,52,53,54,56,58,],[11,11,-2,-3,-4,-5,-6,-7,-17,-21,11,11,11,-16,-18,-33,-34,-1,-11,11,11,-12,-13,-19,-17,-22,-23,11,-20,11,-8,-14,-10,-15,]),'STRING':([0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,48,51,52,53,54,56,58,],[15,15,-2,-3,-4,-5,-6,-7,-17,-21,15,15,15,-16,-18,15,-33,-34,-1,15,15,-28,-29,-30,-31,-32,-24,-25,-26,-27,15,15,-11,15,15,-12,-13,-19,-17,15,-22,-23,15,-20,15,-8,-14,-10,-15,]),'NOT':([0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,48,51,52,53,54,56,58,],[16,16,-2,-3,-4,-5,-6,-7,-17,-21,16,16,16,-16,-18,16,-33,-34,-1,16,16,-28,-29,-30,-31,-32,-24,-25,-26,-27,16,16,-11,16,16,-12,-13,-19,-17,16,-22,-23,16,-20,16,-8,-14,-10,-15,]),'WHILE':([0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,19,20,21,35,36,37,38,39,40,41,44,45,48,51,52,53,54,56,58,],[17,17,-2,-3,-4,-5,-6,-7,-17,-21,17,17,17,-16,-18,-33,-34,-1,-11,17,17,-12,-13,-19,-17,-22,-23,17,-20,17,-8,-14,-10,-15,]),'FOR':([0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,19,20,21,35,36,37,38,39,40,41,44,45,48,51,52,53,54,56,58,],[18,18,-2,-3,-4,-5,-6,-7,-17,-21,18,18,18,-16,-18,-33,-34,-1,-11,18,18,-12,-13,-19,-17,-22,-23,18,-20,18,-8,-14,-10,-15,]),'INTV':([0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,48,51,52,53,54,56,58,],[19,19,-2,-3,-4,-5,-6,-7,-17,-21,19,19,19,-16,-18,19,-33,-34,-1,19,19,-28,-29,-30,-31,-32,-24,-25,-26,-27,19,19,-11,19,19,-12,-13,-19,-17,19,-22,-23,19,-20,19,-8,-14,-10,-15,]),'FLOATV':([0,1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,48,51,52,53,54,56,58,],[20,20,-2,-3,-4,-5,-6,-7,-17,-21,20,20,20,-16,-18,20,-33,-34,-1,20,20,-28,-29,-30,-31,-32,-24,-25,-26,-27,20,20,-11,20,20,-12,-13,-19,-17,20,-22,-23,20,-20,20,-8,-14,-10,-15,]),'$end':([1,2,3,4,5,6,7,8,9,14,15,19,20,21,35,37,38,39,40,41,44,45,51,53,56,],[0,-2,-3,-4,-5,-6,-7,-17,-21,-16,-18,-33,-34,-1,-11,-9,-12,-13,-19,-17,-22,-23,-20,-8,-10,]),'RCBRACKET':([2,3,4,5,6,7,8,9,14,15,19,20,21,35,37,38,39,40,41,44,45,48,51,53,56,],[-2,-3,-4,-5,-6,-7,-17,-21,-16,-18,-33,-34,-1,-11,-9,-12,-13,-19,-17,-22,-23,53,-20,-8,-10,]),'MINUS':([5,8,9,14,15,19,20,40,41,44,45,46,47,49,],[24,-17,-21,-16,-18,-33,-34,-19,-17,24,24,24,24,24,]),'PLUS':([5,8,9,14,15,19,20,40,41,44,45,46,47,49,],[25,-17,-21,-16,-18,-33,-34,-19,-17,25,25,25,25,25,]),'TIMES':([5,8,9,14,15,19,20,40,41,44,45,46,47,49,],[26,-17,-21,-16,-18,-33,-34,-19,-17,26,26,26,26,26,]),'DIVIDE':([5,8,9,14,15,19,20,40,41,44,45,46,47,49,],[27,-17,-21,-16,-18,-33,-34,-19,-17,27,27,27,27,27,]),'MODULE':([5,8,9,14,15,19,20,40,41,44,45,46,47,49,],[28,-17,-21,-16,-18,-33,-34,-19,-17,28,28,28,28,28,]),'OR':([5,8,9,14,15,19,20,40,41,44,45,46,47,49,],[29,-17,-21,-16,-18,-33,-34,-19,-17,29,29,29,29,29,]),'AND':([5,8,9,14,15,19,20,40,41,44,45,46,47,49,],[30,-17,-21,-16,-18,-33,-34,-19,-17,30,30,30,30,30,]),'EQUALS':([5,8,9,14,15,19,20,40,41,44,45,46,47,49,],[31,-17,-21,-16,-18,-33,-34,-19,-17,31,31,31,31,31,]),'NOTEQUALS':([5,8,9,14,15,19,20,40,41,44,45,46,47,49,],[32,-17,-21,-16,-18,-33,-34,-19,-17,32,32,32,32,32,]),'ASSIGN':([8,],[33,]),';':([9,14,15,19,20,40,41,44,45,46,],[-21,-16,-18,-33,-34,-19,-17,-22,-23,51,]),'RPAREN':([9,14,15,19,20,40,41,44,45,47,49,57,],[-21,-16,-18,-33,-34,-19,-17,-22,-23,52,54,58,]),'LPAREN':([10,17,18,],[34,42,43,]),'LCBRACKET':([11,12,13,52,54,58,],[36,36,36,36,-14,-15,]),'IN':([50,],[55,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'cuerpo':([0,9,10,11,33,49,],[1,34,34,34,45,34,]),'asignacion':([0,9,10,11,33,49,],[2,2,2,2,2,2,]),'expresion':([0,9,10,11,19,20,30,31,33,39,49,],[3,3,3,3,41,42,43,44,3,46,3,]),'sentencia':([0,9,10,11,33,49,],[4,4,4,4,4,4,]),'bucles':([0,9,10,11,33,49,],[5,5,5,5,5,5,]),'valor':([0,9,10,11,14,19,20,30,31,33,39,49,],[7,7,7,7,37,7,7,7,7,7,7,7,]),'while':([0,9,10,11,33,49,],[10,10,10,10,10,10,]),'for':([0,9,10,11,33,49,],[11,11,11,11,11,11,]),'number':([0,9,10,11,14,19,20,30,31,33,39,49,],[12,12,12,12,12,12,12,12,12,12,12,12,]),'operadoresMat':([3,41,42,43,44,46,],[19,19,19,19,19,19,]),'operadoresLog':([3,41,42,43,44,46,],[20,20,20,20,20,20,]),'instrucciones':([9,10,11,49,],[32,35,36,53,]),}
+_lr_goto_items = {'cuerpo':([0,11,12,13,36,52,],[1,37,37,37,48,37,]),'sentencia':([0,1,11,12,13,36,37,48,52,],[2,21,2,2,2,2,21,21,2,]),'asignacion':([0,1,11,12,13,36,37,48,52,],[4,4,4,4,4,4,4,4,4,]),'expresion':([0,1,11,12,13,22,23,33,34,36,37,42,48,52,],[5,5,5,5,5,44,45,46,47,5,5,49,5,5,]),'estructuraControl':([0,1,11,12,13,36,37,48,52,],[6,6,6,6,6,6,6,6,6,]),'bucles':([0,1,11,12,13,36,37,48,52,],[7,7,7,7,7,7,7,7,7,]),'valor':([0,1,11,12,13,16,22,23,33,34,36,37,42,48,52,],[9,9,9,9,9,40,9,9,9,9,9,9,9,9,9,]),'while':([0,1,11,12,13,36,37,48,52,],[12,12,12,12,12,12,12,12,12,]),'for':([0,1,11,12,13,36,37,48,52,],[13,13,13,13,13,13,13,13,13,]),'number':([0,1,11,12,13,16,22,23,33,34,36,37,42,48,52,],[14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,]),'operadoresMat':([5,44,45,46,47,49,],[22,22,22,22,22,22,]),'operadoresLog':([5,44,45,46,47,49,],[23,23,23,23,23,23,]),'instrucciones':([11,12,13,52,],[35,38,39,56,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,35 +27,38 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> cuerpo","S'",1,None,None,None),
-  ('cuerpo -> asignacion','cuerpo',1,'p_cuerpo','sintactico.py',8),
-  ('cuerpo -> expresion','cuerpo',1,'p_cuerpo','sintactico.py',9),
-  ('cuerpo -> sentencia','cuerpo',1,'p_cuerpo','sintactico.py',10),
-  ('cuerpo -> bucles','cuerpo',1,'p_cuerpo','sintactico.py',11),
-  ('instrucciones -> LCBRACKET cuerpo RCBRACKET','instrucciones',3,'p_instrucciones','sintactico.py',14),
-  ('instrucciones -> cuerpo','instrucciones',1,'p_instrucciones','sintactico.py',15),
-  ('sentencia -> IF LPAREN expresion RPAREN instrucciones','sentencia',5,'p_sentenciaIf','sintactico.py',19),
-  ('sentencia -> ELSE instrucciones','sentencia',2,'p_sentenciaElse','sintactico.py',22),
-  ('bucles -> while instrucciones','bucles',2,'p_bucles','sintactico.py',25),
-  ('bucles -> for instrucciones','bucles',2,'p_bucles','sintactico.py',26),
-  ('while -> WHILE LPAREN expresion RPAREN','while',4,'p_while','sintactico.py',31),
-  ('for -> FOR LPAREN ID IN ID RPAREN','for',6,'p_for','sintactico.py',35),
-  ('valor -> number','valor',1,'p_valor','sintactico.py',39),
-  ('valor -> ID','valor',1,'p_valor','sintactico.py',40),
-  ('valor -> STRING','valor',1,'p_valor','sintactico.py',41),
-  ('valor -> NOT valor','valor',2,'p_valor_negado','sintactico.py',45),
-  ('asignacion -> ID ASSIGN expresion ;','asignacion',4,'p_asignacion','sintactico.py',50),
-  ('expresion -> valor','expresion',1,'p_expesion','sintactico.py',56),
-  ('expresion -> expresion operadoresMat expresion','expresion',3,'p_expresion_matematica','sintactico.py',60),
-  ('expresion -> expresion operadoresLog expresion','expresion',3,'p_expresion_logica','sintactico.py',77),
-  ('operadoresLog -> OR','operadoresLog',1,'p_operadoresLog','sintactico.py',88),
-  ('operadoresLog -> AND','operadoresLog',1,'p_operadoresLog','sintactico.py',89),
-  ('operadoresLog -> EQUALS','operadoresLog',1,'p_operadoresLog','sintactico.py',90),
-  ('operadoresLog -> NOTEQUALS','operadoresLog',1,'p_operadoresLog','sintactico.py',91),
-  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadoresMat','sintactico.py',95),
-  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadoresMat','sintactico.py',96),
-  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadoresMat','sintactico.py',97),
-  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadoresMat','sintactico.py',98),
-  ('operadoresMat -> MODULE','operadoresMat',1,'p_operadoresMat','sintactico.py',99),
-  ('number -> INTV','number',1,'p_number','sintactico.py',106),
-  ('number -> FLOATV','number',1,'p_number','sintactico.py',107),
+  ('cuerpo -> cuerpo sentencia','cuerpo',2,'p_cuerpo','sintactico.py',7),
+  ('cuerpo -> sentencia','cuerpo',1,'p_cuerpo','sintactico.py',8),
+  ('cuerpo -> DOUBLE','cuerpo',1,'p_cuerpo','sintactico.py',9),
+  ('sentencia -> asignacion','sentencia',1,'p_sentencia','sintactico.py',12),
+  ('sentencia -> expresion','sentencia',1,'p_sentencia','sintactico.py',13),
+  ('sentencia -> estructuraControl','sentencia',1,'p_sentencia','sintactico.py',14),
+  ('sentencia -> bucles','sentencia',1,'p_sentencia','sintactico.py',15),
+  ('instrucciones -> LCBRACKET cuerpo RCBRACKET','instrucciones',3,'p_instrucciones','sintactico.py',18),
+  ('instrucciones -> cuerpo','instrucciones',1,'p_instrucciones','sintactico.py',19),
+  ('estructuraControl -> IF LPAREN expresion RPAREN instrucciones','estructuraControl',5,'p_estructuraControlIf','sintactico.py',23),
+  ('estructuraControl -> ELSE instrucciones','estructuraControl',2,'p_estructuraControlElse','sintactico.py',26),
+  ('bucles -> while instrucciones','bucles',2,'p_bucles','sintactico.py',29),
+  ('bucles -> for instrucciones','bucles',2,'p_bucles','sintactico.py',30),
+  ('while -> WHILE LPAREN expresion RPAREN','while',4,'p_while','sintactico.py',35),
+  ('for -> FOR LPAREN ID IN ID RPAREN','for',6,'p_for','sintactico.py',39),
+  ('valor -> number','valor',1,'p_valor','sintactico.py',43),
+  ('valor -> ID','valor',1,'p_valor','sintactico.py',44),
+  ('valor -> STRING','valor',1,'p_valor','sintactico.py',45),
+  ('valor -> NOT valor','valor',2,'p_valor_negado','sintactico.py',49),
+  ('asignacion -> ID ASSIGN expresion ;','asignacion',4,'p_asignacion','sintactico.py',54),
+  ('expresion -> valor','expresion',1,'p_expesion','sintactico.py',60),
+  ('expresion -> expresion operadoresMat expresion','expresion',3,'p_expresion_matematica','sintactico.py',64),
+  ('expresion -> expresion operadoresLog expresion','expresion',3,'p_expresion_logica','sintactico.py',81),
+  ('operadoresLog -> OR','operadoresLog',1,'p_operadoresLog','sintactico.py',92),
+  ('operadoresLog -> AND','operadoresLog',1,'p_operadoresLog','sintactico.py',93),
+  ('operadoresLog -> EQUALS','operadoresLog',1,'p_operadoresLog','sintactico.py',94),
+  ('operadoresLog -> NOTEQUALS','operadoresLog',1,'p_operadoresLog','sintactico.py',95),
+  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadoresMat','sintactico.py',99),
+  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadoresMat','sintactico.py',100),
+  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadoresMat','sintactico.py',101),
+  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadoresMat','sintactico.py',102),
+  ('operadoresMat -> MODULE','operadoresMat',1,'p_operadoresMat','sintactico.py',103),
+  ('number -> INTV','number',1,'p_number','sintactico.py',110),
+  ('number -> FLOATV','number',1,'p_number','sintactico.py',111),
 ]

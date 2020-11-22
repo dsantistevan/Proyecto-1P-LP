@@ -3,23 +3,26 @@ from lexicoSantistevan import tokens
 import time
 
 
-
 def p_cuerpo(p):
-    '''cuerpo : asignacion
+    '''cuerpo : cuerpo sentencia
+		| sentencia'''
+
+def p_sentencia(p):
+    '''sentencia : asignacion
                 | expresion
-                | sentencia
-                | bucles'''
+                | estructuraControl
+                | bucles '''
 
 def p_instrucciones(p):
     '''instrucciones : LCBRACKET cuerpo RCBRACKET
                 | cuerpo '''
 
-#sentencias
-def p_sentenciaIf(p):
-    '''sentencia : IF LPAREN expresion RPAREN instrucciones '''
+#estructuraControls
+def p_estructuraControlIf(p):
+    '''estructuraControl : IF LPAREN expresion RPAREN instrucciones '''
 
-def p_sentenciaElse(p):
-    '''sentencia : ELSE instrucciones '''
+def p_estructuraControlElse(p):
+    '''estructuraControl : ELSE instrucciones '''
 
 def p_bucles(p):
     '''bucles : while instrucciones
@@ -113,7 +116,7 @@ def p_number(p):
 
 def p_error(p):
     print("Syntax error in input!")
-
+    print("ASD")
     # Build the parser
 
 
@@ -122,7 +125,6 @@ parser = yacc.yacc()
 def analizar2(data):
     result = parser.parse(data)
 # Tokenize
-
     print(result)
 
 
@@ -134,20 +136,19 @@ def analizarArchivo2(nombre= "codigoTodos.txt"):
 
 print("\n\nSintactico")
 
-time.sleep(2)
+#time.sleep(2)
 
-analizarArchivo2()
+#analizarArchivo2()
 
-print(parser.parse("""for(i in Lista){
-    i = 2
-}"""))
+#print(parser.parse("""for(i in Lista){
+#    i = 2
+#}"""))
 
-
-'''while True:
+while True:
     try:
         s = input('calc > ')
     except EOFError:
         break
-    if not s: continue
+    #if not s: continue
     result = parser.parse(s)
-    print(result)'''
+    print(result)
