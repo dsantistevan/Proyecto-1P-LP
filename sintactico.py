@@ -1,93 +1,112 @@
 import ply.yacc as yacc
 from lexicoSantistevan import tokens
+import time
+
+
+
 def p_cuerpo(p):
     '''cuerpo : asignacion
                 | expresion
                 | sentencia
                 | bucles'''
-#sentencias
-def p_sentencia(p):
-    '''sentencia : IF LPAREN expresion RPAREN '''
 
-def p_sentenciaelse(p):
-    '''sentencia : ELSE '''
+def p_instrucciones(p):
+    '''instrucciones : LCBRACKET cuerpo RCBRACKET
+                | cuerpo '''
+
+#sentencias
+def p_sentenciaIf(p):
+    '''sentencia : IF LPAREN expresion RPAREN instrucciones '''
+
+def p_sentenciaElse(p):
+    '''sentencia : ELSE instrucciones '''
 
 def p_bucles(p):
-    '''bucles : while
-              | for'''
+    '''bucles : while instrucciones
+                | for instrucciones '''
+
+
 #while
 def p_while(p):
     '''while : WHILE LPAREN expresion RPAREN '''
 
+#for
 def p_for(p):
     '''for : FOR LPAREN ID IN ID RPAREN '''
-#for
+
+
+def p_valor(p):
+    '''valor : number
+            | ID
+            | STRING'''
+
+
+def p_valor_negado(p):
+    '''valor : NOT valor '''
+    p[0] = (not p[2])
+
+
 def p_asignacion(p):
-    'asignacion : VAR ID ASSIGN expresion'
+    '''asignacion : ID ASSIGN expresion ';' '''
+
+
+
 
 def p_expesion(p):
-    '''expresion : valor'''
+    '''expresion : valor '''
 
-def p_expresion_matematica(p):
-    'expresion : expresion operadoresMat expresion'
 
-def p_expresion_logica(p):
-    'expresion : expresion operadoresLog expresion'
+def p_expresion_matematica(t):
+    'expresion : expresion operadoresMat expresion '
+    if t[2] == '+':
+        t[0] = t[1] + t[3]
+    elif t[2] == '-':
+        t[0] = t[1] - t[3]
+    elif t[2] == '*':
+        t[0] = t[1] * t[3]
+    elif t[2] == '/':
+        if t[3] != 0:
+            t[0] = t[1] / t[3]
+        else:
+            print("Can't divide by 0")
+            raise ZeroDivisionError('number division by 0')
+    elif t[2] == '%':
+        t[0] = t[1] % t[3]
+
+def p_expresion_logica(t):
+    'expresion : expresion operadoresLog expresion '
+    if t[2] == '||':
+        t[0] = t[1] or t[3]
+    elif t[2] == '&&':
+        t[0] = t[1] and t[3]
+    elif t[2] == '==':
+        t[0] = t[1] == t[3]
+    elif t[2] == '!=':
+        t[0] = t[1] != t[3]
 
 def p_operadoresLog(p):
-    '''operadoresLog : NOT
-                    | OR
+    '''operadoresLog :  OR
                     | AND
-                    | EQUALS'''
+                    | EQUALS
+                    | NOTEQUALS '''
+
 
 def p_operadoresMat(p):
     '''operadoresMat : MINUS
                     | PLUS
                     | TIMES
-                    | DIVIDE'''
-
-def p_expression_plus(p):
-    'expression :  PLUS '
-    #p[0] = p[1] + p[3]
+                    | DIVIDE
+                    | MODULE '''
 
 
-def p_expression_minus(p):
-    'expression :  MINUS '
-    #p[0] = p[1] - p[3]
 
 
-def p_expression_term(p):
-    'expression : term'
-    #p[0] = p[1]
+
+def p_number(p):
+    '''number : INTV
+            | FLOATV '''
 
 
-def p_term_times(p):
-    'term :  TIMES '
-    #p[0] = p[1] * p[3]
-
-
-def p_term_div(p):
-    'term :  DIVIDE '
-    #p[0] = p[1] / p[3]
-
-def p_valor(p):
-    '''valor : INTV
-            | ID'''
-
-
-def p_term_factor(p):
-    'term : factor'
-    #p[0] = p[1]
-
-
-def p_factor_num(p):
-    'factor : INTV'
-   # p[0] = p[1]
-
-
-def p_factor_expr(p):
-    'factor : LPAREN expression RPAREN'
-    #p[0] = p[2]
 
     # Error rule for syntax errors
 
@@ -100,11 +119,35 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-while True:
+def analizar2(data):
+    result = parser.parse(data)
+# Tokenize
+
+    print(result)
+
+
+def analizarArchivo2(nombre= "codigoTodos.txt"):
+    f = open(nombre, "r")
+    parser.parse(f.read())
+    f.close()
+
+
+print("\n\nSintactico")
+
+time.sleep(2)
+
+analizarArchivo2()
+
+print(parser.parse("""for(i in Lista){
+    i = 2
+}"""))
+
+
+'''while True:
     try:
         s = input('calc > ')
     except EOFError:
         break
     if not s: continue
     result = parser.parse(s)
-    print(result)
+    print(result)'''

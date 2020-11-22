@@ -28,7 +28,8 @@ tokens = (
     'NOT',
     'AND',
     'OR',
-    'STRING'
+    'STRING',
+    'NOTEQUALS'
 ) + tuple(reservadas.values())
 # Regular expression rules for simple tokens
 t_PLUS = r'\+'
@@ -40,6 +41,7 @@ t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_ASSIGN = r'\='
 t_EQUALS = r'\=\='
+t_NOTEQUALS = r'\!\='
 t_GREATER = r'\>'
 t_LOWER = r'\<'
 t_LCBRACKET = r'\{'
@@ -64,7 +66,7 @@ def t_ID(t):
 
 
 def t_FLOATV(t):
-    r'(-|\+)?\d*(\.\d*)'
+    r'(-|\+)?\d*(\.\d+)'
     t.value = float(t.value)
     return t
 
@@ -116,6 +118,7 @@ def analizarArchivo(nombre= "codigoTodos.txt"):
 
     f.close()
 
-#analizarArchivo()
+analizarArchivo()
 #analizarArchivo('codigoJimenez.txt')
+
 
