@@ -1,5 +1,4 @@
 #David Santistevan - Kotlin 1
-import ply.yacc as yacc
 from ply import lex
 
 reservadas={'var':'VAR','while':'WHILE','if':'IF','else':'ELSE','for':'FOR', "true" : "TRUE", 'false':'FALSE',
@@ -118,7 +117,7 @@ def analizarArchivo(nombre= "codigoTodos.txt"):
 
     f.close()
 
-analizarArchivo()
+#analizarArchivo()
 #analizarArchivo('codigoJimenez.txt')
 
 

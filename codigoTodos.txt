@@ -1,5 +1,5 @@
 3 + 4 * 10 a
-   + -20 *2 / 9 % 23 // Esto en adelante es un comentario/// + (9) %
+    20 *2 / 9 % 23 // Esto en adelante es un comentario/// + (9)
 
 id = 3
 fun bajarValor(asd : int){
@@ -12,7 +12,7 @@ fun bajarValor(asd : int){
        asd = asd - 1;
    }
 }
-1 + 2 *%()[]{}-=\\
+1 + 2 *()[]{}-=\\
 fun if else for while var
 \ > < >= <= || ; : 
 "hola" variable
@@ -34,7 +34,7 @@ val variable = 1
 -100
 1.2
 5.31
-2 % 3 == 2
+( 2 % 3 )== 2
 /* 
 This
 is 
