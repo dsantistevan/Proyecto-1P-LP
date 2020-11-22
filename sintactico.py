@@ -2,11 +2,32 @@ import ply.yacc as yacc
 from lexicoSantistevan import tokens
 def p_cuerpo(p):
     '''cuerpo : asignacion
-                | expresion'''
+                | expresion
+                | sentencia
+                | bucles'''
+#sentencias
+def p_sentencia(p):
+    '''sentencia : IF LPAREN expresion RPAREN '''
+
+def p_sentenciaelse(p):
+    '''sentencia : ELSE '''
+
+def p_bucles(p):
+    '''bucles : while
+              | for'''
+#while
+def p_while(p):
+    '''while : WHILE LPAREN expresion RPAREN '''
+
+def p_for(p):
+    '''for : FOR LPAREN ID IN ID RPAREN '''
+#for
 def p_asignacion(p):
     'asignacion : VAR ID ASSIGN expresion'
+
 def p_expesion(p):
     '''expresion : valor'''
+
 def p_expresion_matematica(p):
     'expresion : expresion operadoresMat expresion'
 
@@ -16,7 +37,8 @@ def p_expresion_logica(p):
 def p_operadoresLog(p):
     '''operadoresLog : NOT
                     | OR
-                    | AND'''
+                    | AND
+                    | EQUALS'''
 
 def p_operadoresMat(p):
     '''operadoresMat : MINUS

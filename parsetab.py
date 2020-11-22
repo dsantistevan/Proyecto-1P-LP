@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND ASSIGN BOOLEAN BYTE CHAR DIVIDE DOUBLE ELSE FALSE FLOAT FLOATV FOR FUNCTION GREATER ID IF INT INTV LCBRACKET LONG LOWER LPAREN LSBRACKET MINUS MODULE NOT NULL OR PLUS RCBRACKET RETURN RPAREN RSBRACKET SHORT STRING TIMES TRUE VAR WHILEcuerpo : asignacion\n                | expresionasignacion : VAR ID ASSIGN expresionexpresion : valorexpresion : expresion operadoresMat expresionexpresion : expresion operadoresLog expresionoperadoresLog : NOT\n                    | OR\n                    | ANDoperadoresMat : MINUS\n                    | PLUS\n                    | TIMES\n                    | DIVIDEexpression :  PLUS expression :  MINUS expression : termterm :  TIMES term :  DIVIDE valor : INTV\n            | IDterm : factorfactor : INTVfactor : LPAREN expression RPAREN'
+_lr_signature = 'AND ASSIGN BOOLEAN BYTE CHAR DIVIDE DOUBLE ELSE EQUALS FALSE FLOAT FLOATV FOR FUNCTION GREATER ID IF IN INT INTV LCBRACKET LONG LOWER LPAREN LSBRACKET MINUS MODULE NOT NULL OR PLUS RCBRACKET RETURN RPAREN RSBRACKET SHORT STRING TIMES TRUE VAL VAR WHILEcuerpo : asignacion\n                | expresion\n                | sentencia\n                | buclessentencia : IF LPAREN expresion RPAREN sentencia : ELSE bucles : while\n              | forwhile : WHILE LPAREN expresion RPAREN for : FOR LPAREN ID IN ID RPAREN asignacion : VAR ID ASSIGN expresionexpresion : valorexpresion : expresion operadoresMat expresionexpresion : expresion operadoresLog expresionoperadoresLog : NOT\n                    | OR\n                    | AND\n                    | EQUALSoperadoresMat : MINUS\n                    | PLUS\n                    | TIMES\n                    | DIVIDEexpression :  PLUS expression :  MINUS expression : termterm :  TIMES term :  DIVIDE valor : INTV\n            | IDterm : factorfactor : INTVfactor : LPAREN expression RPAREN'
     
-_lr_action_items = {'VAR':([0,],[4,]),'INTV':([0,8,9,10,11,12,13,14,15,16,20,],[7,7,7,-10,-11,-12,-13,-7,-8,-9,7,]),'ID':([0,4,8,9,10,11,12,13,14,15,16,20,],[5,17,5,5,-10,-11,-12,-13,-7,-8,-9,5,]),'$end':([1,2,3,5,6,7,18,19,21,],[0,-1,-2,-20,-4,-19,-5,-6,-3,]),'MINUS':([3,5,6,7,18,19,21,],[10,-20,-4,-19,10,10,10,]),'PLUS':([3,5,6,7,18,19,21,],[11,-20,-4,-19,11,11,11,]),'TIMES':([3,5,6,7,18,19,21,],[12,-20,-4,-19,12,12,12,]),'DIVIDE':([3,5,6,7,18,19,21,],[13,-20,-4,-19,13,13,13,]),'NOT':([3,5,6,7,18,19,21,],[14,-20,-4,-19,14,14,14,]),'OR':([3,5,6,7,18,19,21,],[15,-20,-4,-19,15,15,15,]),'AND':([3,5,6,7,18,19,21,],[16,-20,-4,-19,16,16,16,]),'ASSIGN':([17,],[20,]),}
+_lr_action_items = {'VAR':([0,],[6,]),'IF':([0,],[9,]),'ELSE':([0,],[10,]),'INTV':([0,16,17,18,19,20,21,22,23,24,25,27,28,32,],[13,13,13,-19,-20,-21,-22,-15,-16,-17,-18,13,13,13,]),'ID':([0,6,16,17,18,19,20,21,22,23,24,25,27,28,29,32,39,],[7,26,7,7,-19,-20,-21,-22,-15,-16,-17,-18,7,7,35,7,40,]),'WHILE':([0,],[14,]),'FOR':([0,],[15,]),'$end':([1,2,3,4,5,7,8,10,11,12,13,30,31,36,37,38,41,],[0,-1,-2,-3,-4,-29,-12,-6,-7,-8,-28,-13,-14,-11,-5,-9,-10,]),'MINUS':([3,7,8,13,30,31,33,34,36,],[18,-29,-12,-28,18,18,18,18,18,]),'PLUS':([3,7,8,13,30,31,33,34,36,],[19,-29,-12,-28,19,19,19,19,19,]),'TIMES':([3,7,8,13,30,31,33,34,36,],[20,-29,-12,-28,20,20,20,20,20,]),'DIVIDE':([3,7,8,13,30,31,33,34,36,],[21,-29,-12,-28,21,21,21,21,21,]),'NOT':([3,7,8,13,30,31,33,34,36,],[22,-29,-12,-28,22,22,22,22,22,]),'OR':([3,7,8,13,30,31,33,34,36,],[23,-29,-12,-28,23,23,23,23,23,]),'AND':([3,7,8,13,30,31,33,34,36,],[24,-29,-12,-28,24,24,24,24,24,]),'EQUALS':([3,7,8,13,30,31,33,34,36,],[25,-29,-12,-28,25,25,25,25,25,]),'RPAREN':([7,8,13,30,31,33,34,40,],[-29,-12,-28,-13,-14,37,38,41,]),'LPAREN':([9,14,15,],[27,28,29,]),'ASSIGN':([26,],[32,]),'IN':([35,],[39,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'cuerpo':([0,],[1,]),'asignacion':([0,],[2,]),'expresion':([0,8,9,20,],[3,18,19,21,]),'valor':([0,8,9,20,],[6,6,6,6,]),'operadoresMat':([3,18,19,21,],[8,8,8,8,]),'operadoresLog':([3,18,19,21,],[9,9,9,9,]),}
+_lr_goto_items = {'cuerpo':([0,],[1,]),'asignacion':([0,],[2,]),'expresion':([0,16,17,27,28,32,],[3,30,31,33,34,36,]),'sentencia':([0,],[4,]),'bucles':([0,],[5,]),'valor':([0,16,17,27,28,32,],[8,8,8,8,8,8,]),'while':([0,],[11,]),'for':([0,],[12,]),'operadoresMat':([3,30,31,33,34,36,],[16,16,16,16,16,16,]),'operadoresLog':([3,30,31,33,34,36,],[17,17,17,17,17,17,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -29,25 +29,34 @@ _lr_productions = [
   ("S' -> cuerpo","S'",1,None,None,None),
   ('cuerpo -> asignacion','cuerpo',1,'p_cuerpo','sintactico.py',4),
   ('cuerpo -> expresion','cuerpo',1,'p_cuerpo','sintactico.py',5),
-  ('asignacion -> VAR ID ASSIGN expresion','asignacion',4,'p_asignacion','sintactico.py',7),
-  ('expresion -> valor','expresion',1,'p_expesion','sintactico.py',9),
-  ('expresion -> expresion operadoresMat expresion','expresion',3,'p_expresion_matematica','sintactico.py',11),
-  ('expresion -> expresion operadoresLog expresion','expresion',3,'p_expresion_logica','sintactico.py',14),
-  ('operadoresLog -> NOT','operadoresLog',1,'p_operadoresLog','sintactico.py',17),
-  ('operadoresLog -> OR','operadoresLog',1,'p_operadoresLog','sintactico.py',18),
-  ('operadoresLog -> AND','operadoresLog',1,'p_operadoresLog','sintactico.py',19),
-  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadoresMat','sintactico.py',22),
-  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadoresMat','sintactico.py',23),
-  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadoresMat','sintactico.py',24),
-  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadoresMat','sintactico.py',25),
-  ('expression -> PLUS','expression',1,'p_expression_plus','sintactico.py',28),
-  ('expression -> MINUS','expression',1,'p_expression_minus','sintactico.py',33),
-  ('expression -> term','expression',1,'p_expression_term','sintactico.py',38),
-  ('term -> TIMES','term',1,'p_term_times','sintactico.py',43),
-  ('term -> DIVIDE','term',1,'p_term_div','sintactico.py',48),
-  ('valor -> INTV','valor',1,'p_valor','sintactico.py',52),
-  ('valor -> ID','valor',1,'p_valor','sintactico.py',53),
-  ('term -> factor','term',1,'p_term_factor','sintactico.py',57),
-  ('factor -> INTV','factor',1,'p_factor_num','sintactico.py',62),
-  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor_expr','sintactico.py',67),
+  ('cuerpo -> sentencia','cuerpo',1,'p_cuerpo','sintactico.py',6),
+  ('cuerpo -> bucles','cuerpo',1,'p_cuerpo','sintactico.py',7),
+  ('sentencia -> IF LPAREN expresion RPAREN','sentencia',4,'p_sentencia','sintactico.py',10),
+  ('sentencia -> ELSE','sentencia',1,'p_sentenciaelse','sintactico.py',13),
+  ('bucles -> while','bucles',1,'p_bucles','sintactico.py',16),
+  ('bucles -> for','bucles',1,'p_bucles','sintactico.py',17),
+  ('while -> WHILE LPAREN expresion RPAREN','while',4,'p_while','sintactico.py',20),
+  ('for -> FOR LPAREN ID IN ID RPAREN','for',6,'p_for','sintactico.py',23),
+  ('asignacion -> VAR ID ASSIGN expresion','asignacion',4,'p_asignacion','sintactico.py',26),
+  ('expresion -> valor','expresion',1,'p_expesion','sintactico.py',29),
+  ('expresion -> expresion operadoresMat expresion','expresion',3,'p_expresion_matematica','sintactico.py',32),
+  ('expresion -> expresion operadoresLog expresion','expresion',3,'p_expresion_logica','sintactico.py',35),
+  ('operadoresLog -> NOT','operadoresLog',1,'p_operadoresLog','sintactico.py',38),
+  ('operadoresLog -> OR','operadoresLog',1,'p_operadoresLog','sintactico.py',39),
+  ('operadoresLog -> AND','operadoresLog',1,'p_operadoresLog','sintactico.py',40),
+  ('operadoresLog -> EQUALS','operadoresLog',1,'p_operadoresLog','sintactico.py',41),
+  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadoresMat','sintactico.py',44),
+  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadoresMat','sintactico.py',45),
+  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadoresMat','sintactico.py',46),
+  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadoresMat','sintactico.py',47),
+  ('expression -> PLUS','expression',1,'p_expression_plus','sintactico.py',50),
+  ('expression -> MINUS','expression',1,'p_expression_minus','sintactico.py',55),
+  ('expression -> term','expression',1,'p_expression_term','sintactico.py',60),
+  ('term -> TIMES','term',1,'p_term_times','sintactico.py',65),
+  ('term -> DIVIDE','term',1,'p_term_div','sintactico.py',70),
+  ('valor -> INTV','valor',1,'p_valor','sintactico.py',74),
+  ('valor -> ID','valor',1,'p_valor','sintactico.py',75),
+  ('term -> factor','term',1,'p_term_factor','sintactico.py',79),
+  ('factor -> INTV','factor',1,'p_factor_num','sintactico.py',84),
+  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor_expr','sintactico.py',89),
 ]

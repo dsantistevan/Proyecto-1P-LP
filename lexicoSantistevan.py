@@ -4,7 +4,7 @@ from ply import lex
 
 reservadas={'var':'VAR','while':'WHILE','if':'IF','else':'ELSE','for':'FOR', "true" : "TRUE", 'false':'FALSE',
             'return': 'RETURN', 'null':'NULL', 'int':'INT', 'byte':'BYTE', 'float':'FLOAT', 'short':'SHORT',
-            'long':'LONG', 'double':'DOUBLE', 'boolean':'BOOLEAN', 'char':'CHAR', 'fun':'FUNCTION', 'val':'VAL'}
+            'long':'LONG', 'double':'DOUBLE', 'boolean':'BOOLEAN', 'char':'CHAR', 'fun':'FUNCTION', 'val':'VAL','in':'IN'}
 
 tokens = (
     'ID',
@@ -116,6 +116,6 @@ def analizarArchivo(nombre= "codigoTodos.txt"):
 
     f.close()
 
-analizarArchivo()
+#analizarArchivo()
 #analizarArchivo('codigoJimenez.txt')
 

@@ -6,14 +6,11 @@ Unused terminals:
     BYTE
     CHAR
     DOUBLE
-    ELSE
     FALSE
     FLOAT
     FLOATV
-    FOR
     FUNCTION
     GREATER
-    IF
     INT
     LCBRACKET
     LONG
@@ -27,89 +24,105 @@ Unused terminals:
     SHORT
     STRING
     TRUE
-    WHILE
+    VAL
 
 Grammar
 
 Rule 0     S' -> cuerpo
 Rule 1     cuerpo -> asignacion
 Rule 2     cuerpo -> expresion
-Rule 3     asignacion -> VAR ID ASSIGN expresion
-Rule 4     expresion -> valor
-Rule 5     expresion -> expresion operadoresMat expresion
-Rule 6     expresion -> expresion operadoresLog expresion
-Rule 7     operadoresLog -> NOT
-Rule 8     operadoresLog -> OR
-Rule 9     operadoresLog -> AND
-Rule 10    operadoresMat -> MINUS
-Rule 11    operadoresMat -> PLUS
-Rule 12    operadoresMat -> TIMES
-Rule 13    operadoresMat -> DIVIDE
-Rule 14    expression -> PLUS
-Rule 15    expression -> MINUS
-Rule 16    expression -> term
-Rule 17    term -> TIMES
-Rule 18    term -> DIVIDE
-Rule 19    valor -> INTV
-Rule 20    valor -> ID
-Rule 21    term -> factor
-Rule 22    factor -> INTV
-Rule 23    factor -> LPAREN expression RPAREN
+Rule 3     cuerpo -> sentencia
+Rule 4     cuerpo -> bucles
+Rule 5     sentencia -> IF LPAREN expresion RPAREN
+Rule 6     sentencia -> ELSE
+Rule 7     bucles -> while
+Rule 8     bucles -> for
+Rule 9     while -> WHILE LPAREN expresion RPAREN
+Rule 10    for -> FOR LPAREN ID IN ID RPAREN
+Rule 11    asignacion -> VAR ID ASSIGN expresion
+Rule 12    expresion -> valor
+Rule 13    expresion -> expresion operadoresMat expresion
+Rule 14    expresion -> expresion operadoresLog expresion
+Rule 15    operadoresLog -> NOT
+Rule 16    operadoresLog -> OR
+Rule 17    operadoresLog -> AND
+Rule 18    operadoresLog -> EQUALS
+Rule 19    operadoresMat -> MINUS
+Rule 20    operadoresMat -> PLUS
+Rule 21    operadoresMat -> TIMES
+Rule 22    operadoresMat -> DIVIDE
+Rule 23    expression -> PLUS
+Rule 24    expression -> MINUS
+Rule 25    expression -> term
+Rule 26    term -> TIMES
+Rule 27    term -> DIVIDE
+Rule 28    valor -> INTV
+Rule 29    valor -> ID
+Rule 30    term -> factor
+Rule 31    factor -> INTV
+Rule 32    factor -> LPAREN expression RPAREN
 
 Terminals, with rules where they appear
 
-AND                  : 9
-ASSIGN               : 3
+AND                  : 17
+ASSIGN               : 11
 BOOLEAN              : 
 BYTE                 : 
 CHAR                 : 
-DIVIDE               : 13 18
+DIVIDE               : 22 27
 DOUBLE               : 
-ELSE                 : 
+ELSE                 : 6
+EQUALS               : 18
 FALSE                : 
 FLOAT                : 
 FLOATV               : 
-FOR                  : 
+FOR                  : 10
 FUNCTION             : 
 GREATER              : 
-ID                   : 3 20
-IF                   : 
+ID                   : 10 10 11 29
+IF                   : 5
+IN                   : 10
 INT                  : 
-INTV                 : 19 22
+INTV                 : 28 31
 LCBRACKET            : 
 LONG                 : 
 LOWER                : 
-LPAREN               : 23
+LPAREN               : 5 9 10 32
 LSBRACKET            : 
-MINUS                : 10 15
+MINUS                : 19 24
 MODULE               : 
-NOT                  : 7
+NOT                  : 15
 NULL                 : 
-OR                   : 8
-PLUS                 : 11 14
+OR                   : 16
+PLUS                 : 20 23
 RCBRACKET            : 
 RETURN               : 
-RPAREN               : 23
+RPAREN               : 5 9 10 32
 RSBRACKET            : 
 SHORT                : 
 STRING               : 
-TIMES                : 12 17
+TIMES                : 21 26
 TRUE                 : 
-VAR                  : 3
-WHILE                : 
+VAL                  : 
+VAR                  : 11
+WHILE                : 9
 error                : 
 
 Nonterminals, with rules where they appear
 
 asignacion           : 1
+bucles               : 4
 cuerpo               : 0
-expresion            : 2 3 5 5 6 6
-expression           : 23
-factor               : 21
-operadoresLog        : 6
-operadoresMat        : 5
-term                 : 16
-valor                : 4
+expresion            : 2 5 9 11 13 13 14 14
+expression           : 32
+factor               : 30
+for                  : 8
+operadoresLog        : 14
+operadoresMat        : 13
+sentencia            : 3
+term                 : 25
+valor                : 12
+while                : 7
 
 Parsing method: LALR
 
@@ -118,21 +131,37 @@ state 0
     (0) S' -> . cuerpo
     (1) cuerpo -> . asignacion
     (2) cuerpo -> . expresion
-    (3) asignacion -> . VAR ID ASSIGN expresion
-    (4) expresion -> . valor
-    (5) expresion -> . expresion operadoresMat expresion
-    (6) expresion -> . expresion operadoresLog expresion
-    (19) valor -> . INTV
-    (20) valor -> . ID
+    (3) cuerpo -> . sentencia
+    (4) cuerpo -> . bucles
+    (11) asignacion -> . VAR ID ASSIGN expresion
+    (12) expresion -> . valor
+    (13) expresion -> . expresion operadoresMat expresion
+    (14) expresion -> . expresion operadoresLog expresion
+    (5) sentencia -> . IF LPAREN expresion RPAREN
+    (6) sentencia -> . ELSE
+    (7) bucles -> . while
+    (8) bucles -> . for
+    (28) valor -> . INTV
+    (29) valor -> . ID
+    (9) while -> . WHILE LPAREN expresion RPAREN
+    (10) for -> . FOR LPAREN ID IN ID RPAREN
 
-    VAR             shift and go to state 4
-    INTV            shift and go to state 7
-    ID              shift and go to state 5
+    VAR             shift and go to state 6
+    IF              shift and go to state 9
+    ELSE            shift and go to state 10
+    INTV            shift and go to state 13
+    ID              shift and go to state 7
+    WHILE           shift and go to state 14
+    FOR             shift and go to state 15
 
     cuerpo                         shift and go to state 1
     asignacion                     shift and go to state 2
     expresion                      shift and go to state 3
-    valor                          shift and go to state 6
+    sentencia                      shift and go to state 4
+    bucles                         shift and go to state 5
+    valor                          shift and go to state 8
+    while                          shift and go to state 11
+    for                            shift and go to state 12
 
 state 1
 
@@ -150,222 +179,292 @@ state 2
 state 3
 
     (2) cuerpo -> expresion .
-    (5) expresion -> expresion . operadoresMat expresion
-    (6) expresion -> expresion . operadoresLog expresion
-    (10) operadoresMat -> . MINUS
-    (11) operadoresMat -> . PLUS
-    (12) operadoresMat -> . TIMES
-    (13) operadoresMat -> . DIVIDE
-    (7) operadoresLog -> . NOT
-    (8) operadoresLog -> . OR
-    (9) operadoresLog -> . AND
+    (13) expresion -> expresion . operadoresMat expresion
+    (14) expresion -> expresion . operadoresLog expresion
+    (19) operadoresMat -> . MINUS
+    (20) operadoresMat -> . PLUS
+    (21) operadoresMat -> . TIMES
+    (22) operadoresMat -> . DIVIDE
+    (15) operadoresLog -> . NOT
+    (16) operadoresLog -> . OR
+    (17) operadoresLog -> . AND
+    (18) operadoresLog -> . EQUALS
 
     $end            reduce using rule 2 (cuerpo -> expresion .)
-    MINUS           shift and go to state 10
-    PLUS            shift and go to state 11
-    TIMES           shift and go to state 12
-    DIVIDE          shift and go to state 13
-    NOT             shift and go to state 14
-    OR              shift and go to state 15
-    AND             shift and go to state 16
+    MINUS           shift and go to state 18
+    PLUS            shift and go to state 19
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 21
+    NOT             shift and go to state 22
+    OR              shift and go to state 23
+    AND             shift and go to state 24
+    EQUALS          shift and go to state 25
 
-    operadoresMat                  shift and go to state 8
-    operadoresLog                  shift and go to state 9
+    operadoresMat                  shift and go to state 16
+    operadoresLog                  shift and go to state 17
 
 state 4
 
-    (3) asignacion -> VAR . ID ASSIGN expresion
+    (3) cuerpo -> sentencia .
 
-    ID              shift and go to state 17
+    $end            reduce using rule 3 (cuerpo -> sentencia .)
 
 
 state 5
 
-    (20) valor -> ID .
+    (4) cuerpo -> bucles .
 
-    MINUS           reduce using rule 20 (valor -> ID .)
-    PLUS            reduce using rule 20 (valor -> ID .)
-    TIMES           reduce using rule 20 (valor -> ID .)
-    DIVIDE          reduce using rule 20 (valor -> ID .)
-    NOT             reduce using rule 20 (valor -> ID .)
-    OR              reduce using rule 20 (valor -> ID .)
-    AND             reduce using rule 20 (valor -> ID .)
-    $end            reduce using rule 20 (valor -> ID .)
+    $end            reduce using rule 4 (cuerpo -> bucles .)
 
 
 state 6
 
-    (4) expresion -> valor .
+    (11) asignacion -> VAR . ID ASSIGN expresion
 
-    MINUS           reduce using rule 4 (expresion -> valor .)
-    PLUS            reduce using rule 4 (expresion -> valor .)
-    TIMES           reduce using rule 4 (expresion -> valor .)
-    DIVIDE          reduce using rule 4 (expresion -> valor .)
-    NOT             reduce using rule 4 (expresion -> valor .)
-    OR              reduce using rule 4 (expresion -> valor .)
-    AND             reduce using rule 4 (expresion -> valor .)
-    $end            reduce using rule 4 (expresion -> valor .)
+    ID              shift and go to state 26
 
 
 state 7
 
-    (19) valor -> INTV .
+    (29) valor -> ID .
 
-    MINUS           reduce using rule 19 (valor -> INTV .)
-    PLUS            reduce using rule 19 (valor -> INTV .)
-    TIMES           reduce using rule 19 (valor -> INTV .)
-    DIVIDE          reduce using rule 19 (valor -> INTV .)
-    NOT             reduce using rule 19 (valor -> INTV .)
-    OR              reduce using rule 19 (valor -> INTV .)
-    AND             reduce using rule 19 (valor -> INTV .)
-    $end            reduce using rule 19 (valor -> INTV .)
+    MINUS           reduce using rule 29 (valor -> ID .)
+    PLUS            reduce using rule 29 (valor -> ID .)
+    TIMES           reduce using rule 29 (valor -> ID .)
+    DIVIDE          reduce using rule 29 (valor -> ID .)
+    NOT             reduce using rule 29 (valor -> ID .)
+    OR              reduce using rule 29 (valor -> ID .)
+    AND             reduce using rule 29 (valor -> ID .)
+    EQUALS          reduce using rule 29 (valor -> ID .)
+    $end            reduce using rule 29 (valor -> ID .)
+    RPAREN          reduce using rule 29 (valor -> ID .)
 
 
 state 8
 
-    (5) expresion -> expresion operadoresMat . expresion
-    (4) expresion -> . valor
-    (5) expresion -> . expresion operadoresMat expresion
-    (6) expresion -> . expresion operadoresLog expresion
-    (19) valor -> . INTV
-    (20) valor -> . ID
+    (12) expresion -> valor .
 
-    INTV            shift and go to state 7
-    ID              shift and go to state 5
+    MINUS           reduce using rule 12 (expresion -> valor .)
+    PLUS            reduce using rule 12 (expresion -> valor .)
+    TIMES           reduce using rule 12 (expresion -> valor .)
+    DIVIDE          reduce using rule 12 (expresion -> valor .)
+    NOT             reduce using rule 12 (expresion -> valor .)
+    OR              reduce using rule 12 (expresion -> valor .)
+    AND             reduce using rule 12 (expresion -> valor .)
+    EQUALS          reduce using rule 12 (expresion -> valor .)
+    $end            reduce using rule 12 (expresion -> valor .)
+    RPAREN          reduce using rule 12 (expresion -> valor .)
 
-    expresion                      shift and go to state 18
-    valor                          shift and go to state 6
 
 state 9
 
-    (6) expresion -> expresion operadoresLog . expresion
-    (4) expresion -> . valor
-    (5) expresion -> . expresion operadoresMat expresion
-    (6) expresion -> . expresion operadoresLog expresion
-    (19) valor -> . INTV
-    (20) valor -> . ID
+    (5) sentencia -> IF . LPAREN expresion RPAREN
 
-    INTV            shift and go to state 7
-    ID              shift and go to state 5
+    LPAREN          shift and go to state 27
 
-    expresion                      shift and go to state 19
-    valor                          shift and go to state 6
 
 state 10
 
-    (10) operadoresMat -> MINUS .
+    (6) sentencia -> ELSE .
 
-    INTV            reduce using rule 10 (operadoresMat -> MINUS .)
-    ID              reduce using rule 10 (operadoresMat -> MINUS .)
+    $end            reduce using rule 6 (sentencia -> ELSE .)
 
 
 state 11
 
-    (11) operadoresMat -> PLUS .
+    (7) bucles -> while .
 
-    INTV            reduce using rule 11 (operadoresMat -> PLUS .)
-    ID              reduce using rule 11 (operadoresMat -> PLUS .)
+    $end            reduce using rule 7 (bucles -> while .)
 
 
 state 12
 
-    (12) operadoresMat -> TIMES .
+    (8) bucles -> for .
 
-    INTV            reduce using rule 12 (operadoresMat -> TIMES .)
-    ID              reduce using rule 12 (operadoresMat -> TIMES .)
+    $end            reduce using rule 8 (bucles -> for .)
 
 
 state 13
 
-    (13) operadoresMat -> DIVIDE .
+    (28) valor -> INTV .
 
-    INTV            reduce using rule 13 (operadoresMat -> DIVIDE .)
-    ID              reduce using rule 13 (operadoresMat -> DIVIDE .)
+    MINUS           reduce using rule 28 (valor -> INTV .)
+    PLUS            reduce using rule 28 (valor -> INTV .)
+    TIMES           reduce using rule 28 (valor -> INTV .)
+    DIVIDE          reduce using rule 28 (valor -> INTV .)
+    NOT             reduce using rule 28 (valor -> INTV .)
+    OR              reduce using rule 28 (valor -> INTV .)
+    AND             reduce using rule 28 (valor -> INTV .)
+    EQUALS          reduce using rule 28 (valor -> INTV .)
+    $end            reduce using rule 28 (valor -> INTV .)
+    RPAREN          reduce using rule 28 (valor -> INTV .)
 
 
 state 14
 
-    (7) operadoresLog -> NOT .
+    (9) while -> WHILE . LPAREN expresion RPAREN
 
-    INTV            reduce using rule 7 (operadoresLog -> NOT .)
-    ID              reduce using rule 7 (operadoresLog -> NOT .)
+    LPAREN          shift and go to state 28
 
 
 state 15
 
-    (8) operadoresLog -> OR .
+    (10) for -> FOR . LPAREN ID IN ID RPAREN
 
-    INTV            reduce using rule 8 (operadoresLog -> OR .)
-    ID              reduce using rule 8 (operadoresLog -> OR .)
+    LPAREN          shift and go to state 29
 
 
 state 16
 
-    (9) operadoresLog -> AND .
+    (13) expresion -> expresion operadoresMat . expresion
+    (12) expresion -> . valor
+    (13) expresion -> . expresion operadoresMat expresion
+    (14) expresion -> . expresion operadoresLog expresion
+    (28) valor -> . INTV
+    (29) valor -> . ID
 
-    INTV            reduce using rule 9 (operadoresLog -> AND .)
-    ID              reduce using rule 9 (operadoresLog -> AND .)
+    INTV            shift and go to state 13
+    ID              shift and go to state 7
 
+    expresion                      shift and go to state 30
+    valor                          shift and go to state 8
 
 state 17
 
-    (3) asignacion -> VAR ID . ASSIGN expresion
+    (14) expresion -> expresion operadoresLog . expresion
+    (12) expresion -> . valor
+    (13) expresion -> . expresion operadoresMat expresion
+    (14) expresion -> . expresion operadoresLog expresion
+    (28) valor -> . INTV
+    (29) valor -> . ID
 
-    ASSIGN          shift and go to state 20
+    INTV            shift and go to state 13
+    ID              shift and go to state 7
 
+    expresion                      shift and go to state 31
+    valor                          shift and go to state 8
 
 state 18
 
-    (5) expresion -> expresion operadoresMat expresion .
-    (5) expresion -> expresion . operadoresMat expresion
-    (6) expresion -> expresion . operadoresLog expresion
-    (10) operadoresMat -> . MINUS
-    (11) operadoresMat -> . PLUS
-    (12) operadoresMat -> . TIMES
-    (13) operadoresMat -> . DIVIDE
-    (7) operadoresLog -> . NOT
-    (8) operadoresLog -> . OR
-    (9) operadoresLog -> . AND
+    (19) operadoresMat -> MINUS .
 
-  ! shift/reduce conflict for MINUS resolved as shift
-  ! shift/reduce conflict for PLUS resolved as shift
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for NOT resolved as shift
-  ! shift/reduce conflict for OR resolved as shift
-  ! shift/reduce conflict for AND resolved as shift
-    $end            reduce using rule 5 (expresion -> expresion operadoresMat expresion .)
-    MINUS           shift and go to state 10
-    PLUS            shift and go to state 11
-    TIMES           shift and go to state 12
-    DIVIDE          shift and go to state 13
-    NOT             shift and go to state 14
-    OR              shift and go to state 15
-    AND             shift and go to state 16
+    INTV            reduce using rule 19 (operadoresMat -> MINUS .)
+    ID              reduce using rule 19 (operadoresMat -> MINUS .)
 
-  ! MINUS           [ reduce using rule 5 (expresion -> expresion operadoresMat expresion .) ]
-  ! PLUS            [ reduce using rule 5 (expresion -> expresion operadoresMat expresion .) ]
-  ! TIMES           [ reduce using rule 5 (expresion -> expresion operadoresMat expresion .) ]
-  ! DIVIDE          [ reduce using rule 5 (expresion -> expresion operadoresMat expresion .) ]
-  ! NOT             [ reduce using rule 5 (expresion -> expresion operadoresMat expresion .) ]
-  ! OR              [ reduce using rule 5 (expresion -> expresion operadoresMat expresion .) ]
-  ! AND             [ reduce using rule 5 (expresion -> expresion operadoresMat expresion .) ]
-
-    operadoresMat                  shift and go to state 8
-    operadoresLog                  shift and go to state 9
 
 state 19
 
-    (6) expresion -> expresion operadoresLog expresion .
-    (5) expresion -> expresion . operadoresMat expresion
-    (6) expresion -> expresion . operadoresLog expresion
-    (10) operadoresMat -> . MINUS
-    (11) operadoresMat -> . PLUS
-    (12) operadoresMat -> . TIMES
-    (13) operadoresMat -> . DIVIDE
-    (7) operadoresLog -> . NOT
-    (8) operadoresLog -> . OR
-    (9) operadoresLog -> . AND
+    (20) operadoresMat -> PLUS .
+
+    INTV            reduce using rule 20 (operadoresMat -> PLUS .)
+    ID              reduce using rule 20 (operadoresMat -> PLUS .)
+
+
+state 20
+
+    (21) operadoresMat -> TIMES .
+
+    INTV            reduce using rule 21 (operadoresMat -> TIMES .)
+    ID              reduce using rule 21 (operadoresMat -> TIMES .)
+
+
+state 21
+
+    (22) operadoresMat -> DIVIDE .
+
+    INTV            reduce using rule 22 (operadoresMat -> DIVIDE .)
+    ID              reduce using rule 22 (operadoresMat -> DIVIDE .)
+
+
+state 22
+
+    (15) operadoresLog -> NOT .
+
+    INTV            reduce using rule 15 (operadoresLog -> NOT .)
+    ID              reduce using rule 15 (operadoresLog -> NOT .)
+
+
+state 23
+
+    (16) operadoresLog -> OR .
+
+    INTV            reduce using rule 16 (operadoresLog -> OR .)
+    ID              reduce using rule 16 (operadoresLog -> OR .)
+
+
+state 24
+
+    (17) operadoresLog -> AND .
+
+    INTV            reduce using rule 17 (operadoresLog -> AND .)
+    ID              reduce using rule 17 (operadoresLog -> AND .)
+
+
+state 25
+
+    (18) operadoresLog -> EQUALS .
+
+    INTV            reduce using rule 18 (operadoresLog -> EQUALS .)
+    ID              reduce using rule 18 (operadoresLog -> EQUALS .)
+
+
+state 26
+
+    (11) asignacion -> VAR ID . ASSIGN expresion
+
+    ASSIGN          shift and go to state 32
+
+
+state 27
+
+    (5) sentencia -> IF LPAREN . expresion RPAREN
+    (12) expresion -> . valor
+    (13) expresion -> . expresion operadoresMat expresion
+    (14) expresion -> . expresion operadoresLog expresion
+    (28) valor -> . INTV
+    (29) valor -> . ID
+
+    INTV            shift and go to state 13
+    ID              shift and go to state 7
+
+    expresion                      shift and go to state 33
+    valor                          shift and go to state 8
+
+state 28
+
+    (9) while -> WHILE LPAREN . expresion RPAREN
+    (12) expresion -> . valor
+    (13) expresion -> . expresion operadoresMat expresion
+    (14) expresion -> . expresion operadoresLog expresion
+    (28) valor -> . INTV
+    (29) valor -> . ID
+
+    INTV            shift and go to state 13
+    ID              shift and go to state 7
+
+    expresion                      shift and go to state 34
+    valor                          shift and go to state 8
+
+state 29
+
+    (10) for -> FOR LPAREN . ID IN ID RPAREN
+
+    ID              shift and go to state 35
+
+
+state 30
+
+    (13) expresion -> expresion operadoresMat expresion .
+    (13) expresion -> expresion . operadoresMat expresion
+    (14) expresion -> expresion . operadoresLog expresion
+    (19) operadoresMat -> . MINUS
+    (20) operadoresMat -> . PLUS
+    (21) operadoresMat -> . TIMES
+    (22) operadoresMat -> . DIVIDE
+    (15) operadoresLog -> . NOT
+    (16) operadoresLog -> . OR
+    (17) operadoresLog -> . AND
+    (18) operadoresLog -> . EQUALS
 
   ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for PLUS resolved as shift
@@ -374,79 +473,228 @@ state 19
   ! shift/reduce conflict for NOT resolved as shift
   ! shift/reduce conflict for OR resolved as shift
   ! shift/reduce conflict for AND resolved as shift
-    $end            reduce using rule 6 (expresion -> expresion operadoresLog expresion .)
-    MINUS           shift and go to state 10
-    PLUS            shift and go to state 11
-    TIMES           shift and go to state 12
-    DIVIDE          shift and go to state 13
-    NOT             shift and go to state 14
-    OR              shift and go to state 15
-    AND             shift and go to state 16
+  ! shift/reduce conflict for EQUALS resolved as shift
+    $end            reduce using rule 13 (expresion -> expresion operadoresMat expresion .)
+    RPAREN          reduce using rule 13 (expresion -> expresion operadoresMat expresion .)
+    MINUS           shift and go to state 18
+    PLUS            shift and go to state 19
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 21
+    NOT             shift and go to state 22
+    OR              shift and go to state 23
+    AND             shift and go to state 24
+    EQUALS          shift and go to state 25
 
-  ! MINUS           [ reduce using rule 6 (expresion -> expresion operadoresLog expresion .) ]
-  ! PLUS            [ reduce using rule 6 (expresion -> expresion operadoresLog expresion .) ]
-  ! TIMES           [ reduce using rule 6 (expresion -> expresion operadoresLog expresion .) ]
-  ! DIVIDE          [ reduce using rule 6 (expresion -> expresion operadoresLog expresion .) ]
-  ! NOT             [ reduce using rule 6 (expresion -> expresion operadoresLog expresion .) ]
-  ! OR              [ reduce using rule 6 (expresion -> expresion operadoresLog expresion .) ]
-  ! AND             [ reduce using rule 6 (expresion -> expresion operadoresLog expresion .) ]
+  ! MINUS           [ reduce using rule 13 (expresion -> expresion operadoresMat expresion .) ]
+  ! PLUS            [ reduce using rule 13 (expresion -> expresion operadoresMat expresion .) ]
+  ! TIMES           [ reduce using rule 13 (expresion -> expresion operadoresMat expresion .) ]
+  ! DIVIDE          [ reduce using rule 13 (expresion -> expresion operadoresMat expresion .) ]
+  ! NOT             [ reduce using rule 13 (expresion -> expresion operadoresMat expresion .) ]
+  ! OR              [ reduce using rule 13 (expresion -> expresion operadoresMat expresion .) ]
+  ! AND             [ reduce using rule 13 (expresion -> expresion operadoresMat expresion .) ]
+  ! EQUALS          [ reduce using rule 13 (expresion -> expresion operadoresMat expresion .) ]
 
-    operadoresLog                  shift and go to state 9
-    operadoresMat                  shift and go to state 8
+    operadoresMat                  shift and go to state 16
+    operadoresLog                  shift and go to state 17
 
-state 20
+state 31
 
-    (3) asignacion -> VAR ID ASSIGN . expresion
-    (4) expresion -> . valor
-    (5) expresion -> . expresion operadoresMat expresion
-    (6) expresion -> . expresion operadoresLog expresion
-    (19) valor -> . INTV
-    (20) valor -> . ID
+    (14) expresion -> expresion operadoresLog expresion .
+    (13) expresion -> expresion . operadoresMat expresion
+    (14) expresion -> expresion . operadoresLog expresion
+    (19) operadoresMat -> . MINUS
+    (20) operadoresMat -> . PLUS
+    (21) operadoresMat -> . TIMES
+    (22) operadoresMat -> . DIVIDE
+    (15) operadoresLog -> . NOT
+    (16) operadoresLog -> . OR
+    (17) operadoresLog -> . AND
+    (18) operadoresLog -> . EQUALS
 
-    INTV            shift and go to state 7
-    ID              shift and go to state 5
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for NOT resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for EQUALS resolved as shift
+    $end            reduce using rule 14 (expresion -> expresion operadoresLog expresion .)
+    RPAREN          reduce using rule 14 (expresion -> expresion operadoresLog expresion .)
+    MINUS           shift and go to state 18
+    PLUS            shift and go to state 19
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 21
+    NOT             shift and go to state 22
+    OR              shift and go to state 23
+    AND             shift and go to state 24
+    EQUALS          shift and go to state 25
 
-    expresion                      shift and go to state 21
-    valor                          shift and go to state 6
+  ! MINUS           [ reduce using rule 14 (expresion -> expresion operadoresLog expresion .) ]
+  ! PLUS            [ reduce using rule 14 (expresion -> expresion operadoresLog expresion .) ]
+  ! TIMES           [ reduce using rule 14 (expresion -> expresion operadoresLog expresion .) ]
+  ! DIVIDE          [ reduce using rule 14 (expresion -> expresion operadoresLog expresion .) ]
+  ! NOT             [ reduce using rule 14 (expresion -> expresion operadoresLog expresion .) ]
+  ! OR              [ reduce using rule 14 (expresion -> expresion operadoresLog expresion .) ]
+  ! AND             [ reduce using rule 14 (expresion -> expresion operadoresLog expresion .) ]
+  ! EQUALS          [ reduce using rule 14 (expresion -> expresion operadoresLog expresion .) ]
 
-state 21
+    operadoresLog                  shift and go to state 17
+    operadoresMat                  shift and go to state 16
 
-    (3) asignacion -> VAR ID ASSIGN expresion .
-    (5) expresion -> expresion . operadoresMat expresion
-    (6) expresion -> expresion . operadoresLog expresion
-    (10) operadoresMat -> . MINUS
-    (11) operadoresMat -> . PLUS
-    (12) operadoresMat -> . TIMES
-    (13) operadoresMat -> . DIVIDE
-    (7) operadoresLog -> . NOT
-    (8) operadoresLog -> . OR
-    (9) operadoresLog -> . AND
+state 32
 
-    $end            reduce using rule 3 (asignacion -> VAR ID ASSIGN expresion .)
-    MINUS           shift and go to state 10
-    PLUS            shift and go to state 11
-    TIMES           shift and go to state 12
-    DIVIDE          shift and go to state 13
-    NOT             shift and go to state 14
-    OR              shift and go to state 15
-    AND             shift and go to state 16
+    (11) asignacion -> VAR ID ASSIGN . expresion
+    (12) expresion -> . valor
+    (13) expresion -> . expresion operadoresMat expresion
+    (14) expresion -> . expresion operadoresLog expresion
+    (28) valor -> . INTV
+    (29) valor -> . ID
 
-    operadoresMat                  shift and go to state 8
-    operadoresLog                  shift and go to state 9
+    INTV            shift and go to state 13
+    ID              shift and go to state 7
+
+    expresion                      shift and go to state 36
+    valor                          shift and go to state 8
+
+state 33
+
+    (5) sentencia -> IF LPAREN expresion . RPAREN
+    (13) expresion -> expresion . operadoresMat expresion
+    (14) expresion -> expresion . operadoresLog expresion
+    (19) operadoresMat -> . MINUS
+    (20) operadoresMat -> . PLUS
+    (21) operadoresMat -> . TIMES
+    (22) operadoresMat -> . DIVIDE
+    (15) operadoresLog -> . NOT
+    (16) operadoresLog -> . OR
+    (17) operadoresLog -> . AND
+    (18) operadoresLog -> . EQUALS
+
+    RPAREN          shift and go to state 37
+    MINUS           shift and go to state 18
+    PLUS            shift and go to state 19
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 21
+    NOT             shift and go to state 22
+    OR              shift and go to state 23
+    AND             shift and go to state 24
+    EQUALS          shift and go to state 25
+
+    operadoresMat                  shift and go to state 16
+    operadoresLog                  shift and go to state 17
+
+state 34
+
+    (9) while -> WHILE LPAREN expresion . RPAREN
+    (13) expresion -> expresion . operadoresMat expresion
+    (14) expresion -> expresion . operadoresLog expresion
+    (19) operadoresMat -> . MINUS
+    (20) operadoresMat -> . PLUS
+    (21) operadoresMat -> . TIMES
+    (22) operadoresMat -> . DIVIDE
+    (15) operadoresLog -> . NOT
+    (16) operadoresLog -> . OR
+    (17) operadoresLog -> . AND
+    (18) operadoresLog -> . EQUALS
+
+    RPAREN          shift and go to state 38
+    MINUS           shift and go to state 18
+    PLUS            shift and go to state 19
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 21
+    NOT             shift and go to state 22
+    OR              shift and go to state 23
+    AND             shift and go to state 24
+    EQUALS          shift and go to state 25
+
+    operadoresMat                  shift and go to state 16
+    operadoresLog                  shift and go to state 17
+
+state 35
+
+    (10) for -> FOR LPAREN ID . IN ID RPAREN
+
+    IN              shift and go to state 39
+
+
+state 36
+
+    (11) asignacion -> VAR ID ASSIGN expresion .
+    (13) expresion -> expresion . operadoresMat expresion
+    (14) expresion -> expresion . operadoresLog expresion
+    (19) operadoresMat -> . MINUS
+    (20) operadoresMat -> . PLUS
+    (21) operadoresMat -> . TIMES
+    (22) operadoresMat -> . DIVIDE
+    (15) operadoresLog -> . NOT
+    (16) operadoresLog -> . OR
+    (17) operadoresLog -> . AND
+    (18) operadoresLog -> . EQUALS
+
+    $end            reduce using rule 11 (asignacion -> VAR ID ASSIGN expresion .)
+    MINUS           shift and go to state 18
+    PLUS            shift and go to state 19
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 21
+    NOT             shift and go to state 22
+    OR              shift and go to state 23
+    AND             shift and go to state 24
+    EQUALS          shift and go to state 25
+
+    operadoresMat                  shift and go to state 16
+    operadoresLog                  shift and go to state 17
+
+state 37
+
+    (5) sentencia -> IF LPAREN expresion RPAREN .
+
+    $end            reduce using rule 5 (sentencia -> IF LPAREN expresion RPAREN .)
+
+
+state 38
+
+    (9) while -> WHILE LPAREN expresion RPAREN .
+
+    $end            reduce using rule 9 (while -> WHILE LPAREN expresion RPAREN .)
+
+
+state 39
+
+    (10) for -> FOR LPAREN ID IN . ID RPAREN
+
+    ID              shift and go to state 40
+
+
+state 40
+
+    (10) for -> FOR LPAREN ID IN ID . RPAREN
+
+    RPAREN          shift and go to state 41
+
+
+state 41
+
+    (10) for -> FOR LPAREN ID IN ID RPAREN .
+
+    $end            reduce using rule 10 (for -> FOR LPAREN ID IN ID RPAREN .)
+
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for MINUS in state 18 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 18 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 18 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 18 resolved as shift
-WARNING: shift/reduce conflict for NOT in state 18 resolved as shift
-WARNING: shift/reduce conflict for OR in state 18 resolved as shift
-WARNING: shift/reduce conflict for AND in state 18 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 19 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 19 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 19 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 19 resolved as shift
-WARNING: shift/reduce conflict for NOT in state 19 resolved as shift
-WARNING: shift/reduce conflict for OR in state 19 resolved as shift
-WARNING: shift/reduce conflict for AND in state 19 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 30 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 30 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 30 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 30 resolved as shift
+WARNING: shift/reduce conflict for NOT in state 30 resolved as shift
+WARNING: shift/reduce conflict for OR in state 30 resolved as shift
+WARNING: shift/reduce conflict for AND in state 30 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 30 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 31 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 31 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 31 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 31 resolved as shift
+WARNING: shift/reduce conflict for NOT in state 31 resolved as shift
+WARNING: shift/reduce conflict for OR in state 31 resolved as shift
+WARNING: shift/reduce conflict for AND in state 31 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 31 resolved as shift
