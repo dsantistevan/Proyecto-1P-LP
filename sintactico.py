@@ -20,10 +20,10 @@ def p_cuerpo_funcion(p):    #David Santistevan
 
 def p_sentencia(p): #Dylan Escala
     '''sentencia : asignacion ';'
-                | expresion
                 | estructuraControl
                 | bucles
-                | llamada ';' '''
+                | llamada ';'
+                | declaracion '''
     p[0] = p[1]
 
 def p_instrucciones(p): #David Santistevan
@@ -105,9 +105,12 @@ def p_args(p):
 def p_args2(p):
     '''args : args ',' args'''
 
+def p_valor_id(p):
+    '''valor : ID'''
+    p[0] = names[p[1]]
+
 def p_valor(p): #David Santistevan
     '''valor : number
-            | ID
             | STRING'''
     p[0] = p[1]
 
@@ -148,18 +151,15 @@ def p_asignacion(p): #David Santistevan
 
 def p_asignacion_declarando(p): #David Santistevan
     '''asignacion : declarador ID ASSIGN expresion '''
-    names[p[1]] = p[3]
-    p[0] = names[p[1]]
+    names[p[2]] = p[4]
+    p[0] = names[p[2]]
+    print(p[0])
 
 
-def p_declaracion1(p): #David Santistevan
-    '''declarador : VAR ID'''
-    names[p[1]] = None
+def p_declaracion(p): #David Santistevan
+    '''declaracion : declarador ID ';' '''
+    names[p[2]] = ""
 
-
-def p_declaracion2(p): #David Santistevan
-    '''declarador : VAL ID'''
-    names[p[1]] = None
 
 
 def p_exresion(p): #David Santistevan
@@ -270,9 +270,10 @@ print("\n\nSintactico")
 
 while True:
     try:
+        print(names)
         s = input('calc > ')
     except EOFError:
         break
     #if not s: continue
-    result = parser.parse(s)
+    result = parser.parse(s, debug = True)
     print(result)
