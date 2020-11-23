@@ -275,5 +275,5 @@ while True:
     except EOFError:
         break
     #if not s: continue
-    result = parser.parse(s, debug = True)
+    result = parser.parse(s)
     print(result)
