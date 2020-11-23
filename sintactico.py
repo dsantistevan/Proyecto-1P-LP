@@ -6,15 +6,16 @@ names = {}
 
 def p_cuerpo(p):    #David Santistevan
     '''cuerpo : sentencia  '''
-    p[0] = p[1]
+    p[0] = [p[1]]
 
 
 def p_cuerpoR(p):   #David Santistevan
     '''cuerpo : sentencia cuerpo'''
-    p[0] = p[2] + p[1]
+    p[0] = [p[1]] + p[2]
 
-def p_cuerpo_funcion(p):
+def p_cuerpo_funcion(p):    #David Santistevan
     '''cuerpo : funcion cuerpo'''
+    p[0] = [p[1]] + p[2]
 
 
 def p_sentencia(p): #Dylan Escala
@@ -66,11 +67,11 @@ def p_function_sin_params(p):  #David Santistevan
 
 
 def p_llamada_funcion(p):
-    '''llamada : ID LPAREN args RPAREN ';' '''
+    '''llamada : ID LPAREN args RPAREN '''
 
 
 def p_llamada_funcion_sin_params(p):
-    '''llamada : ID LPAREN RPAREN ';' '''
+    '''llamada : ID LPAREN RPAREN '''
 
 
 def p_index(p): #David Santistevan
