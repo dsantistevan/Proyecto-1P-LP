@@ -14,7 +14,7 @@ def p_cuerpoR(p):   #David Santistevan
     p[0] = [p[1]] + p[2]
 
 def p_cuerpo_funcion(p):    #David Santistevan
-    '''cuerpo : funcion cuerpo'''
+    '''cuerpo : function cuerpo'''
     p[0] = [p[1]] + p[2]
 
 
