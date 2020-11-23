@@ -1,29 +1,33 @@
 import ply.yacc as yacc
 from lexicoSantistevan import tokens
-import time
 
+
+names = {}
 
 def p_cuerpo(p):    #David Santistevan
-    '''cuerpo : sentencia'''
+    '''cuerpo : sentencia  '''
     p[0] = p[1]
 
 
 def p_cuerpoR(p):   #David Santistevan
     '''cuerpo : sentencia cuerpo'''
-    p[0] = p[1]
+    p[0] = p[2] + p[1]
+
+def p_cuerpo_funcion(p):
+    '''cuerpo : funcion cuerpo'''
+
 
 def p_sentencia(p): #Dylan Escala
-    '''sentencia : asignacion
+    '''sentencia : asignacion ';'
                 | expresion
                 | estructuraControl
                 | bucles
-                | function
-                | llamada'''
+                | llamada ';' '''
     p[0] = p[1]
 
 def p_instrucciones(p): #David Santistevan
     '''instrucciones : LCBRACKET cuerpo RCBRACKET
-                | cuerpo '''
+                | sentencia '''
 
 def p_instrucciones_funcion(p): #David Santistevan
     '''instruccionesF : LCBRACKET cuerpo retorno RCBRACKET'''
@@ -132,20 +136,29 @@ def p_declarador(p): #David Santistevan
 
 def p_asignacion(p): #David Santistevan
     '''asignacion : ID ASSIGN expresion '''
-    p[0] = p[3]
+    try:
+        p[0] = names[p[1]]
+        names[p[1]] = p[3]
+        p[0] = names[p[1]]
+    except LookupError:
+        print("Undefined name '%s'" % p[1])
+        p[0] = 0
 
 
 def p_asignacion_declarando(p): #David Santistevan
     '''asignacion : declarador ID ASSIGN expresion '''
-    p[0] = p[3]
+    names[p[1]] = p[3]
+    p[0] = names[p[1]]
 
 
 def p_declaracion1(p): #David Santistevan
     '''declarador : VAR ID'''
+    names[p[1]] = None
 
 
 def p_declaracion2(p): #David Santistevan
     '''declarador : VAL ID'''
+    names[p[1]] = None
 
 
 def p_exresion(p): #David Santistevan
@@ -247,7 +260,6 @@ def analizarArchivo2(nombre= "codigoTodos.txt"):
 
 print("\n\nSintactico")
 
-#time.sleep(2)
 
 #analizarArchivo2()
 
