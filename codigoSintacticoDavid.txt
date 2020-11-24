@@ -1,0 +1,4 @@
+val comida = "arroz" ;
+var adicional = "pollo" ;
+var plato = comida + " con " + adicional ;
+fun sumar() { return 12 + 23   ; }
