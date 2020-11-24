@@ -1,0 +1,5 @@
+var al1 = 1 ;
+var al2 = 1 ;
+var al3 = 1 ;
+var al4 = 1 ;
+for (uj in yh) var al = 1 ;
