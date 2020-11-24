@@ -4,147 +4,148 @@ Grammar
 
 Rule 0     S' -> cuerpo
 Rule 1     cuerpo -> sentencia
-Rule 2     cuerpo -> sentencia cuerpo
-Rule 3     cuerpo -> function cuerpo
-Rule 4     sentencia -> asignacion ;
-Rule 5     sentencia -> estructuraControl
-Rule 6     sentencia -> bucles
-Rule 7     sentencia -> llamada ;
-Rule 8     sentencia -> declaracion
-Rule 9     instrucciones -> LCBRACKET cuerpo RCBRACKET
-Rule 10    instrucciones -> sentencia
-Rule 11    instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET
-Rule 12    retorno -> RETURN valor ;
-Rule 13    estructuraControl -> IF LPAREN expresion RPAREN instrucciones
-Rule 14    estructuraControl -> ELSE instrucciones
-Rule 15    bucles -> while instrucciones
-Rule 16    bucles -> for instrucciones
-Rule 17    while -> WHILE LPAREN expresion RPAREN
-Rule 18    for -> FOR LPAREN ID IN ID RPAREN
-Rule 19    function -> FUNCTION ID LPAREN params RPAREN instruccionesF
-Rule 20    function -> FUNCTION ID LPAREN RPAREN instruccionesF
-Rule 21    llamada -> ID LPAREN args RPAREN
-Rule 22    llamada -> ID LPAREN RPAREN
-Rule 23    function -> ID LSBRACKET valor RSBRACKET
-Rule 24    dato -> INT
-Rule 25    dato -> FLOAT
-Rule 26    dato -> BYTE
-Rule 27    dato -> SHORT
-Rule 28    dato -> DOUBLE
-Rule 29    dato -> ID
-Rule 30    dato -> LONG
-Rule 31    dato -> CHAR
-Rule 32    dato -> BOOLEAN
-Rule 33    params -> ID : dato
-Rule 34    params -> params , params
-Rule 35    args -> valor
-Rule 36    args -> args , args
-Rule 37    valor -> ID
-Rule 38    valor -> number
-Rule 39    valor -> STRING
-Rule 40    valor -> TRUE
-Rule 41    valor -> FALSE
-Rule 42    valor -> NULL
-Rule 43    valor -> NOT valor
-Rule 44    declarador -> VAR
-Rule 45    declarador -> VAL
-Rule 46    asignacion -> ID ASSIGN expresion
-Rule 47    asignacion -> declarador ID ASSIGN expresion
-Rule 48    declaracion -> declarador ID ;
-Rule 49    expresion -> LPAREN expresion RPAREN
-Rule 50    expresion -> valor
-Rule 51    expresion -> expresion operadoresMat expresion
-Rule 52    expresion -> expresion operadoresLog expresion
-Rule 53    operadoresLog -> OR
-Rule 54    operadoresLog -> AND
-Rule 55    operadoresLog -> EQUALS
-Rule 56    operadoresLog -> NOTEQUALS
-Rule 57    operadoresLog -> GREATER
-Rule 58    operadoresLog -> LOWER
-Rule 59    operadoresLog -> GREATER ASSIGN
-Rule 60    operadoresLog -> LOWER ASSIGN
-Rule 61    operadoresMat -> MINUS
-Rule 62    operadoresMat -> PLUS
-Rule 63    operadoresMat -> TIMES
-Rule 64    operadoresMat -> DIVIDE
-Rule 65    operadoresMat -> MODULE
-Rule 66    number -> INTV
-Rule 67    number -> FLOATV
+Rule 2     cuerpo -> function
+Rule 3     cuerpo -> sentencia cuerpo
+Rule 4     cuerpo -> function cuerpo
+Rule 5     sentencia -> asignacion
+Rule 6     sentencia -> estructuraControl
+Rule 7     sentencia -> bucles
+Rule 8     sentencia -> llamada
+Rule 9     sentencia -> declaracion
+Rule 10    instrucciones -> LCBRACKET cuerpo RCBRACKET
+Rule 11    instrucciones -> sentencia
+Rule 12    instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET
+Rule 13    instruccionesF -> LCBRACKET retorno RCBRACKET
+Rule 14    retorno -> RETURN expresion
+Rule 15    estructuraControl -> IF LPAREN expresion RPAREN instrucciones
+Rule 16    estructuraControl -> ELSE instrucciones
+Rule 17    bucles -> while instrucciones
+Rule 18    bucles -> for instrucciones
+Rule 19    while -> WHILE LPAREN expresion RPAREN
+Rule 20    for -> FOR LPAREN ID IN ID RPAREN
+Rule 21    function -> FUNCTION ID LPAREN params RPAREN instruccionesF
+Rule 22    function -> FUNCTION ID LPAREN RPAREN instruccionesF
+Rule 23    llamada -> ID LPAREN args RPAREN
+Rule 24    llamada -> ID LPAREN RPAREN
+Rule 25    function -> ID LSBRACKET valor RSBRACKET
+Rule 26    dato -> INT
+Rule 27    dato -> FLOAT
+Rule 28    dato -> BYTE
+Rule 29    dato -> SHORT
+Rule 30    dato -> DOUBLE
+Rule 31    dato -> ID
+Rule 32    dato -> LONG
+Rule 33    dato -> CHAR
+Rule 34    dato -> BOOLEAN
+Rule 35    params -> ID : dato
+Rule 36    params -> params , params
+Rule 37    args -> valor
+Rule 38    args -> args , args
+Rule 39    valor -> ID
+Rule 40    valor -> number
+Rule 41    valor -> STRING
+Rule 42    valor -> TRUE
+Rule 43    valor -> FALSE
+Rule 44    valor -> NULL
+Rule 45    valor -> NOT valor
+Rule 46    declarador -> VAR
+Rule 47    declarador -> VAL
+Rule 48    asignacion -> ID ASSIGN expresion
+Rule 49    asignacion -> declarador ID ASSIGN expresion
+Rule 50    declaracion -> declarador ID
+Rule 51    expresion -> LPAREN expresion RPAREN
+Rule 52    expresion -> valor
+Rule 53    expresion -> expresion operadoresMat expresion
+Rule 54    expresion -> expresion operadoresLog expresion
+Rule 55    operadoresLog -> OR
+Rule 56    operadoresLog -> AND
+Rule 57    operadoresLog -> EQUALS
+Rule 58    operadoresLog -> NOTEQUALS
+Rule 59    operadoresLog -> GREATER
+Rule 60    operadoresLog -> LOWER
+Rule 61    operadoresLog -> GREATER ASSIGN
+Rule 62    operadoresLog -> LOWER ASSIGN
+Rule 63    operadoresMat -> MINUS
+Rule 64    operadoresMat -> PLUS
+Rule 65    operadoresMat -> TIMES
+Rule 66    operadoresMat -> DIVIDE
+Rule 67    operadoresMat -> MODULE
+Rule 68    number -> INTV
+Rule 69    number -> FLOATV
 
 Terminals, with rules where they appear
 
-,                    : 34 36
-:                    : 33
-;                    : 4 7 12 48
-AND                  : 54
-ASSIGN               : 46 47 59 60
-BOOLEAN              : 32
-BYTE                 : 26
-CHAR                 : 31
-DIVIDE               : 64
-DOUBLE               : 28
-ELSE                 : 14
-EQUALS               : 55
-FALSE                : 41
-FLOAT                : 25
-FLOATV               : 67
-FOR                  : 18
-FUNCTION             : 19 20
-GREATER              : 57 59
-ID                   : 18 18 19 20 21 22 23 29 33 37 46 47 48
-IF                   : 13
-IN                   : 18
-INT                  : 24
-INTV                 : 66
-LCBRACKET            : 9 11
-LONG                 : 30
-LOWER                : 58 60
-LPAREN               : 13 17 18 19 20 21 22 49
-LSBRACKET            : 23
-MINUS                : 61
-MODULE               : 65
-NOT                  : 43
-NOTEQUALS            : 56
-NULL                 : 42
-OR                   : 53
-PLUS                 : 62
-RCBRACKET            : 9 11
-RETURN               : 12
-RPAREN               : 13 17 18 19 20 21 22 49
-RSBRACKET            : 23
-SHORT                : 27
-STRING               : 39
-TIMES                : 63
-TRUE                 : 40
-VAL                  : 45
-VAR                  : 44
-WHILE                : 17
+,                    : 36 38
+:                    : 35
+AND                  : 56
+ASSIGN               : 48 49 61 62
+BOOLEAN              : 34
+BYTE                 : 28
+CHAR                 : 33
+DIVIDE               : 66
+DOUBLE               : 30
+ELSE                 : 16
+EQUALS               : 57
+FALSE                : 43
+FLOAT                : 27
+FLOATV               : 69
+FOR                  : 20
+FUNCTION             : 21 22
+GREATER              : 59 61
+ID                   : 20 20 21 22 23 24 25 31 35 39 48 49 50
+IF                   : 15
+IN                   : 20
+INT                  : 26
+INTV                 : 68
+LCBRACKET            : 10 12 13
+LONG                 : 32
+LOWER                : 60 62
+LPAREN               : 15 19 20 21 22 23 24 51
+LSBRACKET            : 25
+MINUS                : 63
+MODULE               : 67
+NOT                  : 45
+NOTEQUALS            : 58
+NULL                 : 44
+OR                   : 55
+PLUS                 : 64
+RCBRACKET            : 10 12 13
+RETURN               : 14
+RPAREN               : 15 19 20 21 22 23 24 51
+RSBRACKET            : 25
+SHORT                : 29
+STRING               : 41
+TIMES                : 65
+TRUE                 : 42
+VAL                  : 47
+VAR                  : 46
+WHILE                : 19
 error                : 
 
 Nonterminals, with rules where they appear
 
-args                 : 21 36 36
-asignacion           : 4
-bucles               : 6
-cuerpo               : 2 3 9 11 0
-dato                 : 33
-declaracion          : 8
-declarador           : 47 48
-estructuraControl    : 5
-expresion            : 13 17 46 47 49 51 51 52 52
-for                  : 16
-function             : 3
-instrucciones        : 13 14 15 16
-instruccionesF       : 19 20
-llamada              : 7
-number               : 38
-operadoresLog        : 52
-operadoresMat        : 51
-params               : 19 34 34
-retorno              : 11
-sentencia            : 1 2 10
-valor                : 12 23 35 43 50
-while                : 15
+args                 : 23 38 38
+asignacion           : 5
+bucles               : 7
+cuerpo               : 3 4 10 12 0
+dato                 : 35
+declaracion          : 9
+declarador           : 49 50
+estructuraControl    : 6
+expresion            : 14 15 19 48 49 51 53 53 54 54
+for                  : 18
+function             : 2 4
+instrucciones        : 15 16 17 18
+instruccionesF       : 21 22
+llamada              : 8
+number               : 40
+operadoresLog        : 54
+operadoresMat        : 53
+params               : 21 36 36
+retorno              : 12 13
+sentencia            : 1 3 11
+valor                : 25 37 45 52
+while                : 17
 
 Parsing method: LALR
 
@@ -152,29 +153,30 @@ state 0
 
     (0) S' -> . cuerpo
     (1) cuerpo -> . sentencia
-    (2) cuerpo -> . sentencia cuerpo
-    (3) cuerpo -> . function cuerpo
-    (4) sentencia -> . asignacion ;
-    (5) sentencia -> . estructuraControl
-    (6) sentencia -> . bucles
-    (7) sentencia -> . llamada ;
-    (8) sentencia -> . declaracion
-    (19) function -> . FUNCTION ID LPAREN params RPAREN instruccionesF
-    (20) function -> . FUNCTION ID LPAREN RPAREN instruccionesF
-    (23) function -> . ID LSBRACKET valor RSBRACKET
-    (46) asignacion -> . ID ASSIGN expresion
-    (47) asignacion -> . declarador ID ASSIGN expresion
-    (13) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
-    (14) estructuraControl -> . ELSE instrucciones
-    (15) bucles -> . while instrucciones
-    (16) bucles -> . for instrucciones
-    (21) llamada -> . ID LPAREN args RPAREN
-    (22) llamada -> . ID LPAREN RPAREN
-    (48) declaracion -> . declarador ID ;
-    (44) declarador -> . VAR
-    (45) declarador -> . VAL
-    (17) while -> . WHILE LPAREN expresion RPAREN
-    (18) for -> . FOR LPAREN ID IN ID RPAREN
+    (2) cuerpo -> . function
+    (3) cuerpo -> . sentencia cuerpo
+    (4) cuerpo -> . function cuerpo
+    (5) sentencia -> . asignacion
+    (6) sentencia -> . estructuraControl
+    (7) sentencia -> . bucles
+    (8) sentencia -> . llamada
+    (9) sentencia -> . declaracion
+    (21) function -> . FUNCTION ID LPAREN params RPAREN instruccionesF
+    (22) function -> . FUNCTION ID LPAREN RPAREN instruccionesF
+    (25) function -> . ID LSBRACKET valor RSBRACKET
+    (48) asignacion -> . ID ASSIGN expresion
+    (49) asignacion -> . declarador ID ASSIGN expresion
+    (15) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
+    (16) estructuraControl -> . ELSE instrucciones
+    (17) bucles -> . while instrucciones
+    (18) bucles -> . for instrucciones
+    (23) llamada -> . ID LPAREN args RPAREN
+    (24) llamada -> . ID LPAREN RPAREN
+    (50) declaracion -> . declarador ID
+    (46) declarador -> . VAR
+    (47) declarador -> . VAL
+    (19) while -> . WHILE LPAREN expresion RPAREN
+    (20) for -> . FOR LPAREN ID IN ID RPAREN
 
     FUNCTION        shift and go to state 9
     ID              shift and go to state 10
@@ -206,31 +208,32 @@ state 1
 state 2
 
     (1) cuerpo -> sentencia .
-    (2) cuerpo -> sentencia . cuerpo
+    (3) cuerpo -> sentencia . cuerpo
     (1) cuerpo -> . sentencia
-    (2) cuerpo -> . sentencia cuerpo
-    (3) cuerpo -> . function cuerpo
-    (4) sentencia -> . asignacion ;
-    (5) sentencia -> . estructuraControl
-    (6) sentencia -> . bucles
-    (7) sentencia -> . llamada ;
-    (8) sentencia -> . declaracion
-    (19) function -> . FUNCTION ID LPAREN params RPAREN instruccionesF
-    (20) function -> . FUNCTION ID LPAREN RPAREN instruccionesF
-    (23) function -> . ID LSBRACKET valor RSBRACKET
-    (46) asignacion -> . ID ASSIGN expresion
-    (47) asignacion -> . declarador ID ASSIGN expresion
-    (13) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
-    (14) estructuraControl -> . ELSE instrucciones
-    (15) bucles -> . while instrucciones
-    (16) bucles -> . for instrucciones
-    (21) llamada -> . ID LPAREN args RPAREN
-    (22) llamada -> . ID LPAREN RPAREN
-    (48) declaracion -> . declarador ID ;
-    (44) declarador -> . VAR
-    (45) declarador -> . VAL
-    (17) while -> . WHILE LPAREN expresion RPAREN
-    (18) for -> . FOR LPAREN ID IN ID RPAREN
+    (2) cuerpo -> . function
+    (3) cuerpo -> . sentencia cuerpo
+    (4) cuerpo -> . function cuerpo
+    (5) sentencia -> . asignacion
+    (6) sentencia -> . estructuraControl
+    (7) sentencia -> . bucles
+    (8) sentencia -> . llamada
+    (9) sentencia -> . declaracion
+    (21) function -> . FUNCTION ID LPAREN params RPAREN instruccionesF
+    (22) function -> . FUNCTION ID LPAREN RPAREN instruccionesF
+    (25) function -> . ID LSBRACKET valor RSBRACKET
+    (48) asignacion -> . ID ASSIGN expresion
+    (49) asignacion -> . declarador ID ASSIGN expresion
+    (15) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
+    (16) estructuraControl -> . ELSE instrucciones
+    (17) bucles -> . while instrucciones
+    (18) bucles -> . for instrucciones
+    (23) llamada -> . ID LPAREN args RPAREN
+    (24) llamada -> . ID LPAREN RPAREN
+    (50) declaracion -> . declarador ID
+    (46) declarador -> . VAR
+    (47) declarador -> . VAL
+    (19) while -> . WHILE LPAREN expresion RPAREN
+    (20) for -> . FOR LPAREN ID IN ID RPAREN
 
     $end            reduce using rule 1 (cuerpo -> sentencia .)
     RCBRACKET       reduce using rule 1 (cuerpo -> sentencia .)
@@ -258,32 +261,37 @@ state 2
 
 state 3
 
-    (3) cuerpo -> function . cuerpo
+    (2) cuerpo -> function .
+    (4) cuerpo -> function . cuerpo
     (1) cuerpo -> . sentencia
-    (2) cuerpo -> . sentencia cuerpo
-    (3) cuerpo -> . function cuerpo
-    (4) sentencia -> . asignacion ;
-    (5) sentencia -> . estructuraControl
-    (6) sentencia -> . bucles
-    (7) sentencia -> . llamada ;
-    (8) sentencia -> . declaracion
-    (19) function -> . FUNCTION ID LPAREN params RPAREN instruccionesF
-    (20) function -> . FUNCTION ID LPAREN RPAREN instruccionesF
-    (23) function -> . ID LSBRACKET valor RSBRACKET
-    (46) asignacion -> . ID ASSIGN expresion
-    (47) asignacion -> . declarador ID ASSIGN expresion
-    (13) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
-    (14) estructuraControl -> . ELSE instrucciones
-    (15) bucles -> . while instrucciones
-    (16) bucles -> . for instrucciones
-    (21) llamada -> . ID LPAREN args RPAREN
-    (22) llamada -> . ID LPAREN RPAREN
-    (48) declaracion -> . declarador ID ;
-    (44) declarador -> . VAR
-    (45) declarador -> . VAL
-    (17) while -> . WHILE LPAREN expresion RPAREN
-    (18) for -> . FOR LPAREN ID IN ID RPAREN
+    (2) cuerpo -> . function
+    (3) cuerpo -> . sentencia cuerpo
+    (4) cuerpo -> . function cuerpo
+    (5) sentencia -> . asignacion
+    (6) sentencia -> . estructuraControl
+    (7) sentencia -> . bucles
+    (8) sentencia -> . llamada
+    (9) sentencia -> . declaracion
+    (21) function -> . FUNCTION ID LPAREN params RPAREN instruccionesF
+    (22) function -> . FUNCTION ID LPAREN RPAREN instruccionesF
+    (25) function -> . ID LSBRACKET valor RSBRACKET
+    (48) asignacion -> . ID ASSIGN expresion
+    (49) asignacion -> . declarador ID ASSIGN expresion
+    (15) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
+    (16) estructuraControl -> . ELSE instrucciones
+    (17) bucles -> . while instrucciones
+    (18) bucles -> . for instrucciones
+    (23) llamada -> . ID LPAREN args RPAREN
+    (24) llamada -> . ID LPAREN RPAREN
+    (50) declaracion -> . declarador ID
+    (46) declarador -> . VAR
+    (47) declarador -> . VAL
+    (19) while -> . WHILE LPAREN expresion RPAREN
+    (20) for -> . FOR LPAREN ID IN ID RPAREN
 
+    $end            reduce using rule 2 (cuerpo -> function .)
+    RCBRACKET       reduce using rule 2 (cuerpo -> function .)
+    RETURN          reduce using rule 2 (cuerpo -> function .)
     FUNCTION        shift and go to state 9
     ID              shift and go to state 10
     IF              shift and go to state 12
@@ -307,130 +315,150 @@ state 3
 
 state 4
 
-    (4) sentencia -> asignacion . ;
+    (5) sentencia -> asignacion .
 
-    ;               shift and go to state 22
+    FUNCTION        reduce using rule 5 (sentencia -> asignacion .)
+    ID              reduce using rule 5 (sentencia -> asignacion .)
+    IF              reduce using rule 5 (sentencia -> asignacion .)
+    ELSE            reduce using rule 5 (sentencia -> asignacion .)
+    VAR             reduce using rule 5 (sentencia -> asignacion .)
+    VAL             reduce using rule 5 (sentencia -> asignacion .)
+    WHILE           reduce using rule 5 (sentencia -> asignacion .)
+    FOR             reduce using rule 5 (sentencia -> asignacion .)
+    $end            reduce using rule 5 (sentencia -> asignacion .)
+    RCBRACKET       reduce using rule 5 (sentencia -> asignacion .)
+    RETURN          reduce using rule 5 (sentencia -> asignacion .)
 
 
 state 5
 
-    (5) sentencia -> estructuraControl .
+    (6) sentencia -> estructuraControl .
 
-    FUNCTION        reduce using rule 5 (sentencia -> estructuraControl .)
-    ID              reduce using rule 5 (sentencia -> estructuraControl .)
-    IF              reduce using rule 5 (sentencia -> estructuraControl .)
-    ELSE            reduce using rule 5 (sentencia -> estructuraControl .)
-    VAR             reduce using rule 5 (sentencia -> estructuraControl .)
-    VAL             reduce using rule 5 (sentencia -> estructuraControl .)
-    WHILE           reduce using rule 5 (sentencia -> estructuraControl .)
-    FOR             reduce using rule 5 (sentencia -> estructuraControl .)
-    $end            reduce using rule 5 (sentencia -> estructuraControl .)
-    RCBRACKET       reduce using rule 5 (sentencia -> estructuraControl .)
-    RETURN          reduce using rule 5 (sentencia -> estructuraControl .)
+    FUNCTION        reduce using rule 6 (sentencia -> estructuraControl .)
+    ID              reduce using rule 6 (sentencia -> estructuraControl .)
+    IF              reduce using rule 6 (sentencia -> estructuraControl .)
+    ELSE            reduce using rule 6 (sentencia -> estructuraControl .)
+    VAR             reduce using rule 6 (sentencia -> estructuraControl .)
+    VAL             reduce using rule 6 (sentencia -> estructuraControl .)
+    WHILE           reduce using rule 6 (sentencia -> estructuraControl .)
+    FOR             reduce using rule 6 (sentencia -> estructuraControl .)
+    $end            reduce using rule 6 (sentencia -> estructuraControl .)
+    RCBRACKET       reduce using rule 6 (sentencia -> estructuraControl .)
+    RETURN          reduce using rule 6 (sentencia -> estructuraControl .)
 
 
 state 6
 
-    (6) sentencia -> bucles .
+    (7) sentencia -> bucles .
 
-    FUNCTION        reduce using rule 6 (sentencia -> bucles .)
-    ID              reduce using rule 6 (sentencia -> bucles .)
-    IF              reduce using rule 6 (sentencia -> bucles .)
-    ELSE            reduce using rule 6 (sentencia -> bucles .)
-    VAR             reduce using rule 6 (sentencia -> bucles .)
-    VAL             reduce using rule 6 (sentencia -> bucles .)
-    WHILE           reduce using rule 6 (sentencia -> bucles .)
-    FOR             reduce using rule 6 (sentencia -> bucles .)
-    $end            reduce using rule 6 (sentencia -> bucles .)
-    RCBRACKET       reduce using rule 6 (sentencia -> bucles .)
-    RETURN          reduce using rule 6 (sentencia -> bucles .)
+    FUNCTION        reduce using rule 7 (sentencia -> bucles .)
+    ID              reduce using rule 7 (sentencia -> bucles .)
+    IF              reduce using rule 7 (sentencia -> bucles .)
+    ELSE            reduce using rule 7 (sentencia -> bucles .)
+    VAR             reduce using rule 7 (sentencia -> bucles .)
+    VAL             reduce using rule 7 (sentencia -> bucles .)
+    WHILE           reduce using rule 7 (sentencia -> bucles .)
+    FOR             reduce using rule 7 (sentencia -> bucles .)
+    $end            reduce using rule 7 (sentencia -> bucles .)
+    RCBRACKET       reduce using rule 7 (sentencia -> bucles .)
+    RETURN          reduce using rule 7 (sentencia -> bucles .)
 
 
 state 7
 
-    (7) sentencia -> llamada . ;
+    (8) sentencia -> llamada .
 
-    ;               shift and go to state 23
+    FUNCTION        reduce using rule 8 (sentencia -> llamada .)
+    ID              reduce using rule 8 (sentencia -> llamada .)
+    IF              reduce using rule 8 (sentencia -> llamada .)
+    ELSE            reduce using rule 8 (sentencia -> llamada .)
+    VAR             reduce using rule 8 (sentencia -> llamada .)
+    VAL             reduce using rule 8 (sentencia -> llamada .)
+    WHILE           reduce using rule 8 (sentencia -> llamada .)
+    FOR             reduce using rule 8 (sentencia -> llamada .)
+    $end            reduce using rule 8 (sentencia -> llamada .)
+    RCBRACKET       reduce using rule 8 (sentencia -> llamada .)
+    RETURN          reduce using rule 8 (sentencia -> llamada .)
 
 
 state 8
 
-    (8) sentencia -> declaracion .
+    (9) sentencia -> declaracion .
 
-    FUNCTION        reduce using rule 8 (sentencia -> declaracion .)
-    ID              reduce using rule 8 (sentencia -> declaracion .)
-    IF              reduce using rule 8 (sentencia -> declaracion .)
-    ELSE            reduce using rule 8 (sentencia -> declaracion .)
-    VAR             reduce using rule 8 (sentencia -> declaracion .)
-    VAL             reduce using rule 8 (sentencia -> declaracion .)
-    WHILE           reduce using rule 8 (sentencia -> declaracion .)
-    FOR             reduce using rule 8 (sentencia -> declaracion .)
-    $end            reduce using rule 8 (sentencia -> declaracion .)
-    RCBRACKET       reduce using rule 8 (sentencia -> declaracion .)
-    RETURN          reduce using rule 8 (sentencia -> declaracion .)
+    FUNCTION        reduce using rule 9 (sentencia -> declaracion .)
+    ID              reduce using rule 9 (sentencia -> declaracion .)
+    IF              reduce using rule 9 (sentencia -> declaracion .)
+    ELSE            reduce using rule 9 (sentencia -> declaracion .)
+    VAR             reduce using rule 9 (sentencia -> declaracion .)
+    VAL             reduce using rule 9 (sentencia -> declaracion .)
+    WHILE           reduce using rule 9 (sentencia -> declaracion .)
+    FOR             reduce using rule 9 (sentencia -> declaracion .)
+    $end            reduce using rule 9 (sentencia -> declaracion .)
+    RCBRACKET       reduce using rule 9 (sentencia -> declaracion .)
+    RETURN          reduce using rule 9 (sentencia -> declaracion .)
 
 
 state 9
 
-    (19) function -> FUNCTION . ID LPAREN params RPAREN instruccionesF
-    (20) function -> FUNCTION . ID LPAREN RPAREN instruccionesF
+    (21) function -> FUNCTION . ID LPAREN params RPAREN instruccionesF
+    (22) function -> FUNCTION . ID LPAREN RPAREN instruccionesF
 
-    ID              shift and go to state 24
+    ID              shift and go to state 22
 
 
 state 10
 
-    (23) function -> ID . LSBRACKET valor RSBRACKET
-    (46) asignacion -> ID . ASSIGN expresion
-    (21) llamada -> ID . LPAREN args RPAREN
-    (22) llamada -> ID . LPAREN RPAREN
+    (25) function -> ID . LSBRACKET valor RSBRACKET
+    (48) asignacion -> ID . ASSIGN expresion
+    (23) llamada -> ID . LPAREN args RPAREN
+    (24) llamada -> ID . LPAREN RPAREN
 
-    LSBRACKET       shift and go to state 25
-    ASSIGN          shift and go to state 26
-    LPAREN          shift and go to state 27
+    LSBRACKET       shift and go to state 23
+    ASSIGN          shift and go to state 24
+    LPAREN          shift and go to state 25
 
 
 state 11
 
-    (47) asignacion -> declarador . ID ASSIGN expresion
-    (48) declaracion -> declarador . ID ;
+    (49) asignacion -> declarador . ID ASSIGN expresion
+    (50) declaracion -> declarador . ID
 
-    ID              shift and go to state 28
+    ID              shift and go to state 26
 
 
 state 12
 
-    (13) estructuraControl -> IF . LPAREN expresion RPAREN instrucciones
+    (15) estructuraControl -> IF . LPAREN expresion RPAREN instrucciones
 
-    LPAREN          shift and go to state 29
+    LPAREN          shift and go to state 27
 
 
 state 13
 
-    (14) estructuraControl -> ELSE . instrucciones
-    (9) instrucciones -> . LCBRACKET cuerpo RCBRACKET
-    (10) instrucciones -> . sentencia
-    (4) sentencia -> . asignacion ;
-    (5) sentencia -> . estructuraControl
-    (6) sentencia -> . bucles
-    (7) sentencia -> . llamada ;
-    (8) sentencia -> . declaracion
-    (46) asignacion -> . ID ASSIGN expresion
-    (47) asignacion -> . declarador ID ASSIGN expresion
-    (13) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
-    (14) estructuraControl -> . ELSE instrucciones
-    (15) bucles -> . while instrucciones
-    (16) bucles -> . for instrucciones
-    (21) llamada -> . ID LPAREN args RPAREN
-    (22) llamada -> . ID LPAREN RPAREN
-    (48) declaracion -> . declarador ID ;
-    (44) declarador -> . VAR
-    (45) declarador -> . VAL
-    (17) while -> . WHILE LPAREN expresion RPAREN
-    (18) for -> . FOR LPAREN ID IN ID RPAREN
+    (16) estructuraControl -> ELSE . instrucciones
+    (10) instrucciones -> . LCBRACKET cuerpo RCBRACKET
+    (11) instrucciones -> . sentencia
+    (5) sentencia -> . asignacion
+    (6) sentencia -> . estructuraControl
+    (7) sentencia -> . bucles
+    (8) sentencia -> . llamada
+    (9) sentencia -> . declaracion
+    (48) asignacion -> . ID ASSIGN expresion
+    (49) asignacion -> . declarador ID ASSIGN expresion
+    (15) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
+    (16) estructuraControl -> . ELSE instrucciones
+    (17) bucles -> . while instrucciones
+    (18) bucles -> . for instrucciones
+    (23) llamada -> . ID LPAREN args RPAREN
+    (24) llamada -> . ID LPAREN RPAREN
+    (50) declaracion -> . declarador ID
+    (46) declarador -> . VAR
+    (47) declarador -> . VAL
+    (19) while -> . WHILE LPAREN expresion RPAREN
+    (20) for -> . FOR LPAREN ID IN ID RPAREN
 
-    LCBRACKET       shift and go to state 31
-    ID              shift and go to state 33
+    LCBRACKET       shift and go to state 29
+    ID              shift and go to state 31
     IF              shift and go to state 12
     ELSE            shift and go to state 13
     VAR             shift and go to state 16
@@ -438,8 +466,8 @@ state 13
     WHILE           shift and go to state 18
     FOR             shift and go to state 19
 
-    instrucciones                  shift and go to state 30
-    sentencia                      shift and go to state 32
+    instrucciones                  shift and go to state 28
+    sentencia                      shift and go to state 30
     asignacion                     shift and go to state 4
     estructuraControl              shift and go to state 5
     bucles                         shift and go to state 6
@@ -451,30 +479,30 @@ state 13
 
 state 14
 
-    (15) bucles -> while . instrucciones
-    (9) instrucciones -> . LCBRACKET cuerpo RCBRACKET
-    (10) instrucciones -> . sentencia
-    (4) sentencia -> . asignacion ;
-    (5) sentencia -> . estructuraControl
-    (6) sentencia -> . bucles
-    (7) sentencia -> . llamada ;
-    (8) sentencia -> . declaracion
-    (46) asignacion -> . ID ASSIGN expresion
-    (47) asignacion -> . declarador ID ASSIGN expresion
-    (13) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
-    (14) estructuraControl -> . ELSE instrucciones
-    (15) bucles -> . while instrucciones
-    (16) bucles -> . for instrucciones
-    (21) llamada -> . ID LPAREN args RPAREN
-    (22) llamada -> . ID LPAREN RPAREN
-    (48) declaracion -> . declarador ID ;
-    (44) declarador -> . VAR
-    (45) declarador -> . VAL
-    (17) while -> . WHILE LPAREN expresion RPAREN
-    (18) for -> . FOR LPAREN ID IN ID RPAREN
+    (17) bucles -> while . instrucciones
+    (10) instrucciones -> . LCBRACKET cuerpo RCBRACKET
+    (11) instrucciones -> . sentencia
+    (5) sentencia -> . asignacion
+    (6) sentencia -> . estructuraControl
+    (7) sentencia -> . bucles
+    (8) sentencia -> . llamada
+    (9) sentencia -> . declaracion
+    (48) asignacion -> . ID ASSIGN expresion
+    (49) asignacion -> . declarador ID ASSIGN expresion
+    (15) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
+    (16) estructuraControl -> . ELSE instrucciones
+    (17) bucles -> . while instrucciones
+    (18) bucles -> . for instrucciones
+    (23) llamada -> . ID LPAREN args RPAREN
+    (24) llamada -> . ID LPAREN RPAREN
+    (50) declaracion -> . declarador ID
+    (46) declarador -> . VAR
+    (47) declarador -> . VAL
+    (19) while -> . WHILE LPAREN expresion RPAREN
+    (20) for -> . FOR LPAREN ID IN ID RPAREN
 
-    LCBRACKET       shift and go to state 31
-    ID              shift and go to state 33
+    LCBRACKET       shift and go to state 29
+    ID              shift and go to state 31
     IF              shift and go to state 12
     ELSE            shift and go to state 13
     VAR             shift and go to state 16
@@ -483,8 +511,8 @@ state 14
     FOR             shift and go to state 19
 
     while                          shift and go to state 14
-    instrucciones                  shift and go to state 34
-    sentencia                      shift and go to state 32
+    instrucciones                  shift and go to state 32
+    sentencia                      shift and go to state 30
     asignacion                     shift and go to state 4
     estructuraControl              shift and go to state 5
     bucles                         shift and go to state 6
@@ -495,30 +523,30 @@ state 14
 
 state 15
 
-    (16) bucles -> for . instrucciones
-    (9) instrucciones -> . LCBRACKET cuerpo RCBRACKET
-    (10) instrucciones -> . sentencia
-    (4) sentencia -> . asignacion ;
-    (5) sentencia -> . estructuraControl
-    (6) sentencia -> . bucles
-    (7) sentencia -> . llamada ;
-    (8) sentencia -> . declaracion
-    (46) asignacion -> . ID ASSIGN expresion
-    (47) asignacion -> . declarador ID ASSIGN expresion
-    (13) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
-    (14) estructuraControl -> . ELSE instrucciones
-    (15) bucles -> . while instrucciones
-    (16) bucles -> . for instrucciones
-    (21) llamada -> . ID LPAREN args RPAREN
-    (22) llamada -> . ID LPAREN RPAREN
-    (48) declaracion -> . declarador ID ;
-    (44) declarador -> . VAR
-    (45) declarador -> . VAL
-    (17) while -> . WHILE LPAREN expresion RPAREN
-    (18) for -> . FOR LPAREN ID IN ID RPAREN
+    (18) bucles -> for . instrucciones
+    (10) instrucciones -> . LCBRACKET cuerpo RCBRACKET
+    (11) instrucciones -> . sentencia
+    (5) sentencia -> . asignacion
+    (6) sentencia -> . estructuraControl
+    (7) sentencia -> . bucles
+    (8) sentencia -> . llamada
+    (9) sentencia -> . declaracion
+    (48) asignacion -> . ID ASSIGN expresion
+    (49) asignacion -> . declarador ID ASSIGN expresion
+    (15) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
+    (16) estructuraControl -> . ELSE instrucciones
+    (17) bucles -> . while instrucciones
+    (18) bucles -> . for instrucciones
+    (23) llamada -> . ID LPAREN args RPAREN
+    (24) llamada -> . ID LPAREN RPAREN
+    (50) declaracion -> . declarador ID
+    (46) declarador -> . VAR
+    (47) declarador -> . VAL
+    (19) while -> . WHILE LPAREN expresion RPAREN
+    (20) for -> . FOR LPAREN ID IN ID RPAREN
 
-    LCBRACKET       shift and go to state 31
-    ID              shift and go to state 33
+    LCBRACKET       shift and go to state 29
+    ID              shift and go to state 31
     IF              shift and go to state 12
     ELSE            shift and go to state 13
     VAR             shift and go to state 16
@@ -527,8 +555,8 @@ state 15
     FOR             shift and go to state 19
 
     for                            shift and go to state 15
-    instrucciones                  shift and go to state 35
-    sentencia                      shift and go to state 32
+    instrucciones                  shift and go to state 33
+    sentencia                      shift and go to state 30
     asignacion                     shift and go to state 4
     estructuraControl              shift and go to state 5
     bucles                         shift and go to state 6
@@ -539,1258 +567,1362 @@ state 15
 
 state 16
 
-    (44) declarador -> VAR .
+    (46) declarador -> VAR .
 
-    ID              reduce using rule 44 (declarador -> VAR .)
+    ID              reduce using rule 46 (declarador -> VAR .)
 
 
 state 17
 
-    (45) declarador -> VAL .
+    (47) declarador -> VAL .
 
-    ID              reduce using rule 45 (declarador -> VAL .)
+    ID              reduce using rule 47 (declarador -> VAL .)
 
 
 state 18
 
-    (17) while -> WHILE . LPAREN expresion RPAREN
+    (19) while -> WHILE . LPAREN expresion RPAREN
 
-    LPAREN          shift and go to state 36
+    LPAREN          shift and go to state 34
 
 
 state 19
 
-    (18) for -> FOR . LPAREN ID IN ID RPAREN
+    (20) for -> FOR . LPAREN ID IN ID RPAREN
 
-    LPAREN          shift and go to state 37
+    LPAREN          shift and go to state 35
 
 
 state 20
 
-    (2) cuerpo -> sentencia cuerpo .
+    (3) cuerpo -> sentencia cuerpo .
 
-    $end            reduce using rule 2 (cuerpo -> sentencia cuerpo .)
-    RCBRACKET       reduce using rule 2 (cuerpo -> sentencia cuerpo .)
-    RETURN          reduce using rule 2 (cuerpo -> sentencia cuerpo .)
+    $end            reduce using rule 3 (cuerpo -> sentencia cuerpo .)
+    RCBRACKET       reduce using rule 3 (cuerpo -> sentencia cuerpo .)
+    RETURN          reduce using rule 3 (cuerpo -> sentencia cuerpo .)
 
 
 state 21
 
-    (3) cuerpo -> function cuerpo .
+    (4) cuerpo -> function cuerpo .
 
-    $end            reduce using rule 3 (cuerpo -> function cuerpo .)
-    RCBRACKET       reduce using rule 3 (cuerpo -> function cuerpo .)
-    RETURN          reduce using rule 3 (cuerpo -> function cuerpo .)
+    $end            reduce using rule 4 (cuerpo -> function cuerpo .)
+    RCBRACKET       reduce using rule 4 (cuerpo -> function cuerpo .)
+    RETURN          reduce using rule 4 (cuerpo -> function cuerpo .)
 
 
 state 22
 
-    (4) sentencia -> asignacion ; .
+    (21) function -> FUNCTION ID . LPAREN params RPAREN instruccionesF
+    (22) function -> FUNCTION ID . LPAREN RPAREN instruccionesF
 
-    FUNCTION        reduce using rule 4 (sentencia -> asignacion ; .)
-    ID              reduce using rule 4 (sentencia -> asignacion ; .)
-    IF              reduce using rule 4 (sentencia -> asignacion ; .)
-    ELSE            reduce using rule 4 (sentencia -> asignacion ; .)
-    VAR             reduce using rule 4 (sentencia -> asignacion ; .)
-    VAL             reduce using rule 4 (sentencia -> asignacion ; .)
-    WHILE           reduce using rule 4 (sentencia -> asignacion ; .)
-    FOR             reduce using rule 4 (sentencia -> asignacion ; .)
-    $end            reduce using rule 4 (sentencia -> asignacion ; .)
-    RCBRACKET       reduce using rule 4 (sentencia -> asignacion ; .)
-    RETURN          reduce using rule 4 (sentencia -> asignacion ; .)
+    LPAREN          shift and go to state 36
 
 
 state 23
 
-    (7) sentencia -> llamada ; .
+    (25) function -> ID LSBRACKET . valor RSBRACKET
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    FUNCTION        reduce using rule 7 (sentencia -> llamada ; .)
-    ID              reduce using rule 7 (sentencia -> llamada ; .)
-    IF              reduce using rule 7 (sentencia -> llamada ; .)
-    ELSE            reduce using rule 7 (sentencia -> llamada ; .)
-    VAR             reduce using rule 7 (sentencia -> llamada ; .)
-    VAL             reduce using rule 7 (sentencia -> llamada ; .)
-    WHILE           reduce using rule 7 (sentencia -> llamada ; .)
-    FOR             reduce using rule 7 (sentencia -> llamada ; .)
-    $end            reduce using rule 7 (sentencia -> llamada ; .)
-    RCBRACKET       reduce using rule 7 (sentencia -> llamada ; .)
-    RETURN          reduce using rule 7 (sentencia -> llamada ; .)
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
+    valor                          shift and go to state 38
+    number                         shift and go to state 39
 
 state 24
 
-    (19) function -> FUNCTION ID . LPAREN params RPAREN instruccionesF
-    (20) function -> FUNCTION ID . LPAREN RPAREN instruccionesF
+    (48) asignacion -> ID ASSIGN . expresion
+    (51) expresion -> . LPAREN expresion RPAREN
+    (52) expresion -> . valor
+    (53) expresion -> . expresion operadoresMat expresion
+    (54) expresion -> . expresion operadoresLog expresion
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    LPAREN          shift and go to state 38
+    LPAREN          shift and go to state 48
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
+    expresion                      shift and go to state 47
+    valor                          shift and go to state 49
+    number                         shift and go to state 39
 
 state 25
 
-    (23) function -> ID LSBRACKET . valor RSBRACKET
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (23) llamada -> ID LPAREN . args RPAREN
+    (24) llamada -> ID LPAREN . RPAREN
+    (37) args -> . valor
+    (38) args -> . args , args
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    RPAREN          shift and go to state 51
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
-    valor                          shift and go to state 40
-    number                         shift and go to state 41
+    args                           shift and go to state 50
+    valor                          shift and go to state 52
+    number                         shift and go to state 39
 
 state 26
 
-    (46) asignacion -> ID ASSIGN . expresion
-    (49) expresion -> . LPAREN expresion RPAREN
-    (50) expresion -> . valor
-    (51) expresion -> . expresion operadoresMat expresion
-    (52) expresion -> . expresion operadoresLog expresion
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (49) asignacion -> declarador ID . ASSIGN expresion
+    (50) declaracion -> declarador ID .
 
-    LPAREN          shift and go to state 50
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    ASSIGN          shift and go to state 53
+    FUNCTION        reduce using rule 50 (declaracion -> declarador ID .)
+    ID              reduce using rule 50 (declaracion -> declarador ID .)
+    IF              reduce using rule 50 (declaracion -> declarador ID .)
+    ELSE            reduce using rule 50 (declaracion -> declarador ID .)
+    VAR             reduce using rule 50 (declaracion -> declarador ID .)
+    VAL             reduce using rule 50 (declaracion -> declarador ID .)
+    WHILE           reduce using rule 50 (declaracion -> declarador ID .)
+    FOR             reduce using rule 50 (declaracion -> declarador ID .)
+    $end            reduce using rule 50 (declaracion -> declarador ID .)
+    RCBRACKET       reduce using rule 50 (declaracion -> declarador ID .)
+    RETURN          reduce using rule 50 (declaracion -> declarador ID .)
 
-    expresion                      shift and go to state 49
-    valor                          shift and go to state 51
-    number                         shift and go to state 41
 
 state 27
 
-    (21) llamada -> ID LPAREN . args RPAREN
-    (22) llamada -> ID LPAREN . RPAREN
-    (35) args -> . valor
-    (36) args -> . args , args
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (15) estructuraControl -> IF LPAREN . expresion RPAREN instrucciones
+    (51) expresion -> . LPAREN expresion RPAREN
+    (52) expresion -> . valor
+    (53) expresion -> . expresion operadoresMat expresion
+    (54) expresion -> . expresion operadoresLog expresion
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    RPAREN          shift and go to state 53
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    LPAREN          shift and go to state 48
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
-    args                           shift and go to state 52
-    valor                          shift and go to state 54
-    number                         shift and go to state 41
+    expresion                      shift and go to state 54
+    valor                          shift and go to state 49
+    number                         shift and go to state 39
 
 state 28
 
-    (47) asignacion -> declarador ID . ASSIGN expresion
-    (48) declaracion -> declarador ID . ;
+    (16) estructuraControl -> ELSE instrucciones .
 
-    ASSIGN          shift and go to state 55
-    ;               shift and go to state 56
+    FUNCTION        reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
+    ID              reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
+    IF              reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
+    ELSE            reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
+    VAR             reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
+    VAL             reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
+    WHILE           reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
+    FOR             reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
+    $end            reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
+    RCBRACKET       reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
+    RETURN          reduce using rule 16 (estructuraControl -> ELSE instrucciones .)
 
 
 state 29
 
-    (13) estructuraControl -> IF LPAREN . expresion RPAREN instrucciones
-    (49) expresion -> . LPAREN expresion RPAREN
-    (50) expresion -> . valor
-    (51) expresion -> . expresion operadoresMat expresion
-    (52) expresion -> . expresion operadoresLog expresion
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (10) instrucciones -> LCBRACKET . cuerpo RCBRACKET
+    (1) cuerpo -> . sentencia
+    (2) cuerpo -> . function
+    (3) cuerpo -> . sentencia cuerpo
+    (4) cuerpo -> . function cuerpo
+    (5) sentencia -> . asignacion
+    (6) sentencia -> . estructuraControl
+    (7) sentencia -> . bucles
+    (8) sentencia -> . llamada
+    (9) sentencia -> . declaracion
+    (21) function -> . FUNCTION ID LPAREN params RPAREN instruccionesF
+    (22) function -> . FUNCTION ID LPAREN RPAREN instruccionesF
+    (25) function -> . ID LSBRACKET valor RSBRACKET
+    (48) asignacion -> . ID ASSIGN expresion
+    (49) asignacion -> . declarador ID ASSIGN expresion
+    (15) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
+    (16) estructuraControl -> . ELSE instrucciones
+    (17) bucles -> . while instrucciones
+    (18) bucles -> . for instrucciones
+    (23) llamada -> . ID LPAREN args RPAREN
+    (24) llamada -> . ID LPAREN RPAREN
+    (50) declaracion -> . declarador ID
+    (46) declarador -> . VAR
+    (47) declarador -> . VAL
+    (19) while -> . WHILE LPAREN expresion RPAREN
+    (20) for -> . FOR LPAREN ID IN ID RPAREN
 
-    LPAREN          shift and go to state 50
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    FUNCTION        shift and go to state 9
+    ID              shift and go to state 10
+    IF              shift and go to state 12
+    ELSE            shift and go to state 13
+    VAR             shift and go to state 16
+    VAL             shift and go to state 17
+    WHILE           shift and go to state 18
+    FOR             shift and go to state 19
 
-    expresion                      shift and go to state 57
-    valor                          shift and go to state 51
-    number                         shift and go to state 41
+    cuerpo                         shift and go to state 55
+    sentencia                      shift and go to state 2
+    function                       shift and go to state 3
+    asignacion                     shift and go to state 4
+    estructuraControl              shift and go to state 5
+    bucles                         shift and go to state 6
+    llamada                        shift and go to state 7
+    declaracion                    shift and go to state 8
+    declarador                     shift and go to state 11
+    while                          shift and go to state 14
+    for                            shift and go to state 15
 
 state 30
 
-    (14) estructuraControl -> ELSE instrucciones .
+    (11) instrucciones -> sentencia .
 
-    FUNCTION        reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
-    ID              reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
-    IF              reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
-    ELSE            reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
-    VAR             reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
-    VAL             reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
-    WHILE           reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
-    FOR             reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
-    $end            reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
-    RCBRACKET       reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
-    RETURN          reduce using rule 14 (estructuraControl -> ELSE instrucciones .)
+    FUNCTION        reduce using rule 11 (instrucciones -> sentencia .)
+    ID              reduce using rule 11 (instrucciones -> sentencia .)
+    IF              reduce using rule 11 (instrucciones -> sentencia .)
+    ELSE            reduce using rule 11 (instrucciones -> sentencia .)
+    VAR             reduce using rule 11 (instrucciones -> sentencia .)
+    VAL             reduce using rule 11 (instrucciones -> sentencia .)
+    WHILE           reduce using rule 11 (instrucciones -> sentencia .)
+    FOR             reduce using rule 11 (instrucciones -> sentencia .)
+    $end            reduce using rule 11 (instrucciones -> sentencia .)
+    RCBRACKET       reduce using rule 11 (instrucciones -> sentencia .)
+    RETURN          reduce using rule 11 (instrucciones -> sentencia .)
 
 
 state 31
 
-    (9) instrucciones -> LCBRACKET . cuerpo RCBRACKET
-    (1) cuerpo -> . sentencia
-    (2) cuerpo -> . sentencia cuerpo
-    (3) cuerpo -> . function cuerpo
-    (4) sentencia -> . asignacion ;
-    (5) sentencia -> . estructuraControl
-    (6) sentencia -> . bucles
-    (7) sentencia -> . llamada ;
-    (8) sentencia -> . declaracion
-    (19) function -> . FUNCTION ID LPAREN params RPAREN instruccionesF
-    (20) function -> . FUNCTION ID LPAREN RPAREN instruccionesF
-    (23) function -> . ID LSBRACKET valor RSBRACKET
-    (46) asignacion -> . ID ASSIGN expresion
-    (47) asignacion -> . declarador ID ASSIGN expresion
-    (13) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
-    (14) estructuraControl -> . ELSE instrucciones
-    (15) bucles -> . while instrucciones
-    (16) bucles -> . for instrucciones
-    (21) llamada -> . ID LPAREN args RPAREN
-    (22) llamada -> . ID LPAREN RPAREN
-    (48) declaracion -> . declarador ID ;
-    (44) declarador -> . VAR
-    (45) declarador -> . VAL
-    (17) while -> . WHILE LPAREN expresion RPAREN
-    (18) for -> . FOR LPAREN ID IN ID RPAREN
+    (48) asignacion -> ID . ASSIGN expresion
+    (23) llamada -> ID . LPAREN args RPAREN
+    (24) llamada -> ID . LPAREN RPAREN
 
-    FUNCTION        shift and go to state 9
-    ID              shift and go to state 10
-    IF              shift and go to state 12
-    ELSE            shift and go to state 13
-    VAR             shift and go to state 16
-    VAL             shift and go to state 17
-    WHILE           shift and go to state 18
-    FOR             shift and go to state 19
+    ASSIGN          shift and go to state 24
+    LPAREN          shift and go to state 25
 
-    cuerpo                         shift and go to state 58
-    sentencia                      shift and go to state 2
-    function                       shift and go to state 3
-    asignacion                     shift and go to state 4
-    estructuraControl              shift and go to state 5
-    bucles                         shift and go to state 6
-    llamada                        shift and go to state 7
-    declaracion                    shift and go to state 8
-    declarador                     shift and go to state 11
-    while                          shift and go to state 14
-    for                            shift and go to state 15
 
 state 32
 
-    (10) instrucciones -> sentencia .
+    (17) bucles -> while instrucciones .
 
-    FUNCTION        reduce using rule 10 (instrucciones -> sentencia .)
-    ID              reduce using rule 10 (instrucciones -> sentencia .)
-    IF              reduce using rule 10 (instrucciones -> sentencia .)
-    ELSE            reduce using rule 10 (instrucciones -> sentencia .)
-    VAR             reduce using rule 10 (instrucciones -> sentencia .)
-    VAL             reduce using rule 10 (instrucciones -> sentencia .)
-    WHILE           reduce using rule 10 (instrucciones -> sentencia .)
-    FOR             reduce using rule 10 (instrucciones -> sentencia .)
-    $end            reduce using rule 10 (instrucciones -> sentencia .)
-    RCBRACKET       reduce using rule 10 (instrucciones -> sentencia .)
-    RETURN          reduce using rule 10 (instrucciones -> sentencia .)
+    FUNCTION        reduce using rule 17 (bucles -> while instrucciones .)
+    ID              reduce using rule 17 (bucles -> while instrucciones .)
+    IF              reduce using rule 17 (bucles -> while instrucciones .)
+    ELSE            reduce using rule 17 (bucles -> while instrucciones .)
+    VAR             reduce using rule 17 (bucles -> while instrucciones .)
+    VAL             reduce using rule 17 (bucles -> while instrucciones .)
+    WHILE           reduce using rule 17 (bucles -> while instrucciones .)
+    FOR             reduce using rule 17 (bucles -> while instrucciones .)
+    $end            reduce using rule 17 (bucles -> while instrucciones .)
+    RCBRACKET       reduce using rule 17 (bucles -> while instrucciones .)
+    RETURN          reduce using rule 17 (bucles -> while instrucciones .)
 
 
 state 33
 
-    (46) asignacion -> ID . ASSIGN expresion
-    (21) llamada -> ID . LPAREN args RPAREN
-    (22) llamada -> ID . LPAREN RPAREN
+    (18) bucles -> for instrucciones .
 
-    ASSIGN          shift and go to state 26
-    LPAREN          shift and go to state 27
+    FUNCTION        reduce using rule 18 (bucles -> for instrucciones .)
+    ID              reduce using rule 18 (bucles -> for instrucciones .)
+    IF              reduce using rule 18 (bucles -> for instrucciones .)
+    ELSE            reduce using rule 18 (bucles -> for instrucciones .)
+    VAR             reduce using rule 18 (bucles -> for instrucciones .)
+    VAL             reduce using rule 18 (bucles -> for instrucciones .)
+    WHILE           reduce using rule 18 (bucles -> for instrucciones .)
+    FOR             reduce using rule 18 (bucles -> for instrucciones .)
+    $end            reduce using rule 18 (bucles -> for instrucciones .)
+    RCBRACKET       reduce using rule 18 (bucles -> for instrucciones .)
+    RETURN          reduce using rule 18 (bucles -> for instrucciones .)
 
 
 state 34
 
-    (15) bucles -> while instrucciones .
+    (19) while -> WHILE LPAREN . expresion RPAREN
+    (51) expresion -> . LPAREN expresion RPAREN
+    (52) expresion -> . valor
+    (53) expresion -> . expresion operadoresMat expresion
+    (54) expresion -> . expresion operadoresLog expresion
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    FUNCTION        reduce using rule 15 (bucles -> while instrucciones .)
-    ID              reduce using rule 15 (bucles -> while instrucciones .)
-    IF              reduce using rule 15 (bucles -> while instrucciones .)
-    ELSE            reduce using rule 15 (bucles -> while instrucciones .)
-    VAR             reduce using rule 15 (bucles -> while instrucciones .)
-    VAL             reduce using rule 15 (bucles -> while instrucciones .)
-    WHILE           reduce using rule 15 (bucles -> while instrucciones .)
-    FOR             reduce using rule 15 (bucles -> while instrucciones .)
-    $end            reduce using rule 15 (bucles -> while instrucciones .)
-    RCBRACKET       reduce using rule 15 (bucles -> while instrucciones .)
-    RETURN          reduce using rule 15 (bucles -> while instrucciones .)
+    LPAREN          shift and go to state 48
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
+    expresion                      shift and go to state 56
+    valor                          shift and go to state 49
+    number                         shift and go to state 39
 
 state 35
 
-    (16) bucles -> for instrucciones .
+    (20) for -> FOR LPAREN . ID IN ID RPAREN
 
-    FUNCTION        reduce using rule 16 (bucles -> for instrucciones .)
-    ID              reduce using rule 16 (bucles -> for instrucciones .)
-    IF              reduce using rule 16 (bucles -> for instrucciones .)
-    ELSE            reduce using rule 16 (bucles -> for instrucciones .)
-    VAR             reduce using rule 16 (bucles -> for instrucciones .)
-    VAL             reduce using rule 16 (bucles -> for instrucciones .)
-    WHILE           reduce using rule 16 (bucles -> for instrucciones .)
-    FOR             reduce using rule 16 (bucles -> for instrucciones .)
-    $end            reduce using rule 16 (bucles -> for instrucciones .)
-    RCBRACKET       reduce using rule 16 (bucles -> for instrucciones .)
-    RETURN          reduce using rule 16 (bucles -> for instrucciones .)
+    ID              shift and go to state 57
 
 
 state 36
 
-    (17) while -> WHILE LPAREN . expresion RPAREN
-    (49) expresion -> . LPAREN expresion RPAREN
-    (50) expresion -> . valor
-    (51) expresion -> . expresion operadoresMat expresion
-    (52) expresion -> . expresion operadoresLog expresion
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (21) function -> FUNCTION ID LPAREN . params RPAREN instruccionesF
+    (22) function -> FUNCTION ID LPAREN . RPAREN instruccionesF
+    (35) params -> . ID : dato
+    (36) params -> . params , params
 
-    LPAREN          shift and go to state 50
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    RPAREN          shift and go to state 60
+    ID              shift and go to state 58
 
-    expresion                      shift and go to state 59
-    valor                          shift and go to state 51
-    number                         shift and go to state 41
+    params                         shift and go to state 59
 
 state 37
 
-    (18) for -> FOR LPAREN . ID IN ID RPAREN
+    (39) valor -> ID .
 
-    ID              shift and go to state 60
+    RSBRACKET       reduce using rule 39 (valor -> ID .)
+    MINUS           reduce using rule 39 (valor -> ID .)
+    PLUS            reduce using rule 39 (valor -> ID .)
+    TIMES           reduce using rule 39 (valor -> ID .)
+    DIVIDE          reduce using rule 39 (valor -> ID .)
+    MODULE          reduce using rule 39 (valor -> ID .)
+    OR              reduce using rule 39 (valor -> ID .)
+    AND             reduce using rule 39 (valor -> ID .)
+    EQUALS          reduce using rule 39 (valor -> ID .)
+    NOTEQUALS       reduce using rule 39 (valor -> ID .)
+    GREATER         reduce using rule 39 (valor -> ID .)
+    LOWER           reduce using rule 39 (valor -> ID .)
+    FUNCTION        reduce using rule 39 (valor -> ID .)
+    ID              reduce using rule 39 (valor -> ID .)
+    IF              reduce using rule 39 (valor -> ID .)
+    ELSE            reduce using rule 39 (valor -> ID .)
+    VAR             reduce using rule 39 (valor -> ID .)
+    VAL             reduce using rule 39 (valor -> ID .)
+    WHILE           reduce using rule 39 (valor -> ID .)
+    FOR             reduce using rule 39 (valor -> ID .)
+    $end            reduce using rule 39 (valor -> ID .)
+    RCBRACKET       reduce using rule 39 (valor -> ID .)
+    RETURN          reduce using rule 39 (valor -> ID .)
+    RPAREN          reduce using rule 39 (valor -> ID .)
+    ,               reduce using rule 39 (valor -> ID .)
 
 
 state 38
 
-    (19) function -> FUNCTION ID LPAREN . params RPAREN instruccionesF
-    (20) function -> FUNCTION ID LPAREN . RPAREN instruccionesF
-    (33) params -> . ID : dato
-    (34) params -> . params , params
+    (25) function -> ID LSBRACKET valor . RSBRACKET
 
-    RPAREN          shift and go to state 63
-    ID              shift and go to state 61
+    RSBRACKET       shift and go to state 61
 
-    params                         shift and go to state 62
 
 state 39
 
-    (37) valor -> ID .
+    (40) valor -> number .
 
-    RSBRACKET       reduce using rule 37 (valor -> ID .)
-    MINUS           reduce using rule 37 (valor -> ID .)
-    PLUS            reduce using rule 37 (valor -> ID .)
-    TIMES           reduce using rule 37 (valor -> ID .)
-    DIVIDE          reduce using rule 37 (valor -> ID .)
-    MODULE          reduce using rule 37 (valor -> ID .)
-    OR              reduce using rule 37 (valor -> ID .)
-    AND             reduce using rule 37 (valor -> ID .)
-    EQUALS          reduce using rule 37 (valor -> ID .)
-    NOTEQUALS       reduce using rule 37 (valor -> ID .)
-    GREATER         reduce using rule 37 (valor -> ID .)
-    LOWER           reduce using rule 37 (valor -> ID .)
-    ;               reduce using rule 37 (valor -> ID .)
-    RPAREN          reduce using rule 37 (valor -> ID .)
-    ,               reduce using rule 37 (valor -> ID .)
+    RSBRACKET       reduce using rule 40 (valor -> number .)
+    MINUS           reduce using rule 40 (valor -> number .)
+    PLUS            reduce using rule 40 (valor -> number .)
+    TIMES           reduce using rule 40 (valor -> number .)
+    DIVIDE          reduce using rule 40 (valor -> number .)
+    MODULE          reduce using rule 40 (valor -> number .)
+    OR              reduce using rule 40 (valor -> number .)
+    AND             reduce using rule 40 (valor -> number .)
+    EQUALS          reduce using rule 40 (valor -> number .)
+    NOTEQUALS       reduce using rule 40 (valor -> number .)
+    GREATER         reduce using rule 40 (valor -> number .)
+    LOWER           reduce using rule 40 (valor -> number .)
+    FUNCTION        reduce using rule 40 (valor -> number .)
+    ID              reduce using rule 40 (valor -> number .)
+    IF              reduce using rule 40 (valor -> number .)
+    ELSE            reduce using rule 40 (valor -> number .)
+    VAR             reduce using rule 40 (valor -> number .)
+    VAL             reduce using rule 40 (valor -> number .)
+    WHILE           reduce using rule 40 (valor -> number .)
+    FOR             reduce using rule 40 (valor -> number .)
+    $end            reduce using rule 40 (valor -> number .)
+    RCBRACKET       reduce using rule 40 (valor -> number .)
+    RETURN          reduce using rule 40 (valor -> number .)
+    RPAREN          reduce using rule 40 (valor -> number .)
+    ,               reduce using rule 40 (valor -> number .)
 
 
 state 40
 
-    (23) function -> ID LSBRACKET valor . RSBRACKET
+    (41) valor -> STRING .
 
-    RSBRACKET       shift and go to state 64
+    RSBRACKET       reduce using rule 41 (valor -> STRING .)
+    MINUS           reduce using rule 41 (valor -> STRING .)
+    PLUS            reduce using rule 41 (valor -> STRING .)
+    TIMES           reduce using rule 41 (valor -> STRING .)
+    DIVIDE          reduce using rule 41 (valor -> STRING .)
+    MODULE          reduce using rule 41 (valor -> STRING .)
+    OR              reduce using rule 41 (valor -> STRING .)
+    AND             reduce using rule 41 (valor -> STRING .)
+    EQUALS          reduce using rule 41 (valor -> STRING .)
+    NOTEQUALS       reduce using rule 41 (valor -> STRING .)
+    GREATER         reduce using rule 41 (valor -> STRING .)
+    LOWER           reduce using rule 41 (valor -> STRING .)
+    FUNCTION        reduce using rule 41 (valor -> STRING .)
+    ID              reduce using rule 41 (valor -> STRING .)
+    IF              reduce using rule 41 (valor -> STRING .)
+    ELSE            reduce using rule 41 (valor -> STRING .)
+    VAR             reduce using rule 41 (valor -> STRING .)
+    VAL             reduce using rule 41 (valor -> STRING .)
+    WHILE           reduce using rule 41 (valor -> STRING .)
+    FOR             reduce using rule 41 (valor -> STRING .)
+    $end            reduce using rule 41 (valor -> STRING .)
+    RCBRACKET       reduce using rule 41 (valor -> STRING .)
+    RETURN          reduce using rule 41 (valor -> STRING .)
+    RPAREN          reduce using rule 41 (valor -> STRING .)
+    ,               reduce using rule 41 (valor -> STRING .)
 
 
 state 41
 
-    (38) valor -> number .
+    (42) valor -> TRUE .
 
-    RSBRACKET       reduce using rule 38 (valor -> number .)
-    MINUS           reduce using rule 38 (valor -> number .)
-    PLUS            reduce using rule 38 (valor -> number .)
-    TIMES           reduce using rule 38 (valor -> number .)
-    DIVIDE          reduce using rule 38 (valor -> number .)
-    MODULE          reduce using rule 38 (valor -> number .)
-    OR              reduce using rule 38 (valor -> number .)
-    AND             reduce using rule 38 (valor -> number .)
-    EQUALS          reduce using rule 38 (valor -> number .)
-    NOTEQUALS       reduce using rule 38 (valor -> number .)
-    GREATER         reduce using rule 38 (valor -> number .)
-    LOWER           reduce using rule 38 (valor -> number .)
-    ;               reduce using rule 38 (valor -> number .)
-    RPAREN          reduce using rule 38 (valor -> number .)
-    ,               reduce using rule 38 (valor -> number .)
+    RSBRACKET       reduce using rule 42 (valor -> TRUE .)
+    MINUS           reduce using rule 42 (valor -> TRUE .)
+    PLUS            reduce using rule 42 (valor -> TRUE .)
+    TIMES           reduce using rule 42 (valor -> TRUE .)
+    DIVIDE          reduce using rule 42 (valor -> TRUE .)
+    MODULE          reduce using rule 42 (valor -> TRUE .)
+    OR              reduce using rule 42 (valor -> TRUE .)
+    AND             reduce using rule 42 (valor -> TRUE .)
+    EQUALS          reduce using rule 42 (valor -> TRUE .)
+    NOTEQUALS       reduce using rule 42 (valor -> TRUE .)
+    GREATER         reduce using rule 42 (valor -> TRUE .)
+    LOWER           reduce using rule 42 (valor -> TRUE .)
+    FUNCTION        reduce using rule 42 (valor -> TRUE .)
+    ID              reduce using rule 42 (valor -> TRUE .)
+    IF              reduce using rule 42 (valor -> TRUE .)
+    ELSE            reduce using rule 42 (valor -> TRUE .)
+    VAR             reduce using rule 42 (valor -> TRUE .)
+    VAL             reduce using rule 42 (valor -> TRUE .)
+    WHILE           reduce using rule 42 (valor -> TRUE .)
+    FOR             reduce using rule 42 (valor -> TRUE .)
+    $end            reduce using rule 42 (valor -> TRUE .)
+    RCBRACKET       reduce using rule 42 (valor -> TRUE .)
+    RETURN          reduce using rule 42 (valor -> TRUE .)
+    RPAREN          reduce using rule 42 (valor -> TRUE .)
+    ,               reduce using rule 42 (valor -> TRUE .)
 
 
 state 42
 
-    (39) valor -> STRING .
+    (43) valor -> FALSE .
 
-    RSBRACKET       reduce using rule 39 (valor -> STRING .)
-    MINUS           reduce using rule 39 (valor -> STRING .)
-    PLUS            reduce using rule 39 (valor -> STRING .)
-    TIMES           reduce using rule 39 (valor -> STRING .)
-    DIVIDE          reduce using rule 39 (valor -> STRING .)
-    MODULE          reduce using rule 39 (valor -> STRING .)
-    OR              reduce using rule 39 (valor -> STRING .)
-    AND             reduce using rule 39 (valor -> STRING .)
-    EQUALS          reduce using rule 39 (valor -> STRING .)
-    NOTEQUALS       reduce using rule 39 (valor -> STRING .)
-    GREATER         reduce using rule 39 (valor -> STRING .)
-    LOWER           reduce using rule 39 (valor -> STRING .)
-    ;               reduce using rule 39 (valor -> STRING .)
-    RPAREN          reduce using rule 39 (valor -> STRING .)
-    ,               reduce using rule 39 (valor -> STRING .)
+    RSBRACKET       reduce using rule 43 (valor -> FALSE .)
+    MINUS           reduce using rule 43 (valor -> FALSE .)
+    PLUS            reduce using rule 43 (valor -> FALSE .)
+    TIMES           reduce using rule 43 (valor -> FALSE .)
+    DIVIDE          reduce using rule 43 (valor -> FALSE .)
+    MODULE          reduce using rule 43 (valor -> FALSE .)
+    OR              reduce using rule 43 (valor -> FALSE .)
+    AND             reduce using rule 43 (valor -> FALSE .)
+    EQUALS          reduce using rule 43 (valor -> FALSE .)
+    NOTEQUALS       reduce using rule 43 (valor -> FALSE .)
+    GREATER         reduce using rule 43 (valor -> FALSE .)
+    LOWER           reduce using rule 43 (valor -> FALSE .)
+    FUNCTION        reduce using rule 43 (valor -> FALSE .)
+    ID              reduce using rule 43 (valor -> FALSE .)
+    IF              reduce using rule 43 (valor -> FALSE .)
+    ELSE            reduce using rule 43 (valor -> FALSE .)
+    VAR             reduce using rule 43 (valor -> FALSE .)
+    VAL             reduce using rule 43 (valor -> FALSE .)
+    WHILE           reduce using rule 43 (valor -> FALSE .)
+    FOR             reduce using rule 43 (valor -> FALSE .)
+    $end            reduce using rule 43 (valor -> FALSE .)
+    RCBRACKET       reduce using rule 43 (valor -> FALSE .)
+    RETURN          reduce using rule 43 (valor -> FALSE .)
+    RPAREN          reduce using rule 43 (valor -> FALSE .)
+    ,               reduce using rule 43 (valor -> FALSE .)
 
 
 state 43
 
-    (40) valor -> TRUE .
+    (44) valor -> NULL .
 
-    RSBRACKET       reduce using rule 40 (valor -> TRUE .)
-    MINUS           reduce using rule 40 (valor -> TRUE .)
-    PLUS            reduce using rule 40 (valor -> TRUE .)
-    TIMES           reduce using rule 40 (valor -> TRUE .)
-    DIVIDE          reduce using rule 40 (valor -> TRUE .)
-    MODULE          reduce using rule 40 (valor -> TRUE .)
-    OR              reduce using rule 40 (valor -> TRUE .)
-    AND             reduce using rule 40 (valor -> TRUE .)
-    EQUALS          reduce using rule 40 (valor -> TRUE .)
-    NOTEQUALS       reduce using rule 40 (valor -> TRUE .)
-    GREATER         reduce using rule 40 (valor -> TRUE .)
-    LOWER           reduce using rule 40 (valor -> TRUE .)
-    ;               reduce using rule 40 (valor -> TRUE .)
-    RPAREN          reduce using rule 40 (valor -> TRUE .)
-    ,               reduce using rule 40 (valor -> TRUE .)
+    RSBRACKET       reduce using rule 44 (valor -> NULL .)
+    MINUS           reduce using rule 44 (valor -> NULL .)
+    PLUS            reduce using rule 44 (valor -> NULL .)
+    TIMES           reduce using rule 44 (valor -> NULL .)
+    DIVIDE          reduce using rule 44 (valor -> NULL .)
+    MODULE          reduce using rule 44 (valor -> NULL .)
+    OR              reduce using rule 44 (valor -> NULL .)
+    AND             reduce using rule 44 (valor -> NULL .)
+    EQUALS          reduce using rule 44 (valor -> NULL .)
+    NOTEQUALS       reduce using rule 44 (valor -> NULL .)
+    GREATER         reduce using rule 44 (valor -> NULL .)
+    LOWER           reduce using rule 44 (valor -> NULL .)
+    FUNCTION        reduce using rule 44 (valor -> NULL .)
+    ID              reduce using rule 44 (valor -> NULL .)
+    IF              reduce using rule 44 (valor -> NULL .)
+    ELSE            reduce using rule 44 (valor -> NULL .)
+    VAR             reduce using rule 44 (valor -> NULL .)
+    VAL             reduce using rule 44 (valor -> NULL .)
+    WHILE           reduce using rule 44 (valor -> NULL .)
+    FOR             reduce using rule 44 (valor -> NULL .)
+    $end            reduce using rule 44 (valor -> NULL .)
+    RCBRACKET       reduce using rule 44 (valor -> NULL .)
+    RETURN          reduce using rule 44 (valor -> NULL .)
+    RPAREN          reduce using rule 44 (valor -> NULL .)
+    ,               reduce using rule 44 (valor -> NULL .)
 
 
 state 44
 
-    (41) valor -> FALSE .
+    (45) valor -> NOT . valor
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    RSBRACKET       reduce using rule 41 (valor -> FALSE .)
-    MINUS           reduce using rule 41 (valor -> FALSE .)
-    PLUS            reduce using rule 41 (valor -> FALSE .)
-    TIMES           reduce using rule 41 (valor -> FALSE .)
-    DIVIDE          reduce using rule 41 (valor -> FALSE .)
-    MODULE          reduce using rule 41 (valor -> FALSE .)
-    OR              reduce using rule 41 (valor -> FALSE .)
-    AND             reduce using rule 41 (valor -> FALSE .)
-    EQUALS          reduce using rule 41 (valor -> FALSE .)
-    NOTEQUALS       reduce using rule 41 (valor -> FALSE .)
-    GREATER         reduce using rule 41 (valor -> FALSE .)
-    LOWER           reduce using rule 41 (valor -> FALSE .)
-    ;               reduce using rule 41 (valor -> FALSE .)
-    RPAREN          reduce using rule 41 (valor -> FALSE .)
-    ,               reduce using rule 41 (valor -> FALSE .)
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
+    valor                          shift and go to state 62
+    number                         shift and go to state 39
 
 state 45
 
-    (42) valor -> NULL .
+    (68) number -> INTV .
 
-    RSBRACKET       reduce using rule 42 (valor -> NULL .)
-    MINUS           reduce using rule 42 (valor -> NULL .)
-    PLUS            reduce using rule 42 (valor -> NULL .)
-    TIMES           reduce using rule 42 (valor -> NULL .)
-    DIVIDE          reduce using rule 42 (valor -> NULL .)
-    MODULE          reduce using rule 42 (valor -> NULL .)
-    OR              reduce using rule 42 (valor -> NULL .)
-    AND             reduce using rule 42 (valor -> NULL .)
-    EQUALS          reduce using rule 42 (valor -> NULL .)
-    NOTEQUALS       reduce using rule 42 (valor -> NULL .)
-    GREATER         reduce using rule 42 (valor -> NULL .)
-    LOWER           reduce using rule 42 (valor -> NULL .)
-    ;               reduce using rule 42 (valor -> NULL .)
-    RPAREN          reduce using rule 42 (valor -> NULL .)
-    ,               reduce using rule 42 (valor -> NULL .)
+    RSBRACKET       reduce using rule 68 (number -> INTV .)
+    MINUS           reduce using rule 68 (number -> INTV .)
+    PLUS            reduce using rule 68 (number -> INTV .)
+    TIMES           reduce using rule 68 (number -> INTV .)
+    DIVIDE          reduce using rule 68 (number -> INTV .)
+    MODULE          reduce using rule 68 (number -> INTV .)
+    OR              reduce using rule 68 (number -> INTV .)
+    AND             reduce using rule 68 (number -> INTV .)
+    EQUALS          reduce using rule 68 (number -> INTV .)
+    NOTEQUALS       reduce using rule 68 (number -> INTV .)
+    GREATER         reduce using rule 68 (number -> INTV .)
+    LOWER           reduce using rule 68 (number -> INTV .)
+    FUNCTION        reduce using rule 68 (number -> INTV .)
+    ID              reduce using rule 68 (number -> INTV .)
+    IF              reduce using rule 68 (number -> INTV .)
+    ELSE            reduce using rule 68 (number -> INTV .)
+    VAR             reduce using rule 68 (number -> INTV .)
+    VAL             reduce using rule 68 (number -> INTV .)
+    WHILE           reduce using rule 68 (number -> INTV .)
+    FOR             reduce using rule 68 (number -> INTV .)
+    $end            reduce using rule 68 (number -> INTV .)
+    RCBRACKET       reduce using rule 68 (number -> INTV .)
+    RETURN          reduce using rule 68 (number -> INTV .)
+    RPAREN          reduce using rule 68 (number -> INTV .)
+    ,               reduce using rule 68 (number -> INTV .)
 
 
 state 46
 
-    (43) valor -> NOT . valor
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (69) number -> FLOATV .
 
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    RSBRACKET       reduce using rule 69 (number -> FLOATV .)
+    MINUS           reduce using rule 69 (number -> FLOATV .)
+    PLUS            reduce using rule 69 (number -> FLOATV .)
+    TIMES           reduce using rule 69 (number -> FLOATV .)
+    DIVIDE          reduce using rule 69 (number -> FLOATV .)
+    MODULE          reduce using rule 69 (number -> FLOATV .)
+    OR              reduce using rule 69 (number -> FLOATV .)
+    AND             reduce using rule 69 (number -> FLOATV .)
+    EQUALS          reduce using rule 69 (number -> FLOATV .)
+    NOTEQUALS       reduce using rule 69 (number -> FLOATV .)
+    GREATER         reduce using rule 69 (number -> FLOATV .)
+    LOWER           reduce using rule 69 (number -> FLOATV .)
+    FUNCTION        reduce using rule 69 (number -> FLOATV .)
+    ID              reduce using rule 69 (number -> FLOATV .)
+    IF              reduce using rule 69 (number -> FLOATV .)
+    ELSE            reduce using rule 69 (number -> FLOATV .)
+    VAR             reduce using rule 69 (number -> FLOATV .)
+    VAL             reduce using rule 69 (number -> FLOATV .)
+    WHILE           reduce using rule 69 (number -> FLOATV .)
+    FOR             reduce using rule 69 (number -> FLOATV .)
+    $end            reduce using rule 69 (number -> FLOATV .)
+    RCBRACKET       reduce using rule 69 (number -> FLOATV .)
+    RETURN          reduce using rule 69 (number -> FLOATV .)
+    RPAREN          reduce using rule 69 (number -> FLOATV .)
+    ,               reduce using rule 69 (number -> FLOATV .)
 
-    valor                          shift and go to state 65
-    number                         shift and go to state 41
 
 state 47
 
-    (66) number -> INTV .
+    (48) asignacion -> ID ASSIGN expresion .
+    (53) expresion -> expresion . operadoresMat expresion
+    (54) expresion -> expresion . operadoresLog expresion
+    (63) operadoresMat -> . MINUS
+    (64) operadoresMat -> . PLUS
+    (65) operadoresMat -> . TIMES
+    (66) operadoresMat -> . DIVIDE
+    (67) operadoresMat -> . MODULE
+    (55) operadoresLog -> . OR
+    (56) operadoresLog -> . AND
+    (57) operadoresLog -> . EQUALS
+    (58) operadoresLog -> . NOTEQUALS
+    (59) operadoresLog -> . GREATER
+    (60) operadoresLog -> . LOWER
+    (61) operadoresLog -> . GREATER ASSIGN
+    (62) operadoresLog -> . LOWER ASSIGN
 
-    RSBRACKET       reduce using rule 66 (number -> INTV .)
-    MINUS           reduce using rule 66 (number -> INTV .)
-    PLUS            reduce using rule 66 (number -> INTV .)
-    TIMES           reduce using rule 66 (number -> INTV .)
-    DIVIDE          reduce using rule 66 (number -> INTV .)
-    MODULE          reduce using rule 66 (number -> INTV .)
-    OR              reduce using rule 66 (number -> INTV .)
-    AND             reduce using rule 66 (number -> INTV .)
-    EQUALS          reduce using rule 66 (number -> INTV .)
-    NOTEQUALS       reduce using rule 66 (number -> INTV .)
-    GREATER         reduce using rule 66 (number -> INTV .)
-    LOWER           reduce using rule 66 (number -> INTV .)
-    ;               reduce using rule 66 (number -> INTV .)
-    RPAREN          reduce using rule 66 (number -> INTV .)
-    ,               reduce using rule 66 (number -> INTV .)
+    FUNCTION        reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    ID              reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    IF              reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    ELSE            reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    VAR             reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    VAL             reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    WHILE           reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    FOR             reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    $end            reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    RCBRACKET       reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    RETURN          reduce using rule 48 (asignacion -> ID ASSIGN expresion .)
+    MINUS           shift and go to state 65
+    PLUS            shift and go to state 66
+    TIMES           shift and go to state 67
+    DIVIDE          shift and go to state 68
+    MODULE          shift and go to state 69
+    OR              shift and go to state 70
+    AND             shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOTEQUALS       shift and go to state 73
+    GREATER         shift and go to state 74
+    LOWER           shift and go to state 75
 
+    operadoresMat                  shift and go to state 63
+    operadoresLog                  shift and go to state 64
 
 state 48
 
-    (67) number -> FLOATV .
+    (51) expresion -> LPAREN . expresion RPAREN
+    (51) expresion -> . LPAREN expresion RPAREN
+    (52) expresion -> . valor
+    (53) expresion -> . expresion operadoresMat expresion
+    (54) expresion -> . expresion operadoresLog expresion
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    RSBRACKET       reduce using rule 67 (number -> FLOATV .)
-    MINUS           reduce using rule 67 (number -> FLOATV .)
-    PLUS            reduce using rule 67 (number -> FLOATV .)
-    TIMES           reduce using rule 67 (number -> FLOATV .)
-    DIVIDE          reduce using rule 67 (number -> FLOATV .)
-    MODULE          reduce using rule 67 (number -> FLOATV .)
-    OR              reduce using rule 67 (number -> FLOATV .)
-    AND             reduce using rule 67 (number -> FLOATV .)
-    EQUALS          reduce using rule 67 (number -> FLOATV .)
-    NOTEQUALS       reduce using rule 67 (number -> FLOATV .)
-    GREATER         reduce using rule 67 (number -> FLOATV .)
-    LOWER           reduce using rule 67 (number -> FLOATV .)
-    ;               reduce using rule 67 (number -> FLOATV .)
-    RPAREN          reduce using rule 67 (number -> FLOATV .)
-    ,               reduce using rule 67 (number -> FLOATV .)
+    LPAREN          shift and go to state 48
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
+    expresion                      shift and go to state 76
+    valor                          shift and go to state 49
+    number                         shift and go to state 39
 
 state 49
 
-    (46) asignacion -> ID ASSIGN expresion .
-    (51) expresion -> expresion . operadoresMat expresion
-    (52) expresion -> expresion . operadoresLog expresion
-    (61) operadoresMat -> . MINUS
-    (62) operadoresMat -> . PLUS
-    (63) operadoresMat -> . TIMES
-    (64) operadoresMat -> . DIVIDE
-    (65) operadoresMat -> . MODULE
-    (53) operadoresLog -> . OR
-    (54) operadoresLog -> . AND
-    (55) operadoresLog -> . EQUALS
-    (56) operadoresLog -> . NOTEQUALS
-    (57) operadoresLog -> . GREATER
-    (58) operadoresLog -> . LOWER
-    (59) operadoresLog -> . GREATER ASSIGN
-    (60) operadoresLog -> . LOWER ASSIGN
+    (52) expresion -> valor .
 
-    ;               reduce using rule 46 (asignacion -> ID ASSIGN expresion .)
-    MINUS           shift and go to state 68
-    PLUS            shift and go to state 69
-    TIMES           shift and go to state 70
-    DIVIDE          shift and go to state 71
-    MODULE          shift and go to state 72
-    OR              shift and go to state 73
-    AND             shift and go to state 74
-    EQUALS          shift and go to state 75
-    NOTEQUALS       shift and go to state 76
-    GREATER         shift and go to state 77
-    LOWER           shift and go to state 78
+    MINUS           reduce using rule 52 (expresion -> valor .)
+    PLUS            reduce using rule 52 (expresion -> valor .)
+    TIMES           reduce using rule 52 (expresion -> valor .)
+    DIVIDE          reduce using rule 52 (expresion -> valor .)
+    MODULE          reduce using rule 52 (expresion -> valor .)
+    OR              reduce using rule 52 (expresion -> valor .)
+    AND             reduce using rule 52 (expresion -> valor .)
+    EQUALS          reduce using rule 52 (expresion -> valor .)
+    NOTEQUALS       reduce using rule 52 (expresion -> valor .)
+    GREATER         reduce using rule 52 (expresion -> valor .)
+    LOWER           reduce using rule 52 (expresion -> valor .)
+    FUNCTION        reduce using rule 52 (expresion -> valor .)
+    ID              reduce using rule 52 (expresion -> valor .)
+    IF              reduce using rule 52 (expresion -> valor .)
+    ELSE            reduce using rule 52 (expresion -> valor .)
+    VAR             reduce using rule 52 (expresion -> valor .)
+    VAL             reduce using rule 52 (expresion -> valor .)
+    WHILE           reduce using rule 52 (expresion -> valor .)
+    FOR             reduce using rule 52 (expresion -> valor .)
+    $end            reduce using rule 52 (expresion -> valor .)
+    RCBRACKET       reduce using rule 52 (expresion -> valor .)
+    RETURN          reduce using rule 52 (expresion -> valor .)
+    RPAREN          reduce using rule 52 (expresion -> valor .)
 
-    operadoresMat                  shift and go to state 66
-    operadoresLog                  shift and go to state 67
 
 state 50
 
-    (49) expresion -> LPAREN . expresion RPAREN
-    (49) expresion -> . LPAREN expresion RPAREN
-    (50) expresion -> . valor
-    (51) expresion -> . expresion operadoresMat expresion
-    (52) expresion -> . expresion operadoresLog expresion
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (23) llamada -> ID LPAREN args . RPAREN
+    (38) args -> args . , args
 
-    LPAREN          shift and go to state 50
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    RPAREN          shift and go to state 77
+    ,               shift and go to state 78
 
-    expresion                      shift and go to state 79
-    valor                          shift and go to state 51
-    number                         shift and go to state 41
 
 state 51
 
-    (50) expresion -> valor .
+    (24) llamada -> ID LPAREN RPAREN .
 
-    MINUS           reduce using rule 50 (expresion -> valor .)
-    PLUS            reduce using rule 50 (expresion -> valor .)
-    TIMES           reduce using rule 50 (expresion -> valor .)
-    DIVIDE          reduce using rule 50 (expresion -> valor .)
-    MODULE          reduce using rule 50 (expresion -> valor .)
-    OR              reduce using rule 50 (expresion -> valor .)
-    AND             reduce using rule 50 (expresion -> valor .)
-    EQUALS          reduce using rule 50 (expresion -> valor .)
-    NOTEQUALS       reduce using rule 50 (expresion -> valor .)
-    GREATER         reduce using rule 50 (expresion -> valor .)
-    LOWER           reduce using rule 50 (expresion -> valor .)
-    ;               reduce using rule 50 (expresion -> valor .)
-    RPAREN          reduce using rule 50 (expresion -> valor .)
+    FUNCTION        reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
+    ID              reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
+    IF              reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
+    ELSE            reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
+    VAR             reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
+    VAL             reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
+    WHILE           reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
+    FOR             reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
+    $end            reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
+    RCBRACKET       reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
+    RETURN          reduce using rule 24 (llamada -> ID LPAREN RPAREN .)
 
 
 state 52
 
-    (21) llamada -> ID LPAREN args . RPAREN
-    (36) args -> args . , args
+    (37) args -> valor .
 
-    RPAREN          shift and go to state 80
-    ,               shift and go to state 81
+    RPAREN          reduce using rule 37 (args -> valor .)
+    ,               reduce using rule 37 (args -> valor .)
 
 
 state 53
 
-    (22) llamada -> ID LPAREN RPAREN .
+    (49) asignacion -> declarador ID ASSIGN . expresion
+    (51) expresion -> . LPAREN expresion RPAREN
+    (52) expresion -> . valor
+    (53) expresion -> . expresion operadoresMat expresion
+    (54) expresion -> . expresion operadoresLog expresion
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    ;               reduce using rule 22 (llamada -> ID LPAREN RPAREN .)
+    LPAREN          shift and go to state 48
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
+    expresion                      shift and go to state 79
+    valor                          shift and go to state 49
+    number                         shift and go to state 39
 
 state 54
 
-    (35) args -> valor .
+    (15) estructuraControl -> IF LPAREN expresion . RPAREN instrucciones
+    (53) expresion -> expresion . operadoresMat expresion
+    (54) expresion -> expresion . operadoresLog expresion
+    (63) operadoresMat -> . MINUS
+    (64) operadoresMat -> . PLUS
+    (65) operadoresMat -> . TIMES
+    (66) operadoresMat -> . DIVIDE
+    (67) operadoresMat -> . MODULE
+    (55) operadoresLog -> . OR
+    (56) operadoresLog -> . AND
+    (57) operadoresLog -> . EQUALS
+    (58) operadoresLog -> . NOTEQUALS
+    (59) operadoresLog -> . GREATER
+    (60) operadoresLog -> . LOWER
+    (61) operadoresLog -> . GREATER ASSIGN
+    (62) operadoresLog -> . LOWER ASSIGN
 
-    RPAREN          reduce using rule 35 (args -> valor .)
-    ,               reduce using rule 35 (args -> valor .)
+    RPAREN          shift and go to state 80
+    MINUS           shift and go to state 65
+    PLUS            shift and go to state 66
+    TIMES           shift and go to state 67
+    DIVIDE          shift and go to state 68
+    MODULE          shift and go to state 69
+    OR              shift and go to state 70
+    AND             shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOTEQUALS       shift and go to state 73
+    GREATER         shift and go to state 74
+    LOWER           shift and go to state 75
 
+    operadoresMat                  shift and go to state 63
+    operadoresLog                  shift and go to state 64
 
 state 55
 
-    (47) asignacion -> declarador ID ASSIGN . expresion
-    (49) expresion -> . LPAREN expresion RPAREN
-    (50) expresion -> . valor
-    (51) expresion -> . expresion operadoresMat expresion
-    (52) expresion -> . expresion operadoresLog expresion
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (10) instrucciones -> LCBRACKET cuerpo . RCBRACKET
 
-    LPAREN          shift and go to state 50
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    RCBRACKET       shift and go to state 81
 
-    expresion                      shift and go to state 82
-    valor                          shift and go to state 51
-    number                         shift and go to state 41
 
 state 56
 
-    (48) declaracion -> declarador ID ; .
+    (19) while -> WHILE LPAREN expresion . RPAREN
+    (53) expresion -> expresion . operadoresMat expresion
+    (54) expresion -> expresion . operadoresLog expresion
+    (63) operadoresMat -> . MINUS
+    (64) operadoresMat -> . PLUS
+    (65) operadoresMat -> . TIMES
+    (66) operadoresMat -> . DIVIDE
+    (67) operadoresMat -> . MODULE
+    (55) operadoresLog -> . OR
+    (56) operadoresLog -> . AND
+    (57) operadoresLog -> . EQUALS
+    (58) operadoresLog -> . NOTEQUALS
+    (59) operadoresLog -> . GREATER
+    (60) operadoresLog -> . LOWER
+    (61) operadoresLog -> . GREATER ASSIGN
+    (62) operadoresLog -> . LOWER ASSIGN
 
-    FUNCTION        reduce using rule 48 (declaracion -> declarador ID ; .)
-    ID              reduce using rule 48 (declaracion -> declarador ID ; .)
-    IF              reduce using rule 48 (declaracion -> declarador ID ; .)
-    ELSE            reduce using rule 48 (declaracion -> declarador ID ; .)
-    VAR             reduce using rule 48 (declaracion -> declarador ID ; .)
-    VAL             reduce using rule 48 (declaracion -> declarador ID ; .)
-    WHILE           reduce using rule 48 (declaracion -> declarador ID ; .)
-    FOR             reduce using rule 48 (declaracion -> declarador ID ; .)
-    $end            reduce using rule 48 (declaracion -> declarador ID ; .)
-    RCBRACKET       reduce using rule 48 (declaracion -> declarador ID ; .)
-    RETURN          reduce using rule 48 (declaracion -> declarador ID ; .)
+    RPAREN          shift and go to state 82
+    MINUS           shift and go to state 65
+    PLUS            shift and go to state 66
+    TIMES           shift and go to state 67
+    DIVIDE          shift and go to state 68
+    MODULE          shift and go to state 69
+    OR              shift and go to state 70
+    AND             shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOTEQUALS       shift and go to state 73
+    GREATER         shift and go to state 74
+    LOWER           shift and go to state 75
 
+    operadoresMat                  shift and go to state 63
+    operadoresLog                  shift and go to state 64
 
 state 57
 
-    (13) estructuraControl -> IF LPAREN expresion . RPAREN instrucciones
-    (51) expresion -> expresion . operadoresMat expresion
-    (52) expresion -> expresion . operadoresLog expresion
-    (61) operadoresMat -> . MINUS
-    (62) operadoresMat -> . PLUS
-    (63) operadoresMat -> . TIMES
-    (64) operadoresMat -> . DIVIDE
-    (65) operadoresMat -> . MODULE
-    (53) operadoresLog -> . OR
-    (54) operadoresLog -> . AND
-    (55) operadoresLog -> . EQUALS
-    (56) operadoresLog -> . NOTEQUALS
-    (57) operadoresLog -> . GREATER
-    (58) operadoresLog -> . LOWER
-    (59) operadoresLog -> . GREATER ASSIGN
-    (60) operadoresLog -> . LOWER ASSIGN
+    (20) for -> FOR LPAREN ID . IN ID RPAREN
 
-    RPAREN          shift and go to state 83
-    MINUS           shift and go to state 68
-    PLUS            shift and go to state 69
-    TIMES           shift and go to state 70
-    DIVIDE          shift and go to state 71
-    MODULE          shift and go to state 72
-    OR              shift and go to state 73
-    AND             shift and go to state 74
-    EQUALS          shift and go to state 75
-    NOTEQUALS       shift and go to state 76
-    GREATER         shift and go to state 77
-    LOWER           shift and go to state 78
+    IN              shift and go to state 83
 
-    operadoresMat                  shift and go to state 66
-    operadoresLog                  shift and go to state 67
 
 state 58
 
-    (9) instrucciones -> LCBRACKET cuerpo . RCBRACKET
+    (35) params -> ID . : dato
 
-    RCBRACKET       shift and go to state 84
+    :               shift and go to state 84
 
 
 state 59
 
-    (17) while -> WHILE LPAREN expresion . RPAREN
-    (51) expresion -> expresion . operadoresMat expresion
-    (52) expresion -> expresion . operadoresLog expresion
-    (61) operadoresMat -> . MINUS
-    (62) operadoresMat -> . PLUS
-    (63) operadoresMat -> . TIMES
-    (64) operadoresMat -> . DIVIDE
-    (65) operadoresMat -> . MODULE
-    (53) operadoresLog -> . OR
-    (54) operadoresLog -> . AND
-    (55) operadoresLog -> . EQUALS
-    (56) operadoresLog -> . NOTEQUALS
-    (57) operadoresLog -> . GREATER
-    (58) operadoresLog -> . LOWER
-    (59) operadoresLog -> . GREATER ASSIGN
-    (60) operadoresLog -> . LOWER ASSIGN
+    (21) function -> FUNCTION ID LPAREN params . RPAREN instruccionesF
+    (36) params -> params . , params
 
     RPAREN          shift and go to state 85
-    MINUS           shift and go to state 68
-    PLUS            shift and go to state 69
-    TIMES           shift and go to state 70
-    DIVIDE          shift and go to state 71
-    MODULE          shift and go to state 72
-    OR              shift and go to state 73
-    AND             shift and go to state 74
-    EQUALS          shift and go to state 75
-    NOTEQUALS       shift and go to state 76
-    GREATER         shift and go to state 77
-    LOWER           shift and go to state 78
+    ,               shift and go to state 86
 
-    operadoresMat                  shift and go to state 66
-    operadoresLog                  shift and go to state 67
 
 state 60
 
-    (18) for -> FOR LPAREN ID . IN ID RPAREN
+    (22) function -> FUNCTION ID LPAREN RPAREN . instruccionesF
+    (12) instruccionesF -> . LCBRACKET cuerpo retorno RCBRACKET
+    (13) instruccionesF -> . LCBRACKET retorno RCBRACKET
 
-    IN              shift and go to state 86
+    LCBRACKET       shift and go to state 88
 
+    instruccionesF                 shift and go to state 87
 
 state 61
 
-    (33) params -> ID . : dato
+    (25) function -> ID LSBRACKET valor RSBRACKET .
 
-    :               shift and go to state 87
+    FUNCTION        reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
+    ID              reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
+    IF              reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
+    ELSE            reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
+    VAR             reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
+    VAL             reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
+    WHILE           reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
+    FOR             reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
+    $end            reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
+    RCBRACKET       reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
+    RETURN          reduce using rule 25 (function -> ID LSBRACKET valor RSBRACKET .)
 
 
 state 62
 
-    (19) function -> FUNCTION ID LPAREN params . RPAREN instruccionesF
-    (34) params -> params . , params
+    (45) valor -> NOT valor .
 
-    RPAREN          shift and go to state 88
-    ,               shift and go to state 89
+    RSBRACKET       reduce using rule 45 (valor -> NOT valor .)
+    MINUS           reduce using rule 45 (valor -> NOT valor .)
+    PLUS            reduce using rule 45 (valor -> NOT valor .)
+    TIMES           reduce using rule 45 (valor -> NOT valor .)
+    DIVIDE          reduce using rule 45 (valor -> NOT valor .)
+    MODULE          reduce using rule 45 (valor -> NOT valor .)
+    OR              reduce using rule 45 (valor -> NOT valor .)
+    AND             reduce using rule 45 (valor -> NOT valor .)
+    EQUALS          reduce using rule 45 (valor -> NOT valor .)
+    NOTEQUALS       reduce using rule 45 (valor -> NOT valor .)
+    GREATER         reduce using rule 45 (valor -> NOT valor .)
+    LOWER           reduce using rule 45 (valor -> NOT valor .)
+    FUNCTION        reduce using rule 45 (valor -> NOT valor .)
+    ID              reduce using rule 45 (valor -> NOT valor .)
+    IF              reduce using rule 45 (valor -> NOT valor .)
+    ELSE            reduce using rule 45 (valor -> NOT valor .)
+    VAR             reduce using rule 45 (valor -> NOT valor .)
+    VAL             reduce using rule 45 (valor -> NOT valor .)
+    WHILE           reduce using rule 45 (valor -> NOT valor .)
+    FOR             reduce using rule 45 (valor -> NOT valor .)
+    $end            reduce using rule 45 (valor -> NOT valor .)
+    RCBRACKET       reduce using rule 45 (valor -> NOT valor .)
+    RETURN          reduce using rule 45 (valor -> NOT valor .)
+    RPAREN          reduce using rule 45 (valor -> NOT valor .)
+    ,               reduce using rule 45 (valor -> NOT valor .)
 
 
 state 63
 
-    (20) function -> FUNCTION ID LPAREN RPAREN . instruccionesF
-    (11) instruccionesF -> . LCBRACKET cuerpo retorno RCBRACKET
+    (53) expresion -> expresion operadoresMat . expresion
+    (51) expresion -> . LPAREN expresion RPAREN
+    (52) expresion -> . valor
+    (53) expresion -> . expresion operadoresMat expresion
+    (54) expresion -> . expresion operadoresLog expresion
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    LCBRACKET       shift and go to state 91
+    LPAREN          shift and go to state 48
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
-    instruccionesF                 shift and go to state 90
+    expresion                      shift and go to state 89
+    valor                          shift and go to state 49
+    number                         shift and go to state 39
 
 state 64
 
-    (23) function -> ID LSBRACKET valor RSBRACKET .
+    (54) expresion -> expresion operadoresLog . expresion
+    (51) expresion -> . LPAREN expresion RPAREN
+    (52) expresion -> . valor
+    (53) expresion -> . expresion operadoresMat expresion
+    (54) expresion -> . expresion operadoresLog expresion
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    FUNCTION        reduce using rule 23 (function -> ID LSBRACKET valor RSBRACKET .)
-    ID              reduce using rule 23 (function -> ID LSBRACKET valor RSBRACKET .)
-    IF              reduce using rule 23 (function -> ID LSBRACKET valor RSBRACKET .)
-    ELSE            reduce using rule 23 (function -> ID LSBRACKET valor RSBRACKET .)
-    VAR             reduce using rule 23 (function -> ID LSBRACKET valor RSBRACKET .)
-    VAL             reduce using rule 23 (function -> ID LSBRACKET valor RSBRACKET .)
-    WHILE           reduce using rule 23 (function -> ID LSBRACKET valor RSBRACKET .)
-    FOR             reduce using rule 23 (function -> ID LSBRACKET valor RSBRACKET .)
+    LPAREN          shift and go to state 48
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
+    expresion                      shift and go to state 90
+    valor                          shift and go to state 49
+    number                         shift and go to state 39
 
 state 65
 
-    (43) valor -> NOT valor .
+    (63) operadoresMat -> MINUS .
 
-    RSBRACKET       reduce using rule 43 (valor -> NOT valor .)
-    MINUS           reduce using rule 43 (valor -> NOT valor .)
-    PLUS            reduce using rule 43 (valor -> NOT valor .)
-    TIMES           reduce using rule 43 (valor -> NOT valor .)
-    DIVIDE          reduce using rule 43 (valor -> NOT valor .)
-    MODULE          reduce using rule 43 (valor -> NOT valor .)
-    OR              reduce using rule 43 (valor -> NOT valor .)
-    AND             reduce using rule 43 (valor -> NOT valor .)
-    EQUALS          reduce using rule 43 (valor -> NOT valor .)
-    NOTEQUALS       reduce using rule 43 (valor -> NOT valor .)
-    GREATER         reduce using rule 43 (valor -> NOT valor .)
-    LOWER           reduce using rule 43 (valor -> NOT valor .)
-    ;               reduce using rule 43 (valor -> NOT valor .)
-    RPAREN          reduce using rule 43 (valor -> NOT valor .)
-    ,               reduce using rule 43 (valor -> NOT valor .)
+    LPAREN          reduce using rule 63 (operadoresMat -> MINUS .)
+    ID              reduce using rule 63 (operadoresMat -> MINUS .)
+    STRING          reduce using rule 63 (operadoresMat -> MINUS .)
+    TRUE            reduce using rule 63 (operadoresMat -> MINUS .)
+    FALSE           reduce using rule 63 (operadoresMat -> MINUS .)
+    NULL            reduce using rule 63 (operadoresMat -> MINUS .)
+    NOT             reduce using rule 63 (operadoresMat -> MINUS .)
+    INTV            reduce using rule 63 (operadoresMat -> MINUS .)
+    FLOATV          reduce using rule 63 (operadoresMat -> MINUS .)
 
 
 state 66
 
-    (51) expresion -> expresion operadoresMat . expresion
-    (49) expresion -> . LPAREN expresion RPAREN
-    (50) expresion -> . valor
-    (51) expresion -> . expresion operadoresMat expresion
-    (52) expresion -> . expresion operadoresLog expresion
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (64) operadoresMat -> PLUS .
 
-    LPAREN          shift and go to state 50
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    LPAREN          reduce using rule 64 (operadoresMat -> PLUS .)
+    ID              reduce using rule 64 (operadoresMat -> PLUS .)
+    STRING          reduce using rule 64 (operadoresMat -> PLUS .)
+    TRUE            reduce using rule 64 (operadoresMat -> PLUS .)
+    FALSE           reduce using rule 64 (operadoresMat -> PLUS .)
+    NULL            reduce using rule 64 (operadoresMat -> PLUS .)
+    NOT             reduce using rule 64 (operadoresMat -> PLUS .)
+    INTV            reduce using rule 64 (operadoresMat -> PLUS .)
+    FLOATV          reduce using rule 64 (operadoresMat -> PLUS .)
 
-    expresion                      shift and go to state 92
-    valor                          shift and go to state 51
-    number                         shift and go to state 41
 
 state 67
 
-    (52) expresion -> expresion operadoresLog . expresion
-    (49) expresion -> . LPAREN expresion RPAREN
-    (50) expresion -> . valor
-    (51) expresion -> . expresion operadoresMat expresion
-    (52) expresion -> . expresion operadoresLog expresion
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (65) operadoresMat -> TIMES .
 
-    LPAREN          shift and go to state 50
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    LPAREN          reduce using rule 65 (operadoresMat -> TIMES .)
+    ID              reduce using rule 65 (operadoresMat -> TIMES .)
+    STRING          reduce using rule 65 (operadoresMat -> TIMES .)
+    TRUE            reduce using rule 65 (operadoresMat -> TIMES .)
+    FALSE           reduce using rule 65 (operadoresMat -> TIMES .)
+    NULL            reduce using rule 65 (operadoresMat -> TIMES .)
+    NOT             reduce using rule 65 (operadoresMat -> TIMES .)
+    INTV            reduce using rule 65 (operadoresMat -> TIMES .)
+    FLOATV          reduce using rule 65 (operadoresMat -> TIMES .)
 
-    expresion                      shift and go to state 93
-    valor                          shift and go to state 51
-    number                         shift and go to state 41
 
 state 68
 
-    (61) operadoresMat -> MINUS .
+    (66) operadoresMat -> DIVIDE .
 
-    LPAREN          reduce using rule 61 (operadoresMat -> MINUS .)
-    ID              reduce using rule 61 (operadoresMat -> MINUS .)
-    STRING          reduce using rule 61 (operadoresMat -> MINUS .)
-    TRUE            reduce using rule 61 (operadoresMat -> MINUS .)
-    FALSE           reduce using rule 61 (operadoresMat -> MINUS .)
-    NULL            reduce using rule 61 (operadoresMat -> MINUS .)
-    NOT             reduce using rule 61 (operadoresMat -> MINUS .)
-    INTV            reduce using rule 61 (operadoresMat -> MINUS .)
-    FLOATV          reduce using rule 61 (operadoresMat -> MINUS .)
+    LPAREN          reduce using rule 66 (operadoresMat -> DIVIDE .)
+    ID              reduce using rule 66 (operadoresMat -> DIVIDE .)
+    STRING          reduce using rule 66 (operadoresMat -> DIVIDE .)
+    TRUE            reduce using rule 66 (operadoresMat -> DIVIDE .)
+    FALSE           reduce using rule 66 (operadoresMat -> DIVIDE .)
+    NULL            reduce using rule 66 (operadoresMat -> DIVIDE .)
+    NOT             reduce using rule 66 (operadoresMat -> DIVIDE .)
+    INTV            reduce using rule 66 (operadoresMat -> DIVIDE .)
+    FLOATV          reduce using rule 66 (operadoresMat -> DIVIDE .)
 
 
 state 69
 
-    (62) operadoresMat -> PLUS .
+    (67) operadoresMat -> MODULE .
 
-    LPAREN          reduce using rule 62 (operadoresMat -> PLUS .)
-    ID              reduce using rule 62 (operadoresMat -> PLUS .)
-    STRING          reduce using rule 62 (operadoresMat -> PLUS .)
-    TRUE            reduce using rule 62 (operadoresMat -> PLUS .)
-    FALSE           reduce using rule 62 (operadoresMat -> PLUS .)
-    NULL            reduce using rule 62 (operadoresMat -> PLUS .)
-    NOT             reduce using rule 62 (operadoresMat -> PLUS .)
-    INTV            reduce using rule 62 (operadoresMat -> PLUS .)
-    FLOATV          reduce using rule 62 (operadoresMat -> PLUS .)
+    LPAREN          reduce using rule 67 (operadoresMat -> MODULE .)
+    ID              reduce using rule 67 (operadoresMat -> MODULE .)
+    STRING          reduce using rule 67 (operadoresMat -> MODULE .)
+    TRUE            reduce using rule 67 (operadoresMat -> MODULE .)
+    FALSE           reduce using rule 67 (operadoresMat -> MODULE .)
+    NULL            reduce using rule 67 (operadoresMat -> MODULE .)
+    NOT             reduce using rule 67 (operadoresMat -> MODULE .)
+    INTV            reduce using rule 67 (operadoresMat -> MODULE .)
+    FLOATV          reduce using rule 67 (operadoresMat -> MODULE .)
 
 
 state 70
 
-    (63) operadoresMat -> TIMES .
+    (55) operadoresLog -> OR .
 
-    LPAREN          reduce using rule 63 (operadoresMat -> TIMES .)
-    ID              reduce using rule 63 (operadoresMat -> TIMES .)
-    STRING          reduce using rule 63 (operadoresMat -> TIMES .)
-    TRUE            reduce using rule 63 (operadoresMat -> TIMES .)
-    FALSE           reduce using rule 63 (operadoresMat -> TIMES .)
-    NULL            reduce using rule 63 (operadoresMat -> TIMES .)
-    NOT             reduce using rule 63 (operadoresMat -> TIMES .)
-    INTV            reduce using rule 63 (operadoresMat -> TIMES .)
-    FLOATV          reduce using rule 63 (operadoresMat -> TIMES .)
+    LPAREN          reduce using rule 55 (operadoresLog -> OR .)
+    ID              reduce using rule 55 (operadoresLog -> OR .)
+    STRING          reduce using rule 55 (operadoresLog -> OR .)
+    TRUE            reduce using rule 55 (operadoresLog -> OR .)
+    FALSE           reduce using rule 55 (operadoresLog -> OR .)
+    NULL            reduce using rule 55 (operadoresLog -> OR .)
+    NOT             reduce using rule 55 (operadoresLog -> OR .)
+    INTV            reduce using rule 55 (operadoresLog -> OR .)
+    FLOATV          reduce using rule 55 (operadoresLog -> OR .)
 
 
 state 71
 
-    (64) operadoresMat -> DIVIDE .
+    (56) operadoresLog -> AND .
 
-    LPAREN          reduce using rule 64 (operadoresMat -> DIVIDE .)
-    ID              reduce using rule 64 (operadoresMat -> DIVIDE .)
-    STRING          reduce using rule 64 (operadoresMat -> DIVIDE .)
-    TRUE            reduce using rule 64 (operadoresMat -> DIVIDE .)
-    FALSE           reduce using rule 64 (operadoresMat -> DIVIDE .)
-    NULL            reduce using rule 64 (operadoresMat -> DIVIDE .)
-    NOT             reduce using rule 64 (operadoresMat -> DIVIDE .)
-    INTV            reduce using rule 64 (operadoresMat -> DIVIDE .)
-    FLOATV          reduce using rule 64 (operadoresMat -> DIVIDE .)
+    LPAREN          reduce using rule 56 (operadoresLog -> AND .)
+    ID              reduce using rule 56 (operadoresLog -> AND .)
+    STRING          reduce using rule 56 (operadoresLog -> AND .)
+    TRUE            reduce using rule 56 (operadoresLog -> AND .)
+    FALSE           reduce using rule 56 (operadoresLog -> AND .)
+    NULL            reduce using rule 56 (operadoresLog -> AND .)
+    NOT             reduce using rule 56 (operadoresLog -> AND .)
+    INTV            reduce using rule 56 (operadoresLog -> AND .)
+    FLOATV          reduce using rule 56 (operadoresLog -> AND .)
 
 
 state 72
 
-    (65) operadoresMat -> MODULE .
+    (57) operadoresLog -> EQUALS .
 
-    LPAREN          reduce using rule 65 (operadoresMat -> MODULE .)
-    ID              reduce using rule 65 (operadoresMat -> MODULE .)
-    STRING          reduce using rule 65 (operadoresMat -> MODULE .)
-    TRUE            reduce using rule 65 (operadoresMat -> MODULE .)
-    FALSE           reduce using rule 65 (operadoresMat -> MODULE .)
-    NULL            reduce using rule 65 (operadoresMat -> MODULE .)
-    NOT             reduce using rule 65 (operadoresMat -> MODULE .)
-    INTV            reduce using rule 65 (operadoresMat -> MODULE .)
-    FLOATV          reduce using rule 65 (operadoresMat -> MODULE .)
+    LPAREN          reduce using rule 57 (operadoresLog -> EQUALS .)
+    ID              reduce using rule 57 (operadoresLog -> EQUALS .)
+    STRING          reduce using rule 57 (operadoresLog -> EQUALS .)
+    TRUE            reduce using rule 57 (operadoresLog -> EQUALS .)
+    FALSE           reduce using rule 57 (operadoresLog -> EQUALS .)
+    NULL            reduce using rule 57 (operadoresLog -> EQUALS .)
+    NOT             reduce using rule 57 (operadoresLog -> EQUALS .)
+    INTV            reduce using rule 57 (operadoresLog -> EQUALS .)
+    FLOATV          reduce using rule 57 (operadoresLog -> EQUALS .)
 
 
 state 73
 
-    (53) operadoresLog -> OR .
+    (58) operadoresLog -> NOTEQUALS .
 
-    LPAREN          reduce using rule 53 (operadoresLog -> OR .)
-    ID              reduce using rule 53 (operadoresLog -> OR .)
-    STRING          reduce using rule 53 (operadoresLog -> OR .)
-    TRUE            reduce using rule 53 (operadoresLog -> OR .)
-    FALSE           reduce using rule 53 (operadoresLog -> OR .)
-    NULL            reduce using rule 53 (operadoresLog -> OR .)
-    NOT             reduce using rule 53 (operadoresLog -> OR .)
-    INTV            reduce using rule 53 (operadoresLog -> OR .)
-    FLOATV          reduce using rule 53 (operadoresLog -> OR .)
+    LPAREN          reduce using rule 58 (operadoresLog -> NOTEQUALS .)
+    ID              reduce using rule 58 (operadoresLog -> NOTEQUALS .)
+    STRING          reduce using rule 58 (operadoresLog -> NOTEQUALS .)
+    TRUE            reduce using rule 58 (operadoresLog -> NOTEQUALS .)
+    FALSE           reduce using rule 58 (operadoresLog -> NOTEQUALS .)
+    NULL            reduce using rule 58 (operadoresLog -> NOTEQUALS .)
+    NOT             reduce using rule 58 (operadoresLog -> NOTEQUALS .)
+    INTV            reduce using rule 58 (operadoresLog -> NOTEQUALS .)
+    FLOATV          reduce using rule 58 (operadoresLog -> NOTEQUALS .)
 
 
 state 74
 
-    (54) operadoresLog -> AND .
+    (59) operadoresLog -> GREATER .
+    (61) operadoresLog -> GREATER . ASSIGN
 
-    LPAREN          reduce using rule 54 (operadoresLog -> AND .)
-    ID              reduce using rule 54 (operadoresLog -> AND .)
-    STRING          reduce using rule 54 (operadoresLog -> AND .)
-    TRUE            reduce using rule 54 (operadoresLog -> AND .)
-    FALSE           reduce using rule 54 (operadoresLog -> AND .)
-    NULL            reduce using rule 54 (operadoresLog -> AND .)
-    NOT             reduce using rule 54 (operadoresLog -> AND .)
-    INTV            reduce using rule 54 (operadoresLog -> AND .)
-    FLOATV          reduce using rule 54 (operadoresLog -> AND .)
+    LPAREN          reduce using rule 59 (operadoresLog -> GREATER .)
+    ID              reduce using rule 59 (operadoresLog -> GREATER .)
+    STRING          reduce using rule 59 (operadoresLog -> GREATER .)
+    TRUE            reduce using rule 59 (operadoresLog -> GREATER .)
+    FALSE           reduce using rule 59 (operadoresLog -> GREATER .)
+    NULL            reduce using rule 59 (operadoresLog -> GREATER .)
+    NOT             reduce using rule 59 (operadoresLog -> GREATER .)
+    INTV            reduce using rule 59 (operadoresLog -> GREATER .)
+    FLOATV          reduce using rule 59 (operadoresLog -> GREATER .)
+    ASSIGN          shift and go to state 91
 
 
 state 75
 
-    (55) operadoresLog -> EQUALS .
+    (60) operadoresLog -> LOWER .
+    (62) operadoresLog -> LOWER . ASSIGN
 
-    LPAREN          reduce using rule 55 (operadoresLog -> EQUALS .)
-    ID              reduce using rule 55 (operadoresLog -> EQUALS .)
-    STRING          reduce using rule 55 (operadoresLog -> EQUALS .)
-    TRUE            reduce using rule 55 (operadoresLog -> EQUALS .)
-    FALSE           reduce using rule 55 (operadoresLog -> EQUALS .)
-    NULL            reduce using rule 55 (operadoresLog -> EQUALS .)
-    NOT             reduce using rule 55 (operadoresLog -> EQUALS .)
-    INTV            reduce using rule 55 (operadoresLog -> EQUALS .)
-    FLOATV          reduce using rule 55 (operadoresLog -> EQUALS .)
+    LPAREN          reduce using rule 60 (operadoresLog -> LOWER .)
+    ID              reduce using rule 60 (operadoresLog -> LOWER .)
+    STRING          reduce using rule 60 (operadoresLog -> LOWER .)
+    TRUE            reduce using rule 60 (operadoresLog -> LOWER .)
+    FALSE           reduce using rule 60 (operadoresLog -> LOWER .)
+    NULL            reduce using rule 60 (operadoresLog -> LOWER .)
+    NOT             reduce using rule 60 (operadoresLog -> LOWER .)
+    INTV            reduce using rule 60 (operadoresLog -> LOWER .)
+    FLOATV          reduce using rule 60 (operadoresLog -> LOWER .)
+    ASSIGN          shift and go to state 92
 
 
 state 76
 
-    (56) operadoresLog -> NOTEQUALS .
+    (51) expresion -> LPAREN expresion . RPAREN
+    (53) expresion -> expresion . operadoresMat expresion
+    (54) expresion -> expresion . operadoresLog expresion
+    (63) operadoresMat -> . MINUS
+    (64) operadoresMat -> . PLUS
+    (65) operadoresMat -> . TIMES
+    (66) operadoresMat -> . DIVIDE
+    (67) operadoresMat -> . MODULE
+    (55) operadoresLog -> . OR
+    (56) operadoresLog -> . AND
+    (57) operadoresLog -> . EQUALS
+    (58) operadoresLog -> . NOTEQUALS
+    (59) operadoresLog -> . GREATER
+    (60) operadoresLog -> . LOWER
+    (61) operadoresLog -> . GREATER ASSIGN
+    (62) operadoresLog -> . LOWER ASSIGN
 
-    LPAREN          reduce using rule 56 (operadoresLog -> NOTEQUALS .)
-    ID              reduce using rule 56 (operadoresLog -> NOTEQUALS .)
-    STRING          reduce using rule 56 (operadoresLog -> NOTEQUALS .)
-    TRUE            reduce using rule 56 (operadoresLog -> NOTEQUALS .)
-    FALSE           reduce using rule 56 (operadoresLog -> NOTEQUALS .)
-    NULL            reduce using rule 56 (operadoresLog -> NOTEQUALS .)
-    NOT             reduce using rule 56 (operadoresLog -> NOTEQUALS .)
-    INTV            reduce using rule 56 (operadoresLog -> NOTEQUALS .)
-    FLOATV          reduce using rule 56 (operadoresLog -> NOTEQUALS .)
+    RPAREN          shift and go to state 93
+    MINUS           shift and go to state 65
+    PLUS            shift and go to state 66
+    TIMES           shift and go to state 67
+    DIVIDE          shift and go to state 68
+    MODULE          shift and go to state 69
+    OR              shift and go to state 70
+    AND             shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOTEQUALS       shift and go to state 73
+    GREATER         shift and go to state 74
+    LOWER           shift and go to state 75
 
+    operadoresMat                  shift and go to state 63
+    operadoresLog                  shift and go to state 64
 
 state 77
 
-    (57) operadoresLog -> GREATER .
-    (59) operadoresLog -> GREATER . ASSIGN
+    (23) llamada -> ID LPAREN args RPAREN .
 
-    LPAREN          reduce using rule 57 (operadoresLog -> GREATER .)
-    ID              reduce using rule 57 (operadoresLog -> GREATER .)
-    STRING          reduce using rule 57 (operadoresLog -> GREATER .)
-    TRUE            reduce using rule 57 (operadoresLog -> GREATER .)
-    FALSE           reduce using rule 57 (operadoresLog -> GREATER .)
-    NULL            reduce using rule 57 (operadoresLog -> GREATER .)
-    NOT             reduce using rule 57 (operadoresLog -> GREATER .)
-    INTV            reduce using rule 57 (operadoresLog -> GREATER .)
-    FLOATV          reduce using rule 57 (operadoresLog -> GREATER .)
-    ASSIGN          shift and go to state 94
+    FUNCTION        reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
+    ID              reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
+    IF              reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
+    ELSE            reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
+    VAR             reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
+    VAL             reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
+    WHILE           reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
+    FOR             reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
+    $end            reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
+    RCBRACKET       reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
+    RETURN          reduce using rule 23 (llamada -> ID LPAREN args RPAREN .)
 
 
 state 78
 
-    (58) operadoresLog -> LOWER .
-    (60) operadoresLog -> LOWER . ASSIGN
+    (38) args -> args , . args
+    (37) args -> . valor
+    (38) args -> . args , args
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-    LPAREN          reduce using rule 58 (operadoresLog -> LOWER .)
-    ID              reduce using rule 58 (operadoresLog -> LOWER .)
-    STRING          reduce using rule 58 (operadoresLog -> LOWER .)
-    TRUE            reduce using rule 58 (operadoresLog -> LOWER .)
-    FALSE           reduce using rule 58 (operadoresLog -> LOWER .)
-    NULL            reduce using rule 58 (operadoresLog -> LOWER .)
-    NOT             reduce using rule 58 (operadoresLog -> LOWER .)
-    INTV            reduce using rule 58 (operadoresLog -> LOWER .)
-    FLOATV          reduce using rule 58 (operadoresLog -> LOWER .)
-    ASSIGN          shift and go to state 95
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
+    args                           shift and go to state 94
+    valor                          shift and go to state 52
+    number                         shift and go to state 39
 
 state 79
 
-    (49) expresion -> LPAREN expresion . RPAREN
-    (51) expresion -> expresion . operadoresMat expresion
-    (52) expresion -> expresion . operadoresLog expresion
-    (61) operadoresMat -> . MINUS
-    (62) operadoresMat -> . PLUS
-    (63) operadoresMat -> . TIMES
-    (64) operadoresMat -> . DIVIDE
-    (65) operadoresMat -> . MODULE
-    (53) operadoresLog -> . OR
-    (54) operadoresLog -> . AND
-    (55) operadoresLog -> . EQUALS
-    (56) operadoresLog -> . NOTEQUALS
-    (57) operadoresLog -> . GREATER
-    (58) operadoresLog -> . LOWER
-    (59) operadoresLog -> . GREATER ASSIGN
-    (60) operadoresLog -> . LOWER ASSIGN
+    (49) asignacion -> declarador ID ASSIGN expresion .
+    (53) expresion -> expresion . operadoresMat expresion
+    (54) expresion -> expresion . operadoresLog expresion
+    (63) operadoresMat -> . MINUS
+    (64) operadoresMat -> . PLUS
+    (65) operadoresMat -> . TIMES
+    (66) operadoresMat -> . DIVIDE
+    (67) operadoresMat -> . MODULE
+    (55) operadoresLog -> . OR
+    (56) operadoresLog -> . AND
+    (57) operadoresLog -> . EQUALS
+    (58) operadoresLog -> . NOTEQUALS
+    (59) operadoresLog -> . GREATER
+    (60) operadoresLog -> . LOWER
+    (61) operadoresLog -> . GREATER ASSIGN
+    (62) operadoresLog -> . LOWER ASSIGN
 
-    RPAREN          shift and go to state 96
-    MINUS           shift and go to state 68
-    PLUS            shift and go to state 69
-    TIMES           shift and go to state 70
-    DIVIDE          shift and go to state 71
-    MODULE          shift and go to state 72
-    OR              shift and go to state 73
-    AND             shift and go to state 74
-    EQUALS          shift and go to state 75
-    NOTEQUALS       shift and go to state 76
-    GREATER         shift and go to state 77
-    LOWER           shift and go to state 78
+    FUNCTION        reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    ID              reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    IF              reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    ELSE            reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    VAR             reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    VAL             reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    WHILE           reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    FOR             reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    $end            reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    RCBRACKET       reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    RETURN          reduce using rule 49 (asignacion -> declarador ID ASSIGN expresion .)
+    MINUS           shift and go to state 65
+    PLUS            shift and go to state 66
+    TIMES           shift and go to state 67
+    DIVIDE          shift and go to state 68
+    MODULE          shift and go to state 69
+    OR              shift and go to state 70
+    AND             shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOTEQUALS       shift and go to state 73
+    GREATER         shift and go to state 74
+    LOWER           shift and go to state 75
 
-    operadoresMat                  shift and go to state 66
-    operadoresLog                  shift and go to state 67
+    operadoresMat                  shift and go to state 63
+    operadoresLog                  shift and go to state 64
 
 state 80
 
-    (21) llamada -> ID LPAREN args RPAREN .
+    (15) estructuraControl -> IF LPAREN expresion RPAREN . instrucciones
+    (10) instrucciones -> . LCBRACKET cuerpo RCBRACKET
+    (11) instrucciones -> . sentencia
+    (5) sentencia -> . asignacion
+    (6) sentencia -> . estructuraControl
+    (7) sentencia -> . bucles
+    (8) sentencia -> . llamada
+    (9) sentencia -> . declaracion
+    (48) asignacion -> . ID ASSIGN expresion
+    (49) asignacion -> . declarador ID ASSIGN expresion
+    (15) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
+    (16) estructuraControl -> . ELSE instrucciones
+    (17) bucles -> . while instrucciones
+    (18) bucles -> . for instrucciones
+    (23) llamada -> . ID LPAREN args RPAREN
+    (24) llamada -> . ID LPAREN RPAREN
+    (50) declaracion -> . declarador ID
+    (46) declarador -> . VAR
+    (47) declarador -> . VAL
+    (19) while -> . WHILE LPAREN expresion RPAREN
+    (20) for -> . FOR LPAREN ID IN ID RPAREN
 
-    ;               reduce using rule 21 (llamada -> ID LPAREN args RPAREN .)
-
-
-state 81
-
-    (36) args -> args , . args
-    (35) args -> . valor
-    (36) args -> . args , args
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
-
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
-
-    args                           shift and go to state 97
-    valor                          shift and go to state 54
-    number                         shift and go to state 41
-
-state 82
-
-    (47) asignacion -> declarador ID ASSIGN expresion .
-    (51) expresion -> expresion . operadoresMat expresion
-    (52) expresion -> expresion . operadoresLog expresion
-    (61) operadoresMat -> . MINUS
-    (62) operadoresMat -> . PLUS
-    (63) operadoresMat -> . TIMES
-    (64) operadoresMat -> . DIVIDE
-    (65) operadoresMat -> . MODULE
-    (53) operadoresLog -> . OR
-    (54) operadoresLog -> . AND
-    (55) operadoresLog -> . EQUALS
-    (56) operadoresLog -> . NOTEQUALS
-    (57) operadoresLog -> . GREATER
-    (58) operadoresLog -> . LOWER
-    (59) operadoresLog -> . GREATER ASSIGN
-    (60) operadoresLog -> . LOWER ASSIGN
-
-    ;               reduce using rule 47 (asignacion -> declarador ID ASSIGN expresion .)
-    MINUS           shift and go to state 68
-    PLUS            shift and go to state 69
-    TIMES           shift and go to state 70
-    DIVIDE          shift and go to state 71
-    MODULE          shift and go to state 72
-    OR              shift and go to state 73
-    AND             shift and go to state 74
-    EQUALS          shift and go to state 75
-    NOTEQUALS       shift and go to state 76
-    GREATER         shift and go to state 77
-    LOWER           shift and go to state 78
-
-    operadoresMat                  shift and go to state 66
-    operadoresLog                  shift and go to state 67
-
-state 83
-
-    (13) estructuraControl -> IF LPAREN expresion RPAREN . instrucciones
-    (9) instrucciones -> . LCBRACKET cuerpo RCBRACKET
-    (10) instrucciones -> . sentencia
-    (4) sentencia -> . asignacion ;
-    (5) sentencia -> . estructuraControl
-    (6) sentencia -> . bucles
-    (7) sentencia -> . llamada ;
-    (8) sentencia -> . declaracion
-    (46) asignacion -> . ID ASSIGN expresion
-    (47) asignacion -> . declarador ID ASSIGN expresion
-    (13) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
-    (14) estructuraControl -> . ELSE instrucciones
-    (15) bucles -> . while instrucciones
-    (16) bucles -> . for instrucciones
-    (21) llamada -> . ID LPAREN args RPAREN
-    (22) llamada -> . ID LPAREN RPAREN
-    (48) declaracion -> . declarador ID ;
-    (44) declarador -> . VAR
-    (45) declarador -> . VAL
-    (17) while -> . WHILE LPAREN expresion RPAREN
-    (18) for -> . FOR LPAREN ID IN ID RPAREN
-
-    LCBRACKET       shift and go to state 31
-    ID              shift and go to state 33
+    LCBRACKET       shift and go to state 29
+    ID              shift and go to state 31
     IF              shift and go to state 12
     ELSE            shift and go to state 13
     VAR             shift and go to state 16
@@ -1798,8 +1930,8 @@ state 83
     WHILE           shift and go to state 18
     FOR             shift and go to state 19
 
-    instrucciones                  shift and go to state 98
-    sentencia                      shift and go to state 32
+    instrucciones                  shift and go to state 95
+    sentencia                      shift and go to state 30
     asignacion                     shift and go to state 4
     estructuraControl              shift and go to state 5
     bucles                         shift and go to state 6
@@ -1809,130 +1941,138 @@ state 83
     while                          shift and go to state 14
     for                            shift and go to state 15
 
+state 81
+
+    (10) instrucciones -> LCBRACKET cuerpo RCBRACKET .
+
+    FUNCTION        reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    ID              reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    IF              reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    ELSE            reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    VAR             reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    VAL             reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    WHILE           reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    FOR             reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    $end            reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    RCBRACKET       reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    RETURN          reduce using rule 10 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+
+
+state 82
+
+    (19) while -> WHILE LPAREN expresion RPAREN .
+
+    LCBRACKET       reduce using rule 19 (while -> WHILE LPAREN expresion RPAREN .)
+    ID              reduce using rule 19 (while -> WHILE LPAREN expresion RPAREN .)
+    IF              reduce using rule 19 (while -> WHILE LPAREN expresion RPAREN .)
+    ELSE            reduce using rule 19 (while -> WHILE LPAREN expresion RPAREN .)
+    VAR             reduce using rule 19 (while -> WHILE LPAREN expresion RPAREN .)
+    VAL             reduce using rule 19 (while -> WHILE LPAREN expresion RPAREN .)
+    WHILE           reduce using rule 19 (while -> WHILE LPAREN expresion RPAREN .)
+    FOR             reduce using rule 19 (while -> WHILE LPAREN expresion RPAREN .)
+
+
+state 83
+
+    (20) for -> FOR LPAREN ID IN . ID RPAREN
+
+    ID              shift and go to state 96
+
+
 state 84
 
-    (9) instrucciones -> LCBRACKET cuerpo RCBRACKET .
+    (35) params -> ID : . dato
+    (26) dato -> . INT
+    (27) dato -> . FLOAT
+    (28) dato -> . BYTE
+    (29) dato -> . SHORT
+    (30) dato -> . DOUBLE
+    (31) dato -> . ID
+    (32) dato -> . LONG
+    (33) dato -> . CHAR
+    (34) dato -> . BOOLEAN
 
-    FUNCTION        reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
-    ID              reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
-    IF              reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
-    ELSE            reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
-    VAR             reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
-    VAL             reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
-    WHILE           reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
-    FOR             reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
-    $end            reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
-    RCBRACKET       reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
-    RETURN          reduce using rule 9 (instrucciones -> LCBRACKET cuerpo RCBRACKET .)
+    INT             shift and go to state 99
+    FLOAT           shift and go to state 100
+    BYTE            shift and go to state 101
+    SHORT           shift and go to state 102
+    DOUBLE          shift and go to state 103
+    ID              shift and go to state 97
+    LONG            shift and go to state 104
+    CHAR            shift and go to state 105
+    BOOLEAN         shift and go to state 106
 
+    dato                           shift and go to state 98
 
 state 85
 
-    (17) while -> WHILE LPAREN expresion RPAREN .
+    (21) function -> FUNCTION ID LPAREN params RPAREN . instruccionesF
+    (12) instruccionesF -> . LCBRACKET cuerpo retorno RCBRACKET
+    (13) instruccionesF -> . LCBRACKET retorno RCBRACKET
 
-    LCBRACKET       reduce using rule 17 (while -> WHILE LPAREN expresion RPAREN .)
-    ID              reduce using rule 17 (while -> WHILE LPAREN expresion RPAREN .)
-    IF              reduce using rule 17 (while -> WHILE LPAREN expresion RPAREN .)
-    ELSE            reduce using rule 17 (while -> WHILE LPAREN expresion RPAREN .)
-    VAR             reduce using rule 17 (while -> WHILE LPAREN expresion RPAREN .)
-    VAL             reduce using rule 17 (while -> WHILE LPAREN expresion RPAREN .)
-    WHILE           reduce using rule 17 (while -> WHILE LPAREN expresion RPAREN .)
-    FOR             reduce using rule 17 (while -> WHILE LPAREN expresion RPAREN .)
+    LCBRACKET       shift and go to state 88
 
+    instruccionesF                 shift and go to state 107
 
 state 86
 
-    (18) for -> FOR LPAREN ID IN . ID RPAREN
+    (36) params -> params , . params
+    (35) params -> . ID : dato
+    (36) params -> . params , params
 
-    ID              shift and go to state 99
+    ID              shift and go to state 58
 
+    params                         shift and go to state 108
 
 state 87
 
-    (33) params -> ID : . dato
-    (24) dato -> . INT
-    (25) dato -> . FLOAT
-    (26) dato -> . BYTE
-    (27) dato -> . SHORT
-    (28) dato -> . DOUBLE
-    (29) dato -> . ID
-    (30) dato -> . LONG
-    (31) dato -> . CHAR
-    (32) dato -> . BOOLEAN
+    (22) function -> FUNCTION ID LPAREN RPAREN instruccionesF .
 
-    INT             shift and go to state 102
-    FLOAT           shift and go to state 103
-    BYTE            shift and go to state 104
-    SHORT           shift and go to state 105
-    DOUBLE          shift and go to state 106
-    ID              shift and go to state 100
-    LONG            shift and go to state 107
-    CHAR            shift and go to state 108
-    BOOLEAN         shift and go to state 109
+    FUNCTION        reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
+    ID              reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
+    IF              reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
+    ELSE            reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
+    VAR             reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
+    VAL             reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
+    WHILE           reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
+    FOR             reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
+    $end            reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
+    RCBRACKET       reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
+    RETURN          reduce using rule 22 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
 
-    dato                           shift and go to state 101
 
 state 88
 
-    (19) function -> FUNCTION ID LPAREN params RPAREN . instruccionesF
-    (11) instruccionesF -> . LCBRACKET cuerpo retorno RCBRACKET
-
-    LCBRACKET       shift and go to state 91
-
-    instruccionesF                 shift and go to state 110
-
-state 89
-
-    (34) params -> params , . params
-    (33) params -> . ID : dato
-    (34) params -> . params , params
-
-    ID              shift and go to state 61
-
-    params                         shift and go to state 111
-
-state 90
-
-    (20) function -> FUNCTION ID LPAREN RPAREN instruccionesF .
-
-    FUNCTION        reduce using rule 20 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
-    ID              reduce using rule 20 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
-    IF              reduce using rule 20 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
-    ELSE            reduce using rule 20 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
-    VAR             reduce using rule 20 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
-    VAL             reduce using rule 20 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
-    WHILE           reduce using rule 20 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
-    FOR             reduce using rule 20 (function -> FUNCTION ID LPAREN RPAREN instruccionesF .)
-
-
-state 91
-
-    (11) instruccionesF -> LCBRACKET . cuerpo retorno RCBRACKET
+    (12) instruccionesF -> LCBRACKET . cuerpo retorno RCBRACKET
+    (13) instruccionesF -> LCBRACKET . retorno RCBRACKET
     (1) cuerpo -> . sentencia
-    (2) cuerpo -> . sentencia cuerpo
-    (3) cuerpo -> . function cuerpo
-    (4) sentencia -> . asignacion ;
-    (5) sentencia -> . estructuraControl
-    (6) sentencia -> . bucles
-    (7) sentencia -> . llamada ;
-    (8) sentencia -> . declaracion
-    (19) function -> . FUNCTION ID LPAREN params RPAREN instruccionesF
-    (20) function -> . FUNCTION ID LPAREN RPAREN instruccionesF
-    (23) function -> . ID LSBRACKET valor RSBRACKET
-    (46) asignacion -> . ID ASSIGN expresion
-    (47) asignacion -> . declarador ID ASSIGN expresion
-    (13) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
-    (14) estructuraControl -> . ELSE instrucciones
-    (15) bucles -> . while instrucciones
-    (16) bucles -> . for instrucciones
-    (21) llamada -> . ID LPAREN args RPAREN
-    (22) llamada -> . ID LPAREN RPAREN
-    (48) declaracion -> . declarador ID ;
-    (44) declarador -> . VAR
-    (45) declarador -> . VAL
-    (17) while -> . WHILE LPAREN expresion RPAREN
-    (18) for -> . FOR LPAREN ID IN ID RPAREN
+    (2) cuerpo -> . function
+    (3) cuerpo -> . sentencia cuerpo
+    (4) cuerpo -> . function cuerpo
+    (14) retorno -> . RETURN expresion
+    (5) sentencia -> . asignacion
+    (6) sentencia -> . estructuraControl
+    (7) sentencia -> . bucles
+    (8) sentencia -> . llamada
+    (9) sentencia -> . declaracion
+    (21) function -> . FUNCTION ID LPAREN params RPAREN instruccionesF
+    (22) function -> . FUNCTION ID LPAREN RPAREN instruccionesF
+    (25) function -> . ID LSBRACKET valor RSBRACKET
+    (48) asignacion -> . ID ASSIGN expresion
+    (49) asignacion -> . declarador ID ASSIGN expresion
+    (15) estructuraControl -> . IF LPAREN expresion RPAREN instrucciones
+    (16) estructuraControl -> . ELSE instrucciones
+    (17) bucles -> . while instrucciones
+    (18) bucles -> . for instrucciones
+    (23) llamada -> . ID LPAREN args RPAREN
+    (24) llamada -> . ID LPAREN RPAREN
+    (50) declaracion -> . declarador ID
+    (46) declarador -> . VAR
+    (47) declarador -> . VAL
+    (19) while -> . WHILE LPAREN expresion RPAREN
+    (20) for -> . FOR LPAREN ID IN ID RPAREN
 
+    RETURN          shift and go to state 111
     FUNCTION        shift and go to state 9
     ID              shift and go to state 10
     IF              shift and go to state 12
@@ -1942,7 +2082,8 @@ state 91
     WHILE           shift and go to state 18
     FOR             shift and go to state 19
 
-    cuerpo                         shift and go to state 112
+    cuerpo                         shift and go to state 109
+    retorno                        shift and go to state 110
     sentencia                      shift and go to state 2
     function                       shift and go to state 3
     asignacion                     shift and go to state 4
@@ -1954,24 +2095,24 @@ state 91
     while                          shift and go to state 14
     for                            shift and go to state 15
 
-state 92
+state 89
 
-    (51) expresion -> expresion operadoresMat expresion .
-    (51) expresion -> expresion . operadoresMat expresion
-    (52) expresion -> expresion . operadoresLog expresion
-    (61) operadoresMat -> . MINUS
-    (62) operadoresMat -> . PLUS
-    (63) operadoresMat -> . TIMES
-    (64) operadoresMat -> . DIVIDE
-    (65) operadoresMat -> . MODULE
-    (53) operadoresLog -> . OR
-    (54) operadoresLog -> . AND
-    (55) operadoresLog -> . EQUALS
-    (56) operadoresLog -> . NOTEQUALS
-    (57) operadoresLog -> . GREATER
-    (58) operadoresLog -> . LOWER
-    (59) operadoresLog -> . GREATER ASSIGN
-    (60) operadoresLog -> . LOWER ASSIGN
+    (53) expresion -> expresion operadoresMat expresion .
+    (53) expresion -> expresion . operadoresMat expresion
+    (54) expresion -> expresion . operadoresLog expresion
+    (63) operadoresMat -> . MINUS
+    (64) operadoresMat -> . PLUS
+    (65) operadoresMat -> . TIMES
+    (66) operadoresMat -> . DIVIDE
+    (67) operadoresMat -> . MODULE
+    (55) operadoresLog -> . OR
+    (56) operadoresLog -> . AND
+    (57) operadoresLog -> . EQUALS
+    (58) operadoresLog -> . NOTEQUALS
+    (59) operadoresLog -> . GREATER
+    (60) operadoresLog -> . LOWER
+    (61) operadoresLog -> . GREATER ASSIGN
+    (62) operadoresLog -> . LOWER ASSIGN
 
   ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for PLUS resolved as shift
@@ -1984,391 +2125,478 @@ state 92
   ! shift/reduce conflict for NOTEQUALS resolved as shift
   ! shift/reduce conflict for GREATER resolved as shift
   ! shift/reduce conflict for LOWER resolved as shift
-    ;               reduce using rule 51 (expresion -> expresion operadoresMat expresion .)
-    RPAREN          reduce using rule 51 (expresion -> expresion operadoresMat expresion .)
-    MINUS           shift and go to state 68
-    PLUS            shift and go to state 69
-    TIMES           shift and go to state 70
-    DIVIDE          shift and go to state 71
-    MODULE          shift and go to state 72
-    OR              shift and go to state 73
-    AND             shift and go to state 74
-    EQUALS          shift and go to state 75
-    NOTEQUALS       shift and go to state 76
-    GREATER         shift and go to state 77
-    LOWER           shift and go to state 78
+    FUNCTION        reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    ID              reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    IF              reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    ELSE            reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    VAR             reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    VAL             reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    WHILE           reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    FOR             reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    $end            reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    RCBRACKET       reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    RETURN          reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    RPAREN          reduce using rule 53 (expresion -> expresion operadoresMat expresion .)
+    MINUS           shift and go to state 65
+    PLUS            shift and go to state 66
+    TIMES           shift and go to state 67
+    DIVIDE          shift and go to state 68
+    MODULE          shift and go to state 69
+    OR              shift and go to state 70
+    AND             shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOTEQUALS       shift and go to state 73
+    GREATER         shift and go to state 74
+    LOWER           shift and go to state 75
 
-  ! MINUS           [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
-  ! PLUS            [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
-  ! TIMES           [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
-  ! DIVIDE          [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
-  ! MODULE          [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
-  ! OR              [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
-  ! AND             [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
-  ! EQUALS          [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
-  ! NOTEQUALS       [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
-  ! GREATER         [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
-  ! LOWER           [ reduce using rule 51 (expresion -> expresion operadoresMat expresion .) ]
+  ! MINUS           [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
+  ! PLUS            [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
+  ! TIMES           [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
+  ! DIVIDE          [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
+  ! MODULE          [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
+  ! OR              [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
+  ! AND             [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
+  ! EQUALS          [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
+  ! NOTEQUALS       [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
+  ! GREATER         [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
+  ! LOWER           [ reduce using rule 53 (expresion -> expresion operadoresMat expresion .) ]
 
-    operadoresMat                  shift and go to state 66
-    operadoresLog                  shift and go to state 67
+    operadoresMat                  shift and go to state 63
+    operadoresLog                  shift and go to state 64
+
+state 90
+
+    (54) expresion -> expresion operadoresLog expresion .
+    (53) expresion -> expresion . operadoresMat expresion
+    (54) expresion -> expresion . operadoresLog expresion
+    (63) operadoresMat -> . MINUS
+    (64) operadoresMat -> . PLUS
+    (65) operadoresMat -> . TIMES
+    (66) operadoresMat -> . DIVIDE
+    (67) operadoresMat -> . MODULE
+    (55) operadoresLog -> . OR
+    (56) operadoresLog -> . AND
+    (57) operadoresLog -> . EQUALS
+    (58) operadoresLog -> . NOTEQUALS
+    (59) operadoresLog -> . GREATER
+    (60) operadoresLog -> . LOWER
+    (61) operadoresLog -> . GREATER ASSIGN
+    (62) operadoresLog -> . LOWER ASSIGN
+
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MODULE resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for EQUALS resolved as shift
+  ! shift/reduce conflict for NOTEQUALS resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for LOWER resolved as shift
+    FUNCTION        reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    ID              reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    IF              reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    ELSE            reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    VAR             reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    VAL             reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    WHILE           reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    FOR             reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    $end            reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    RCBRACKET       reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    RETURN          reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    RPAREN          reduce using rule 54 (expresion -> expresion operadoresLog expresion .)
+    MINUS           shift and go to state 65
+    PLUS            shift and go to state 66
+    TIMES           shift and go to state 67
+    DIVIDE          shift and go to state 68
+    MODULE          shift and go to state 69
+    OR              shift and go to state 70
+    AND             shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOTEQUALS       shift and go to state 73
+    GREATER         shift and go to state 74
+    LOWER           shift and go to state 75
+
+  ! MINUS           [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+  ! PLUS            [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+  ! TIMES           [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+  ! DIVIDE          [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+  ! MODULE          [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+  ! OR              [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+  ! AND             [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+  ! EQUALS          [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+  ! NOTEQUALS       [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+  ! GREATER         [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+  ! LOWER           [ reduce using rule 54 (expresion -> expresion operadoresLog expresion .) ]
+
+    operadoresLog                  shift and go to state 64
+    operadoresMat                  shift and go to state 63
+
+state 91
+
+    (61) operadoresLog -> GREATER ASSIGN .
+
+    LPAREN          reduce using rule 61 (operadoresLog -> GREATER ASSIGN .)
+    ID              reduce using rule 61 (operadoresLog -> GREATER ASSIGN .)
+    STRING          reduce using rule 61 (operadoresLog -> GREATER ASSIGN .)
+    TRUE            reduce using rule 61 (operadoresLog -> GREATER ASSIGN .)
+    FALSE           reduce using rule 61 (operadoresLog -> GREATER ASSIGN .)
+    NULL            reduce using rule 61 (operadoresLog -> GREATER ASSIGN .)
+    NOT             reduce using rule 61 (operadoresLog -> GREATER ASSIGN .)
+    INTV            reduce using rule 61 (operadoresLog -> GREATER ASSIGN .)
+    FLOATV          reduce using rule 61 (operadoresLog -> GREATER ASSIGN .)
+
+
+state 92
+
+    (62) operadoresLog -> LOWER ASSIGN .
+
+    LPAREN          reduce using rule 62 (operadoresLog -> LOWER ASSIGN .)
+    ID              reduce using rule 62 (operadoresLog -> LOWER ASSIGN .)
+    STRING          reduce using rule 62 (operadoresLog -> LOWER ASSIGN .)
+    TRUE            reduce using rule 62 (operadoresLog -> LOWER ASSIGN .)
+    FALSE           reduce using rule 62 (operadoresLog -> LOWER ASSIGN .)
+    NULL            reduce using rule 62 (operadoresLog -> LOWER ASSIGN .)
+    NOT             reduce using rule 62 (operadoresLog -> LOWER ASSIGN .)
+    INTV            reduce using rule 62 (operadoresLog -> LOWER ASSIGN .)
+    FLOATV          reduce using rule 62 (operadoresLog -> LOWER ASSIGN .)
+
 
 state 93
 
-    (52) expresion -> expresion operadoresLog expresion .
-    (51) expresion -> expresion . operadoresMat expresion
-    (52) expresion -> expresion . operadoresLog expresion
-    (61) operadoresMat -> . MINUS
-    (62) operadoresMat -> . PLUS
-    (63) operadoresMat -> . TIMES
-    (64) operadoresMat -> . DIVIDE
-    (65) operadoresMat -> . MODULE
-    (53) operadoresLog -> . OR
-    (54) operadoresLog -> . AND
-    (55) operadoresLog -> . EQUALS
-    (56) operadoresLog -> . NOTEQUALS
-    (57) operadoresLog -> . GREATER
-    (58) operadoresLog -> . LOWER
-    (59) operadoresLog -> . GREATER ASSIGN
-    (60) operadoresLog -> . LOWER ASSIGN
+    (51) expresion -> LPAREN expresion RPAREN .
 
-  ! shift/reduce conflict for MINUS resolved as shift
-  ! shift/reduce conflict for PLUS resolved as shift
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for MODULE resolved as shift
-  ! shift/reduce conflict for OR resolved as shift
-  ! shift/reduce conflict for AND resolved as shift
-  ! shift/reduce conflict for EQUALS resolved as shift
-  ! shift/reduce conflict for NOTEQUALS resolved as shift
-  ! shift/reduce conflict for GREATER resolved as shift
-  ! shift/reduce conflict for LOWER resolved as shift
-    ;               reduce using rule 52 (expresion -> expresion operadoresLog expresion .)
-    RPAREN          reduce using rule 52 (expresion -> expresion operadoresLog expresion .)
-    MINUS           shift and go to state 68
-    PLUS            shift and go to state 69
-    TIMES           shift and go to state 70
-    DIVIDE          shift and go to state 71
-    MODULE          shift and go to state 72
-    OR              shift and go to state 73
-    AND             shift and go to state 74
-    EQUALS          shift and go to state 75
-    NOTEQUALS       shift and go to state 76
-    GREATER         shift and go to state 77
-    LOWER           shift and go to state 78
+    MINUS           reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    PLUS            reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    TIMES           reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    DIVIDE          reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    MODULE          reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    OR              reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    AND             reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    EQUALS          reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    NOTEQUALS       reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    GREATER         reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    LOWER           reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    FUNCTION        reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    ID              reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    IF              reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    ELSE            reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    VAR             reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    VAL             reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    WHILE           reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    FOR             reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    $end            reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    RCBRACKET       reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    RETURN          reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
+    RPAREN          reduce using rule 51 (expresion -> LPAREN expresion RPAREN .)
 
-  ! MINUS           [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-  ! PLUS            [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-  ! TIMES           [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-  ! DIVIDE          [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-  ! MODULE          [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-  ! OR              [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-  ! AND             [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-  ! EQUALS          [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-  ! NOTEQUALS       [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-  ! GREATER         [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-  ! LOWER           [ reduce using rule 52 (expresion -> expresion operadoresLog expresion .) ]
-
-    operadoresLog                  shift and go to state 67
-    operadoresMat                  shift and go to state 66
 
 state 94
 
-    (59) operadoresLog -> GREATER ASSIGN .
+    (38) args -> args , args .
+    (38) args -> args . , args
 
-    LPAREN          reduce using rule 59 (operadoresLog -> GREATER ASSIGN .)
-    ID              reduce using rule 59 (operadoresLog -> GREATER ASSIGN .)
-    STRING          reduce using rule 59 (operadoresLog -> GREATER ASSIGN .)
-    TRUE            reduce using rule 59 (operadoresLog -> GREATER ASSIGN .)
-    FALSE           reduce using rule 59 (operadoresLog -> GREATER ASSIGN .)
-    NULL            reduce using rule 59 (operadoresLog -> GREATER ASSIGN .)
-    NOT             reduce using rule 59 (operadoresLog -> GREATER ASSIGN .)
-    INTV            reduce using rule 59 (operadoresLog -> GREATER ASSIGN .)
-    FLOATV          reduce using rule 59 (operadoresLog -> GREATER ASSIGN .)
+  ! shift/reduce conflict for , resolved as shift
+    RPAREN          reduce using rule 38 (args -> args , args .)
+    ,               shift and go to state 78
+
+  ! ,               [ reduce using rule 38 (args -> args , args .) ]
 
 
 state 95
 
-    (60) operadoresLog -> LOWER ASSIGN .
+    (15) estructuraControl -> IF LPAREN expresion RPAREN instrucciones .
 
-    LPAREN          reduce using rule 60 (operadoresLog -> LOWER ASSIGN .)
-    ID              reduce using rule 60 (operadoresLog -> LOWER ASSIGN .)
-    STRING          reduce using rule 60 (operadoresLog -> LOWER ASSIGN .)
-    TRUE            reduce using rule 60 (operadoresLog -> LOWER ASSIGN .)
-    FALSE           reduce using rule 60 (operadoresLog -> LOWER ASSIGN .)
-    NULL            reduce using rule 60 (operadoresLog -> LOWER ASSIGN .)
-    NOT             reduce using rule 60 (operadoresLog -> LOWER ASSIGN .)
-    INTV            reduce using rule 60 (operadoresLog -> LOWER ASSIGN .)
-    FLOATV          reduce using rule 60 (operadoresLog -> LOWER ASSIGN .)
+    FUNCTION        reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    ID              reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    IF              reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    ELSE            reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    VAR             reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    VAL             reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    WHILE           reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    FOR             reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    $end            reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    RCBRACKET       reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    RETURN          reduce using rule 15 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
 
 
 state 96
 
-    (49) expresion -> LPAREN expresion RPAREN .
+    (20) for -> FOR LPAREN ID IN ID . RPAREN
 
-    MINUS           reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    PLUS            reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    TIMES           reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    DIVIDE          reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    MODULE          reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    OR              reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    AND             reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    EQUALS          reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    NOTEQUALS       reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    GREATER         reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    LOWER           reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    ;               reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
-    RPAREN          reduce using rule 49 (expresion -> LPAREN expresion RPAREN .)
+    RPAREN          shift and go to state 112
 
 
 state 97
 
-    (36) args -> args , args .
-    (36) args -> args . , args
+    (31) dato -> ID .
 
-  ! shift/reduce conflict for , resolved as shift
-    RPAREN          reduce using rule 36 (args -> args , args .)
-    ,               shift and go to state 81
-
-  ! ,               [ reduce using rule 36 (args -> args , args .) ]
+    RPAREN          reduce using rule 31 (dato -> ID .)
+    ,               reduce using rule 31 (dato -> ID .)
 
 
 state 98
 
-    (13) estructuraControl -> IF LPAREN expresion RPAREN instrucciones .
+    (35) params -> ID : dato .
 
-    FUNCTION        reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
-    ID              reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
-    IF              reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
-    ELSE            reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
-    VAR             reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
-    VAL             reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
-    WHILE           reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
-    FOR             reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
-    $end            reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
-    RCBRACKET       reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
-    RETURN          reduce using rule 13 (estructuraControl -> IF LPAREN expresion RPAREN instrucciones .)
+    RPAREN          reduce using rule 35 (params -> ID : dato .)
+    ,               reduce using rule 35 (params -> ID : dato .)
 
 
 state 99
 
-    (18) for -> FOR LPAREN ID IN ID . RPAREN
+    (26) dato -> INT .
 
-    RPAREN          shift and go to state 113
+    RPAREN          reduce using rule 26 (dato -> INT .)
+    ,               reduce using rule 26 (dato -> INT .)
 
 
 state 100
 
-    (29) dato -> ID .
+    (27) dato -> FLOAT .
 
-    RPAREN          reduce using rule 29 (dato -> ID .)
-    ,               reduce using rule 29 (dato -> ID .)
+    RPAREN          reduce using rule 27 (dato -> FLOAT .)
+    ,               reduce using rule 27 (dato -> FLOAT .)
 
 
 state 101
 
-    (33) params -> ID : dato .
+    (28) dato -> BYTE .
 
-    RPAREN          reduce using rule 33 (params -> ID : dato .)
-    ,               reduce using rule 33 (params -> ID : dato .)
+    RPAREN          reduce using rule 28 (dato -> BYTE .)
+    ,               reduce using rule 28 (dato -> BYTE .)
 
 
 state 102
 
-    (24) dato -> INT .
+    (29) dato -> SHORT .
 
-    RPAREN          reduce using rule 24 (dato -> INT .)
-    ,               reduce using rule 24 (dato -> INT .)
+    RPAREN          reduce using rule 29 (dato -> SHORT .)
+    ,               reduce using rule 29 (dato -> SHORT .)
 
 
 state 103
 
-    (25) dato -> FLOAT .
+    (30) dato -> DOUBLE .
 
-    RPAREN          reduce using rule 25 (dato -> FLOAT .)
-    ,               reduce using rule 25 (dato -> FLOAT .)
+    RPAREN          reduce using rule 30 (dato -> DOUBLE .)
+    ,               reduce using rule 30 (dato -> DOUBLE .)
 
 
 state 104
 
-    (26) dato -> BYTE .
+    (32) dato -> LONG .
 
-    RPAREN          reduce using rule 26 (dato -> BYTE .)
-    ,               reduce using rule 26 (dato -> BYTE .)
+    RPAREN          reduce using rule 32 (dato -> LONG .)
+    ,               reduce using rule 32 (dato -> LONG .)
 
 
 state 105
 
-    (27) dato -> SHORT .
+    (33) dato -> CHAR .
 
-    RPAREN          reduce using rule 27 (dato -> SHORT .)
-    ,               reduce using rule 27 (dato -> SHORT .)
+    RPAREN          reduce using rule 33 (dato -> CHAR .)
+    ,               reduce using rule 33 (dato -> CHAR .)
 
 
 state 106
 
-    (28) dato -> DOUBLE .
+    (34) dato -> BOOLEAN .
 
-    RPAREN          reduce using rule 28 (dato -> DOUBLE .)
-    ,               reduce using rule 28 (dato -> DOUBLE .)
+    RPAREN          reduce using rule 34 (dato -> BOOLEAN .)
+    ,               reduce using rule 34 (dato -> BOOLEAN .)
 
 
 state 107
 
-    (30) dato -> LONG .
+    (21) function -> FUNCTION ID LPAREN params RPAREN instruccionesF .
 
-    RPAREN          reduce using rule 30 (dato -> LONG .)
-    ,               reduce using rule 30 (dato -> LONG .)
+    FUNCTION        reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    ID              reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    IF              reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    ELSE            reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    VAR             reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    VAL             reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    WHILE           reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    FOR             reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    $end            reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    RCBRACKET       reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    RETURN          reduce using rule 21 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
 
 
 state 108
 
-    (31) dato -> CHAR .
+    (36) params -> params , params .
+    (36) params -> params . , params
 
-    RPAREN          reduce using rule 31 (dato -> CHAR .)
-    ,               reduce using rule 31 (dato -> CHAR .)
+  ! shift/reduce conflict for , resolved as shift
+    RPAREN          reduce using rule 36 (params -> params , params .)
+    ,               shift and go to state 86
+
+  ! ,               [ reduce using rule 36 (params -> params , params .) ]
 
 
 state 109
 
-    (32) dato -> BOOLEAN .
+    (12) instruccionesF -> LCBRACKET cuerpo . retorno RCBRACKET
+    (14) retorno -> . RETURN expresion
 
-    RPAREN          reduce using rule 32 (dato -> BOOLEAN .)
-    ,               reduce using rule 32 (dato -> BOOLEAN .)
+    RETURN          shift and go to state 111
 
+    retorno                        shift and go to state 113
 
 state 110
 
-    (19) function -> FUNCTION ID LPAREN params RPAREN instruccionesF .
+    (13) instruccionesF -> LCBRACKET retorno . RCBRACKET
 
-    FUNCTION        reduce using rule 19 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
-    ID              reduce using rule 19 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
-    IF              reduce using rule 19 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
-    ELSE            reduce using rule 19 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
-    VAR             reduce using rule 19 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
-    VAL             reduce using rule 19 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
-    WHILE           reduce using rule 19 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
-    FOR             reduce using rule 19 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+    RCBRACKET       shift and go to state 114
 
 
 state 111
 
-    (34) params -> params , params .
-    (34) params -> params . , params
+    (14) retorno -> RETURN . expresion
+    (51) expresion -> . LPAREN expresion RPAREN
+    (52) expresion -> . valor
+    (53) expresion -> . expresion operadoresMat expresion
+    (54) expresion -> . expresion operadoresLog expresion
+    (39) valor -> . ID
+    (40) valor -> . number
+    (41) valor -> . STRING
+    (42) valor -> . TRUE
+    (43) valor -> . FALSE
+    (44) valor -> . NULL
+    (45) valor -> . NOT valor
+    (68) number -> . INTV
+    (69) number -> . FLOATV
 
-  ! shift/reduce conflict for , resolved as shift
-    RPAREN          reduce using rule 34 (params -> params , params .)
-    ,               shift and go to state 89
+    LPAREN          shift and go to state 48
+    ID              shift and go to state 37
+    STRING          shift and go to state 40
+    TRUE            shift and go to state 41
+    FALSE           shift and go to state 42
+    NULL            shift and go to state 43
+    NOT             shift and go to state 44
+    INTV            shift and go to state 45
+    FLOATV          shift and go to state 46
 
-  ! ,               [ reduce using rule 34 (params -> params , params .) ]
-
+    expresion                      shift and go to state 115
+    valor                          shift and go to state 49
+    number                         shift and go to state 39
 
 state 112
 
-    (11) instruccionesF -> LCBRACKET cuerpo . retorno RCBRACKET
-    (12) retorno -> . RETURN valor ;
+    (20) for -> FOR LPAREN ID IN ID RPAREN .
 
-    RETURN          shift and go to state 115
+    LCBRACKET       reduce using rule 20 (for -> FOR LPAREN ID IN ID RPAREN .)
+    ID              reduce using rule 20 (for -> FOR LPAREN ID IN ID RPAREN .)
+    IF              reduce using rule 20 (for -> FOR LPAREN ID IN ID RPAREN .)
+    ELSE            reduce using rule 20 (for -> FOR LPAREN ID IN ID RPAREN .)
+    VAR             reduce using rule 20 (for -> FOR LPAREN ID IN ID RPAREN .)
+    VAL             reduce using rule 20 (for -> FOR LPAREN ID IN ID RPAREN .)
+    WHILE           reduce using rule 20 (for -> FOR LPAREN ID IN ID RPAREN .)
+    FOR             reduce using rule 20 (for -> FOR LPAREN ID IN ID RPAREN .)
 
-    retorno                        shift and go to state 114
 
 state 113
 
-    (18) for -> FOR LPAREN ID IN ID RPAREN .
-
-    LCBRACKET       reduce using rule 18 (for -> FOR LPAREN ID IN ID RPAREN .)
-    ID              reduce using rule 18 (for -> FOR LPAREN ID IN ID RPAREN .)
-    IF              reduce using rule 18 (for -> FOR LPAREN ID IN ID RPAREN .)
-    ELSE            reduce using rule 18 (for -> FOR LPAREN ID IN ID RPAREN .)
-    VAR             reduce using rule 18 (for -> FOR LPAREN ID IN ID RPAREN .)
-    VAL             reduce using rule 18 (for -> FOR LPAREN ID IN ID RPAREN .)
-    WHILE           reduce using rule 18 (for -> FOR LPAREN ID IN ID RPAREN .)
-    FOR             reduce using rule 18 (for -> FOR LPAREN ID IN ID RPAREN .)
-
-
-state 114
-
-    (11) instruccionesF -> LCBRACKET cuerpo retorno . RCBRACKET
+    (12) instruccionesF -> LCBRACKET cuerpo retorno . RCBRACKET
 
     RCBRACKET       shift and go to state 116
 
 
+state 114
+
+    (13) instruccionesF -> LCBRACKET retorno RCBRACKET .
+
+    FUNCTION        reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+    ID              reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+    IF              reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+    ELSE            reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+    VAR             reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+    VAL             reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+    WHILE           reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+    FOR             reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+    $end            reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+    RCBRACKET       reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+    RETURN          reduce using rule 13 (instruccionesF -> LCBRACKET retorno RCBRACKET .)
+
+
 state 115
 
-    (12) retorno -> RETURN . valor ;
-    (37) valor -> . ID
-    (38) valor -> . number
-    (39) valor -> . STRING
-    (40) valor -> . TRUE
-    (41) valor -> . FALSE
-    (42) valor -> . NULL
-    (43) valor -> . NOT valor
-    (66) number -> . INTV
-    (67) number -> . FLOATV
+    (14) retorno -> RETURN expresion .
+    (53) expresion -> expresion . operadoresMat expresion
+    (54) expresion -> expresion . operadoresLog expresion
+    (63) operadoresMat -> . MINUS
+    (64) operadoresMat -> . PLUS
+    (65) operadoresMat -> . TIMES
+    (66) operadoresMat -> . DIVIDE
+    (67) operadoresMat -> . MODULE
+    (55) operadoresLog -> . OR
+    (56) operadoresLog -> . AND
+    (57) operadoresLog -> . EQUALS
+    (58) operadoresLog -> . NOTEQUALS
+    (59) operadoresLog -> . GREATER
+    (60) operadoresLog -> . LOWER
+    (61) operadoresLog -> . GREATER ASSIGN
+    (62) operadoresLog -> . LOWER ASSIGN
 
-    ID              shift and go to state 39
-    STRING          shift and go to state 42
-    TRUE            shift and go to state 43
-    FALSE           shift and go to state 44
-    NULL            shift and go to state 45
-    NOT             shift and go to state 46
-    INTV            shift and go to state 47
-    FLOATV          shift and go to state 48
+    RCBRACKET       reduce using rule 14 (retorno -> RETURN expresion .)
+    MINUS           shift and go to state 65
+    PLUS            shift and go to state 66
+    TIMES           shift and go to state 67
+    DIVIDE          shift and go to state 68
+    MODULE          shift and go to state 69
+    OR              shift and go to state 70
+    AND             shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOTEQUALS       shift and go to state 73
+    GREATER         shift and go to state 74
+    LOWER           shift and go to state 75
 
-    valor                          shift and go to state 117
-    number                         shift and go to state 41
+    operadoresMat                  shift and go to state 63
+    operadoresLog                  shift and go to state 64
 
 state 116
 
-    (11) instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .
+    (12) instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .
 
-    FUNCTION        reduce using rule 11 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
-    ID              reduce using rule 11 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
-    IF              reduce using rule 11 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
-    ELSE            reduce using rule 11 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
-    VAR             reduce using rule 11 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
-    VAL             reduce using rule 11 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
-    WHILE           reduce using rule 11 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
-    FOR             reduce using rule 11 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
-
-
-state 117
-
-    (12) retorno -> RETURN valor . ;
-
-    ;               shift and go to state 118
-
-
-state 118
-
-    (12) retorno -> RETURN valor ; .
-
-    RCBRACKET       reduce using rule 12 (retorno -> RETURN valor ; .)
+    FUNCTION        reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
+    ID              reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
+    IF              reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
+    ELSE            reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
+    VAR             reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
+    VAL             reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
+    WHILE           reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
+    FOR             reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
+    $end            reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
+    RCBRACKET       reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
+    RETURN          reduce using rule 12 (instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for MINUS in state 92 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 92 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 92 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 92 resolved as shift
-WARNING: shift/reduce conflict for MODULE in state 92 resolved as shift
-WARNING: shift/reduce conflict for OR in state 92 resolved as shift
-WARNING: shift/reduce conflict for AND in state 92 resolved as shift
-WARNING: shift/reduce conflict for EQUALS in state 92 resolved as shift
-WARNING: shift/reduce conflict for NOTEQUALS in state 92 resolved as shift
-WARNING: shift/reduce conflict for GREATER in state 92 resolved as shift
-WARNING: shift/reduce conflict for LOWER in state 92 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 93 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 93 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 93 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 93 resolved as shift
-WARNING: shift/reduce conflict for MODULE in state 93 resolved as shift
-WARNING: shift/reduce conflict for OR in state 93 resolved as shift
-WARNING: shift/reduce conflict for AND in state 93 resolved as shift
-WARNING: shift/reduce conflict for EQUALS in state 93 resolved as shift
-WARNING: shift/reduce conflict for NOTEQUALS in state 93 resolved as shift
-WARNING: shift/reduce conflict for GREATER in state 93 resolved as shift
-WARNING: shift/reduce conflict for LOWER in state 93 resolved as shift
-WARNING: shift/reduce conflict for , in state 97 resolved as shift
-WARNING: shift/reduce conflict for , in state 111 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 89 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 89 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 89 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 89 resolved as shift
+WARNING: shift/reduce conflict for MODULE in state 89 resolved as shift
+WARNING: shift/reduce conflict for OR in state 89 resolved as shift
+WARNING: shift/reduce conflict for AND in state 89 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 89 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUALS in state 89 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 89 resolved as shift
+WARNING: shift/reduce conflict for LOWER in state 89 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 90 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 90 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 90 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 90 resolved as shift
+WARNING: shift/reduce conflict for MODULE in state 90 resolved as shift
+WARNING: shift/reduce conflict for OR in state 90 resolved as shift
+WARNING: shift/reduce conflict for AND in state 90 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 90 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUALS in state 90 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 90 resolved as shift
+WARNING: shift/reduce conflict for LOWER in state 90 resolved as shift
+WARNING: shift/reduce conflict for , in state 94 resolved as shift
+WARNING: shift/reduce conflict for , in state 108 resolved as shift

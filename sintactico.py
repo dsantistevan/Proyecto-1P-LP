@@ -8,6 +8,9 @@ def p_cuerpo(p):    #David Santistevan
     '''cuerpo : sentencia  '''
     p[0] = [p[1]]
 
+def p_cuerpo_funcion_sola(p):    #David Santistevan
+    '''cuerpo : function  '''
+    p[0] = [p[1]]
 
 def p_cuerpoR(p):   #David Santistevan
     '''cuerpo : sentencia cuerpo'''
@@ -18,11 +21,11 @@ def p_cuerpo_funcion(p):    #David Santistevan
     p[0] = [p[1]] + p[2]
 
 
-def p_sentencia(p): #Dylan Escala
-    '''sentencia : asignacion ';'
+def p_sentencia(p): #Dylan Escala # Fixed by Carlos Jimenez
+    '''sentencia : asignacion 
                 | estructuraControl
                 | bucles
-                | llamada ';'
+                | llamada
                 | declaracion '''
     p[0] = p[1]
 
@@ -33,8 +36,11 @@ def p_instrucciones(p): #David Santistevan
 def p_instrucciones_funcion(p): #David Santistevan
     '''instruccionesF : LCBRACKET cuerpo retorno RCBRACKET'''
 
-def p_retorno(p):   #David Santistevan
-    '''retorno : RETURN valor ';' '''
+def p_instrucciones_funcion_retorno(p): #David Santistevan
+    '''instruccionesF : LCBRACKET retorno RCBRACKET'''
+
+def p_retorno(p):   #David Santistevan # Fixed by Carlos Jimenez
+    '''retorno : RETURN expresion '''
 
 
 #estructuraControls - Dylan Escala
@@ -156,8 +162,8 @@ def p_asignacion_declarando(p): #David Santistevan
     print(p[0])
 
 
-def p_declaracion(p): #David Santistevan
-    '''declaracion : declarador ID ';' '''
+def p_declaracion(p): #David Santistevan # Fixed by Carlos Jimenez
+    '''declaracion : declarador ID '''
     names[p[2]] = ""
 
 
@@ -245,24 +251,26 @@ def analizar2(data):
     print(result)
 
 
-def analizarArchivo2(nombre= "codigoSintacticoDylanE2.txt"):
-    f = open(nombre, "r")
-    linea = f.readline()
 
-    while linea != "":
-        if linea.find("/*") != -1:
-            while linea.find("*/") == -1:
-                linea+=f.readline()
-        print(">>" + linea)
-        analizar2(linea)
-        linea= f.readline()
+def analizarArchivo2(nombre= "codigoSintacticoDavid.txt"):
+    f = open(nombre, "r")
+    texto = f.read()
     f.close()
+    analizar2(texto)
+
+
+def analizarArchivoJimenez(nombre= "codigoSintacticoJimenez.txt"):
+    f = open(nombre, "r")
+    texto = f.read()
+    f.close()
+    analizar2(texto)
 
 
 print("\n\nSintactico")
 
 
 analizarArchivo2()
+analizarArchivoJimenez()
 
 #print(parser.parse("""for(i in Lista){
 #    i = 2
@@ -270,6 +278,7 @@ analizarArchivo2()
 
 while True:
     try:
+        print()
         print(names)
         s = input('calc > ')
     except EOFError:
