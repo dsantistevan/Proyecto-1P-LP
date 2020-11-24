@@ -40,10 +40,10 @@ def p_retorno(p):   #David Santistevan
 #estructuraControls - Dylan Escala
 def p_estructuraControlIf(p):
     '''estructuraControl : IF LPAREN expresion RPAREN instrucciones '''
-
+#Dylan Escala
 def p_estructuraControlElse(p):
     '''estructuraControl : ELSE instrucciones '''
-
+#Dylan Escala
 def p_bucles(p):
     '''bucles : while instrucciones
                 | for instrucciones '''
@@ -245,7 +245,7 @@ def analizar2(data):
     print(result)
 
 
-def analizarArchivo2(nombre= "codigoTodos.txt"):
+def analizarArchivo2(nombre= "codigoSintacticoDylanE2.txt"):
     f = open(nombre, "r")
     linea = f.readline()
 
@@ -262,7 +262,7 @@ def analizarArchivo2(nombre= "codigoTodos.txt"):
 print("\n\nSintactico")
 
 
-#analizarArchivo2()
+analizarArchivo2()
 
 #print(parser.parse("""for(i in Lista){
 #    i = 2

@@ -1,0 +1,5 @@
+var al = 1 ;
+while (2 + 2) var al = 1 ;
+var ol = al ;
+if ( al ) var a = 2 + 2 ;
+else var a = 3 ;
