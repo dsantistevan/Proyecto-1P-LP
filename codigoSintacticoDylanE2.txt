@@ -3,3 +3,8 @@ var al2 = 1 ;
 var al3 = 1 ;
 var al4 = 1 ;
 for (uj in yh) var al = 1 ;
+
+/* Testing by Carlos Jimenez */
+var res = 1 + 2 ;
+var res = 2 / 1 ;
+var res = 3 * 5 ;

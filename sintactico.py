@@ -251,6 +251,7 @@ def analizar2(data):
     print(result)
 
 
+
 def analizarArchivo2(nombre= "codigoSintacticoDavid.txt"):
     f = open(nombre, "r")
     texto = f.read()
