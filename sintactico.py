@@ -111,10 +111,12 @@ def p_params2(p): #David Santistevan
 
 def p_args(p):
     '''args : expresion'''
-    p[0] = p[1]
+    p[0] = [p[1]]
 
 def p_args2(p):
     '''args : args ',' args'''
+    p[1].extend(p[2])
+    p[0] = p[1]
 
 def p_valor_id(p):
     '''valor : ID'''
@@ -175,6 +177,7 @@ def p_declaracion(p): #David Santistevan # Fixed by Carlos Jimenez
 
 def p_exresion(p): #David Santistevan
     '''expresion : LPAREN expresion RPAREN'''
+    p[0] = p[2]
 
 def p_expesion(p): #David Santistevan
     '''expresion : valor '''
