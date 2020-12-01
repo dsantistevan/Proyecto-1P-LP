@@ -85,7 +85,7 @@ def p_llamada_funcion_sin_params(p):
 
 
 def p_index(p): #David Santistevan
-    '''function : ID LSBRACKET valor RSBRACKET'''
+    '''function : ID LSBRACKET expresion RSBRACKET'''
     p[0] = names[p[1]][p[3]]
 
 
@@ -110,7 +110,7 @@ def p_params2(p): #David Santistevan
 
 
 def p_args(p):
-    '''args : valor'''
+    '''args : expresion'''
     p[0] = p[1]
 
 def p_args2(p):
