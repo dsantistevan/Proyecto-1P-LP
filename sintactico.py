@@ -71,6 +71,10 @@ def p_function(p):  #David Santistevan
 def p_function_sin_params(p):  #David Santistevan
     '''function : FUNCTION ID LPAREN RPAREN instruccionesF'''
 
+def p_print(p):
+    '''llamada : PRINTLN LPAREN expresion RPAREN'''
+    print(p[3])
+    p[0] = p[3]
 
 def p_llamada_funcion(p):
     '''llamada : ID LPAREN args RPAREN '''
@@ -82,6 +86,7 @@ def p_llamada_funcion_sin_params(p):
 
 def p_index(p): #David Santistevan
     '''function : ID LSBRACKET valor RSBRACKET'''
+    p[0] = names[p[1]][p[3]]
 
 
 def p_dato(p):  #David Santistevan
