@@ -265,24 +265,20 @@ def analizarArchivoJimenez(nombre= "codigoSintacticoJimenez.txt"):
     f.close()
     analizar2(texto)
 
-
-print("\n\nSintactico")
-
-
-analizarArchivo2()
-analizarArchivoJimenez()
+# analizarArchivo2()
+# analizarArchivoJimenez()
 
 #print(parser.parse("""for(i in Lista){
 #    i = 2
 #}"""))
 
-while True:
-    try:
-        print()
-        print(names)
-        s = input('calc > ')
-    except EOFError:
-        break
-    #if not s: continue
-    result = parser.parse(s)
-    print(result)
+# while True:
+#     try:
+#         print()
+#         print(names)
+#         s = input('calc > ')
+#     except EOFError:
+#         break
+#     #if not s: continue
+#     result = parser.parse(s)
+#     print(result)

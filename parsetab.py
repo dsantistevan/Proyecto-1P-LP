@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "ASSIGN BOOLEAN BYTE CHAR DELETE DOUBLE FALSE FLOAT FLOATV ID IN INT INTV LCBRACKET LONG LPAREN LSBRACKET RCBRACKET RPAREN RSBRACKET SHORT STRING TRUEcuerpo : sentencia ';' sentencia : asignacion \n                | modificacion\n                | retorno\n                | eliminacion asignacion : ID ASSIGN LCBRACKET objeto RCBRACKET asignacion : ID index ASSIGN dato modificacion : ID '.' ID  ASSIGN dato retorno : ID '.' IDeliminacion : DELETE ID '.' IDobjeto : ID ':' dato index : ID LSBRACKET dato RSBRACKETdato : INT\n            | FLOAT\n            | BYTE\n            | SHORT\n            | DOUBLE\n            | ID\n            | LONG\n            | CHAR\n            | BOOLEAN\n            | STRING"
+_lr_signature = "AND ASSIGN BOOLEAN BYTE CHAR DIVIDE DOUBLE ELSE EQUALS FALSE FLOAT FLOATV FOR FUNCTION GREATER ID IF IN INT INTV LCBRACKET LONG LOWER LPAREN LSBRACKET MINUS MODULE NOT NOTEQUALS NULL OR PLUS RCBRACKET RETURN RPAREN RSBRACKET SHORT STRING TIMES TRUE VAL VAR WHILEcuerpo : sentencia  cuerpo : function  cuerpo : sentencia cuerpocuerpo : function cuerposentencia : asignacion \n                | estructuraControl\n                | bucles\n                | llamada\n                | declaracion instrucciones : LCBRACKET cuerpo RCBRACKET\n                | sentencia instruccionesF : LCBRACKET cuerpo retorno RCBRACKETinstruccionesF : LCBRACKET retorno RCBRACKETretorno : RETURN expresion estructuraControl : IF LPAREN expresion RPAREN instrucciones estructuraControl : ELSE instrucciones bucles : while instrucciones\n                | for instrucciones while : WHILE LPAREN expresion RPAREN for : FOR LPAREN ID IN ID RPAREN function : FUNCTION ID LPAREN params RPAREN instruccionesFfunction : FUNCTION ID LPAREN RPAREN instruccionesFllamada : ID LPAREN args RPAREN llamada : ID LPAREN RPAREN function : ID LSBRACKET valor RSBRACKETdato : INT\n            | FLOAT\n            | BYTE\n            | SHORT\n            | DOUBLE\n            | ID\n            | LONG\n            | CHAR\n            | BOOLEANparams : ID ':' dato params : params ',' paramsargs : valorargs : args ',' argsvalor : IDvalor : number\n            | STRINGvalor : TRUE\n            | FALSEvalor : NULLvalor : NOT valor declarador : VAR\n                | VALasignacion : ID ASSIGN expresion asignacion : declarador ID ASSIGN expresion declaracion : declarador ID expresion : LPAREN expresion RPARENexpresion : valor expresion : expresion operadoresMat expresion expresion : expresion operadoresLog expresion operadoresLog :  OR\n                    | AND\n                    | EQUALS\n                    | NOTEQUALS\n                    | GREATER\n                    | LOWER\n                    | GREATER ASSIGN\n                    | LOWER ASSIGNoperadoresMat : MINUS\n                    | PLUS\n                    | TIMES\n                    | DIVIDE\n                    | MODULE number : INTV\n            | FLOATV "
     
-_lr_action_items = {'ID':([0,7,8,13,15,16,17,19,34,37,],[7,10,14,18,20,31,20,35,20,20,]),'DELETE':([0,],[8,]),'$end':([1,9,],[0,-1,]),';':([2,3,4,5,6,18,20,22,23,24,25,26,27,28,29,30,33,35,38,39,],[9,-2,-3,-4,-5,-9,-18,-13,-14,-15,-16,-17,-19,-20,-21,-22,-7,-10,-6,-8,]),'ASSIGN':([7,12,18,36,],[11,17,34,-12,]),'.':([7,14,],[13,19,]),'LSBRACKET':([10,],[15,]),'LCBRACKET':([11,],[16,]),'INT':([15,17,34,37,],[22,22,22,22,]),'FLOAT':([15,17,34,37,],[23,23,23,23,]),'BYTE':([15,17,34,37,],[24,24,24,24,]),'SHORT':([15,17,34,37,],[25,25,25,25,]),'DOUBLE':([15,17,34,37,],[26,26,26,26,]),'LONG':([15,17,34,37,],[27,27,27,27,]),'CHAR':([15,17,34,37,],[28,28,28,28,]),'BOOLEAN':([15,17,34,37,],[29,29,29,29,]),'STRING':([15,17,34,37,],[30,30,30,30,]),'RSBRACKET':([20,21,22,23,24,25,26,27,28,29,30,],[-18,36,-13,-14,-15,-16,-17,-19,-20,-21,-22,]),'RCBRACKET':([20,22,23,24,25,26,27,28,29,30,32,40,],[-18,-13,-14,-15,-16,-17,-19,-20,-21,-22,38,-11,]),':':([31,],[37,]),}
+_lr_action_items = {'FUNCTION':([0,2,3,4,5,6,7,8,26,28,29,30,32,33,37,39,40,41,42,43,45,46,47,49,51,61,62,77,79,81,87,88,89,90,93,95,107,114,116,],[9,9,9,-5,-6,-7,-8,-9,-50,-16,9,-11,-17,-18,-39,-40,-41,-42,-43,-44,-68,-69,-48,-52,-24,-25,-45,-23,-49,-10,-22,9,-53,-54,-51,-15,-21,-13,-12,]),'ID':([0,2,3,4,5,6,7,8,9,11,13,14,15,16,17,23,24,25,26,27,28,29,30,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,51,53,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,77,78,79,80,81,82,83,84,86,87,88,89,90,91,92,93,95,107,111,112,114,116,],[10,10,10,-5,-6,-7,-8,-9,22,26,31,31,31,-46,-47,37,37,37,-50,37,-16,10,-11,-17,-18,37,57,58,-39,-40,-41,-42,-43,-44,37,-68,-69,-48,37,-52,-24,37,-25,-45,37,37,-63,-64,-65,-66,-67,-55,-56,-57,-58,-59,-60,-23,37,-49,31,-10,-19,96,97,58,-22,10,-53,-54,-61,-62,-51,-15,-21,37,-20,-13,-12,]),'IF':([0,2,3,4,5,6,7,8,13,14,15,26,28,29,30,32,33,37,39,40,41,42,43,45,46,47,49,51,61,62,77,79,80,81,82,87,88,89,90,93,95,107,112,114,116,],[12,12,12,-5,-6,-7,-8,-9,12,12,12,-50,-16,12,-11,-17,-18,-39,-40,-41,-42,-43,-44,-68,-69,-48,-52,-24,-25,-45,-23,-49,12,-10,-19,-22,12,-53,-54,-51,-15,-21,-20,-13,-12,]),'ELSE':([0,2,3,4,5,6,7,8,13,14,15,26,28,29,30,32,33,37,39,40,41,42,43,45,46,47,49,51,61,62,77,79,80,81,82,87,88,89,90,93,95,107,112,114,116,],[13,13,13,-5,-6,-7,-8,-9,13,13,13,-50,-16,13,-11,-17,-18,-39,-40,-41,-42,-43,-44,-68,-69,-48,-52,-24,-25,-45,-23,-49,13,-10,-19,-22,13,-53,-54,-51,-15,-21,-20,-13,-12,]),'VAR':([0,2,3,4,5,6,7,8,13,14,15,26,28,29,30,32,33,37,39,40,41,42,43,45,46,47,49,51,61,62,77,79,80,81,82,87,88,89,90,93,95,107,112,114,116,],[16,16,16,-5,-6,-7,-8,-9,16,16,16,-50,-16,16,-11,-17,-18,-39,-40,-41,-42,-43,-44,-68,-69,-48,-52,-24,-25,-45,-23,-49,16,-10,-19,-22,16,-53,-54,-51,-15,-21,-20,-13,-12,]),'VAL':([0,2,3,4,5,6,7,8,13,14,15,26,28,29,30,32,33,37,39,40,41,42,43,45,46,47,49,51,61,62,77,79,80,81,82,87,88,89,90,93,95,107,112,114,116,],[17,17,17,-5,-6,-7,-8,-9,17,17,17,-50,-16,17,-11,-17,-18,-39,-40,-41,-42,-43,-44,-68,-69,-48,-52,-24,-25,-45,-23,-49,17,-10,-19,-22,17,-53,-54,-51,-15,-21,-20,-13,-12,]),'WHILE':([0,2,3,4,5,6,7,8,13,14,15,26,28,29,30,32,33,37,39,40,41,42,43,45,46,47,49,51,61,62,77,79,80,81,82,87,88,89,90,93,95,107,112,114,116,],[18,18,18,-5,-6,-7,-8,-9,18,18,18,-50,-16,18,-11,-17,-18,-39,-40,-41,-42,-43,-44,-68,-69,-48,-52,-24,-25,-45,-23,-49,18,-10,-19,-22,18,-53,-54,-51,-15,-21,-20,-13,-12,]),'FOR':([0,2,3,4,5,6,7,8,13,14,15,26,28,29,30,32,33,37,39,40,41,42,43,45,46,47,49,51,61,62,77,79,80,81,82,87,88,89,90,93,95,107,112,114,116,],[19,19,19,-5,-6,-7,-8,-9,19,19,19,-50,-16,19,-11,-17,-18,-39,-40,-41,-42,-43,-44,-68,-69,-48,-52,-24,-25,-45,-23,-49,19,-10,-19,-22,19,-53,-54,-51,-15,-21,-20,-13,-12,]),'$end':([1,2,3,4,5,6,7,8,20,21,26,28,30,32,33,37,39,40,41,42,43,45,46,47,49,51,61,62,77,79,81,87,89,90,93,95,107,114,116,],[0,-1,-2,-5,-6,-7,-8,-9,-3,-4,-50,-16,-11,-17,-18,-39,-40,-41,-42,-43,-44,-68,-69,-48,-52,-24,-25,-45,-23,-49,-10,-22,-53,-54,-51,-15,-21,-13,-12,]),'RCBRACKET':([2,3,4,5,6,7,8,20,21,26,28,30,32,33,37,39,40,41,42,43,45,46,47,49,51,55,61,62,77,79,81,87,89,90,93,95,107,110,113,114,115,116,],[-1,-2,-5,-6,-7,-8,-9,-3,-4,-50,-16,-11,-17,-18,-39,-40,-41,-42,-43,-44,-68,-69,-48,-52,-24,81,-25,-45,-23,-49,-10,-22,-53,-54,-51,-15,-21,114,116,-13,-14,-12,]),'RETURN':([2,3,4,5,6,7,8,20,21,26,28,30,32,33,37,39,40,41,42,43,45,46,47,49,51,61,62,77,79,81,87,88,89,90,93,95,107,109,114,116,],[-1,-2,-5,-6,-7,-8,-9,-3,-4,-50,-16,-11,-17,-18,-39,-40,-41,-42,-43,-44,-68,-69,-48,-52,-24,-25,-45,-23,-49,-10,-22,111,-53,-54,-51,-15,-21,111,-13,-12,]),'LSBRACKET':([10,],[23,]),'ASSIGN':([10,26,31,74,75,],[24,53,24,91,92,]),'LPAREN':([10,12,18,19,22,24,27,31,34,48,53,63,64,65,66,67,68,69,70,71,72,73,74,75,91,92,111,],[25,27,34,35,36,48,48,25,48,48,48,48,48,-63,-64,-65,-66,-67,-55,-56,-57,-58,-59,-60,-61,-62,48,]),'LCBRACKET':([13,14,15,60,80,82,85,112,],[29,29,29,88,29,-19,88,-20,]),'STRING':([23,24,25,27,34,44,48,53,63,64,65,66,67,68,69,70,71,72,73,74,75,78,91,92,111,],[40,40,40,40,40,40,40,40,40,40,-63,-64,-65,-66,-67,-55,-56,-57,-58,-59,-60,40,-61,-62,40,]),'TRUE':([23,24,25,27,34,44,48,53,63,64,65,66,67,68,69,70,71,72,73,74,75,78,91,92,111,],[41,41,41,41,41,41,41,41,41,41,-63,-64,-65,-66,-67,-55,-56,-57,-58,-59,-60,41,-61,-62,41,]),'FALSE':([23,24,25,27,34,44,48,53,63,64,65,66,67,68,69,70,71,72,73,74,75,78,91,92,111,],[42,42,42,42,42,42,42,42,42,42,-63,-64,-65,-66,-67,-55,-56,-57,-58,-59,-60,42,-61,-62,42,]),'NULL':([23,24,25,27,34,44,48,53,63,64,65,66,67,68,69,70,71,72,73,74,75,78,91,92,111,],[43,43,43,43,43,43,43,43,43,43,-63,-64,-65,-66,-67,-55,-56,-57,-58,-59,-60,43,-61,-62,43,]),'NOT':([23,24,25,27,34,44,48,53,63,64,65,66,67,68,69,70,71,72,73,74,75,78,91,92,111,],[44,44,44,44,44,44,44,44,44,44,-63,-64,-65,-66,-67,-55,-56,-57,-58,-59,-60,44,-61,-62,44,]),'INTV':([23,24,25,27,34,44,48,53,63,64,65,66,67,68,69,70,71,72,73,74,75,78,91,92,111,],[45,45,45,45,45,45,45,45,45,45,-63,-64,-65,-66,-67,-55,-56,-57,-58,-59,-60,45,-61,-62,45,]),'FLOATV':([23,24,25,27,34,44,48,53,63,64,65,66,67,68,69,70,71,72,73,74,75,78,91,92,111,],[46,46,46,46,46,46,46,46,46,46,-63,-64,-65,-66,-67,-55,-56,-57,-58,-59,-60,46,-61,-62,46,]),'RPAREN':([25,36,37,39,40,41,42,43,45,46,49,50,52,54,56,59,62,76,89,90,93,94,96,97,98,99,100,101,102,103,104,105,106,108,],[51,60,-39,-40,-41,-42,-43,-44,-68,-69,-52,77,-37,80,82,85,-45,93,-53,-54,-51,-38,112,-31,-35,-26,-27,-28,-29,-30,-32,-33,-34,-36,]),'RSBRACKET':([37,38,39,40,41,42,43,45,46,62,],[-39,61,-40,-41,-42,-43,-44,-68,-69,-45,]),'MINUS':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,65,-52,65,65,-45,65,65,65,65,-51,65,]),'PLUS':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,66,-52,66,66,-45,66,66,66,66,-51,66,]),'TIMES':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,67,-52,67,67,-45,67,67,67,67,-51,67,]),'DIVIDE':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,68,-52,68,68,-45,68,68,68,68,-51,68,]),'MODULE':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,69,-52,69,69,-45,69,69,69,69,-51,69,]),'OR':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,70,-52,70,70,-45,70,70,70,70,-51,70,]),'AND':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,71,-52,71,71,-45,71,71,71,71,-51,71,]),'EQUALS':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,72,-52,72,72,-45,72,72,72,72,-51,72,]),'NOTEQUALS':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,73,-52,73,73,-45,73,73,73,73,-51,73,]),'GREATER':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,74,-52,74,74,-45,74,74,74,74,-51,74,]),'LOWER':([37,39,40,41,42,43,45,46,47,49,54,56,62,76,79,89,90,93,115,],[-39,-40,-41,-42,-43,-44,-68,-69,75,-52,75,75,-45,75,75,75,75,-51,75,]),',':([37,39,40,41,42,43,45,46,50,52,59,62,94,97,98,99,100,101,102,103,104,105,106,108,],[-39,-40,-41,-42,-43,-44,-68,-69,78,-37,86,-45,78,-31,-35,-26,-27,-28,-29,-30,-32,-33,-34,86,]),'IN':([57,],[83,]),':':([58,],[84,]),'INT':([84,],[99,]),'FLOAT':([84,],[100,]),'BYTE':([84,],[101,]),'SHORT':([84,],[102,]),'DOUBLE':([84,],[103,]),'LONG':([84,],[104,]),'CHAR':([84,],[105,]),'BOOLEAN':([84,],[106,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'cuerpo':([0,],[1,]),'sentencia':([0,],[2,]),'asignacion':([0,],[3,]),'modificacion':([0,],[4,]),'retorno':([0,],[5,]),'eliminacion':([0,],[6,]),'index':([7,],[12,]),'dato':([15,17,34,37,],[21,33,39,40,]),'objeto':([16,],[32,]),}
+_lr_goto_items = {'cuerpo':([0,2,3,29,88,],[1,20,21,55,109,]),'sentencia':([0,2,3,13,14,15,29,80,88,],[2,2,2,30,30,30,2,30,2,]),'function':([0,2,3,29,88,],[3,3,3,3,3,]),'asignacion':([0,2,3,13,14,15,29,80,88,],[4,4,4,4,4,4,4,4,4,]),'estructuraControl':([0,2,3,13,14,15,29,80,88,],[5,5,5,5,5,5,5,5,5,]),'bucles':([0,2,3,13,14,15,29,80,88,],[6,6,6,6,6,6,6,6,6,]),'llamada':([0,2,3,13,14,15,29,80,88,],[7,7,7,7,7,7,7,7,7,]),'declaracion':([0,2,3,13,14,15,29,80,88,],[8,8,8,8,8,8,8,8,8,]),'declarador':([0,2,3,13,14,15,29,80,88,],[11,11,11,11,11,11,11,11,11,]),'while':([0,2,3,13,14,15,29,80,88,],[14,14,14,14,14,14,14,14,14,]),'for':([0,2,3,13,14,15,29,80,88,],[15,15,15,15,15,15,15,15,15,]),'instrucciones':([13,14,15,80,],[28,32,33,95,]),'valor':([23,24,25,27,34,44,48,53,63,64,78,111,],[38,49,52,49,49,62,49,49,49,49,52,49,]),'number':([23,24,25,27,34,44,48,53,63,64,78,111,],[39,39,39,39,39,39,39,39,39,39,39,39,]),'expresion':([24,27,34,48,53,63,64,111,],[47,54,56,76,79,89,90,115,]),'args':([25,78,],[50,94,]),'params':([36,86,],[59,108,]),'operadoresMat':([47,54,56,76,79,89,90,115,],[63,63,63,63,63,63,63,63,]),'operadoresLog':([47,54,56,76,79,89,90,115,],[64,64,64,64,64,64,64,64,]),'instruccionesF':([60,85,],[87,107,]),'dato':([84,],[98,]),'retorno':([88,109,],[110,113,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,26 +27,73 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> cuerpo","S'",1,None,None,None),
-  ('cuerpo -> sentencia ;','cuerpo',2,'p_cuerpo','examen_sintactico.py',8),
-  ('sentencia -> asignacion','sentencia',1,'p_sentencia','examen_sintactico.py',14),
-  ('sentencia -> modificacion','sentencia',1,'p_sentencia','examen_sintactico.py',15),
-  ('sentencia -> retorno','sentencia',1,'p_sentencia','examen_sintactico.py',16),
-  ('sentencia -> eliminacion','sentencia',1,'p_sentencia','examen_sintactico.py',17),
-  ('asignacion -> ID ASSIGN LCBRACKET objeto RCBRACKET','asignacion',5,'p_asignacion','examen_sintactico.py',22),
-  ('asignacion -> ID index ASSIGN dato','asignacion',4,'p_modificacion_index','examen_sintactico.py',36),
-  ('modificacion -> ID . ID ASSIGN dato','modificacion',5,'p_modificacion','examen_sintactico.py',46),
-  ('retorno -> ID . ID','retorno',3,'p_retorno','examen_sintactico.py',57),
-  ('eliminacion -> DELETE ID . ID','eliminacion',4,'p_eliminacion','examen_sintactico.py',64),
-  ('objeto -> ID : dato','objeto',3,'p_objeto','examen_sintactico.py',72),
-  ('index -> ID LSBRACKET dato RSBRACKET','index',4,'p_index','examen_sintactico.py',78),
-  ('dato -> INT','dato',1,'p_dato','examen_sintactico.py',82),
-  ('dato -> FLOAT','dato',1,'p_dato','examen_sintactico.py',83),
-  ('dato -> BYTE','dato',1,'p_dato','examen_sintactico.py',84),
-  ('dato -> SHORT','dato',1,'p_dato','examen_sintactico.py',85),
-  ('dato -> DOUBLE','dato',1,'p_dato','examen_sintactico.py',86),
-  ('dato -> ID','dato',1,'p_dato','examen_sintactico.py',87),
-  ('dato -> LONG','dato',1,'p_dato','examen_sintactico.py',88),
-  ('dato -> CHAR','dato',1,'p_dato','examen_sintactico.py',89),
-  ('dato -> BOOLEAN','dato',1,'p_dato','examen_sintactico.py',90),
-  ('dato -> STRING','dato',1,'p_dato','examen_sintactico.py',91),
+  ('cuerpo -> sentencia','cuerpo',1,'p_cuerpo','sintactico.py',8),
+  ('cuerpo -> function','cuerpo',1,'p_cuerpo_funcion_sola','sintactico.py',12),
+  ('cuerpo -> sentencia cuerpo','cuerpo',2,'p_cuerpoR','sintactico.py',16),
+  ('cuerpo -> function cuerpo','cuerpo',2,'p_cuerpo_funcion','sintactico.py',20),
+  ('sentencia -> asignacion','sentencia',1,'p_sentencia','sintactico.py',25),
+  ('sentencia -> estructuraControl','sentencia',1,'p_sentencia','sintactico.py',26),
+  ('sentencia -> bucles','sentencia',1,'p_sentencia','sintactico.py',27),
+  ('sentencia -> llamada','sentencia',1,'p_sentencia','sintactico.py',28),
+  ('sentencia -> declaracion','sentencia',1,'p_sentencia','sintactico.py',29),
+  ('instrucciones -> LCBRACKET cuerpo RCBRACKET','instrucciones',3,'p_instrucciones','sintactico.py',33),
+  ('instrucciones -> sentencia','instrucciones',1,'p_instrucciones','sintactico.py',34),
+  ('instruccionesF -> LCBRACKET cuerpo retorno RCBRACKET','instruccionesF',4,'p_instrucciones_funcion','sintactico.py',37),
+  ('instruccionesF -> LCBRACKET retorno RCBRACKET','instruccionesF',3,'p_instrucciones_funcion_retorno','sintactico.py',40),
+  ('retorno -> RETURN expresion','retorno',2,'p_retorno','sintactico.py',43),
+  ('estructuraControl -> IF LPAREN expresion RPAREN instrucciones','estructuraControl',5,'p_estructuraControlIf','sintactico.py',48),
+  ('estructuraControl -> ELSE instrucciones','estructuraControl',2,'p_estructuraControlElse','sintactico.py',51),
+  ('bucles -> while instrucciones','bucles',2,'p_bucles','sintactico.py',54),
+  ('bucles -> for instrucciones','bucles',2,'p_bucles','sintactico.py',55),
+  ('while -> WHILE LPAREN expresion RPAREN','while',4,'p_while','sintactico.py',60),
+  ('for -> FOR LPAREN ID IN ID RPAREN','for',6,'p_for','sintactico.py',64),
+  ('function -> FUNCTION ID LPAREN params RPAREN instruccionesF','function',6,'p_function','sintactico.py',69),
+  ('function -> FUNCTION ID LPAREN RPAREN instruccionesF','function',5,'p_function_sin_params','sintactico.py',72),
+  ('llamada -> ID LPAREN args RPAREN','llamada',4,'p_llamada_funcion','sintactico.py',76),
+  ('llamada -> ID LPAREN RPAREN','llamada',3,'p_llamada_funcion_sin_params','sintactico.py',80),
+  ('function -> ID LSBRACKET valor RSBRACKET','function',4,'p_index','sintactico.py',84),
+  ('dato -> INT','dato',1,'p_dato','sintactico.py',88),
+  ('dato -> FLOAT','dato',1,'p_dato','sintactico.py',89),
+  ('dato -> BYTE','dato',1,'p_dato','sintactico.py',90),
+  ('dato -> SHORT','dato',1,'p_dato','sintactico.py',91),
+  ('dato -> DOUBLE','dato',1,'p_dato','sintactico.py',92),
+  ('dato -> ID','dato',1,'p_dato','sintactico.py',93),
+  ('dato -> LONG','dato',1,'p_dato','sintactico.py',94),
+  ('dato -> CHAR','dato',1,'p_dato','sintactico.py',95),
+  ('dato -> BOOLEAN','dato',1,'p_dato','sintactico.py',96),
+  ('params -> ID : dato','params',3,'p_params','sintactico.py',100),
+  ('params -> params , params','params',3,'p_params2','sintactico.py',104),
+  ('args -> valor','args',1,'p_args','sintactico.py',108),
+  ('args -> args , args','args',3,'p_args2','sintactico.py',112),
+  ('valor -> ID','valor',1,'p_valor_id','sintactico.py',115),
+  ('valor -> number','valor',1,'p_valor','sintactico.py',119),
+  ('valor -> STRING','valor',1,'p_valor','sintactico.py',120),
+  ('valor -> TRUE','valor',1,'p_valor_bool','sintactico.py',124),
+  ('valor -> FALSE','valor',1,'p_valor_bool','sintactico.py',125),
+  ('valor -> NULL','valor',1,'p_valor_null','sintactico.py',133),
+  ('valor -> NOT valor','valor',2,'p_valor_negado','sintactico.py',138),
+  ('declarador -> VAR','declarador',1,'p_declarador','sintactico.py',143),
+  ('declarador -> VAL','declarador',1,'p_declarador','sintactico.py',144),
+  ('asignacion -> ID ASSIGN expresion','asignacion',3,'p_asignacion','sintactico.py',148),
+  ('asignacion -> declarador ID ASSIGN expresion','asignacion',4,'p_asignacion_declarando','sintactico.py',159),
+  ('declaracion -> declarador ID','declaracion',2,'p_declaracion','sintactico.py',166),
+  ('expresion -> LPAREN expresion RPAREN','expresion',3,'p_exresion','sintactico.py',172),
+  ('expresion -> valor','expresion',1,'p_expesion','sintactico.py',175),
+  ('expresion -> expresion operadoresMat expresion','expresion',3,'p_expresion_matematica','sintactico.py',180),
+  ('expresion -> expresion operadoresLog expresion','expresion',3,'p_expresion_logica','sintactico.py',197),
+  ('operadoresLog -> OR','operadoresLog',1,'p_operadores_log','sintactico.py',208),
+  ('operadoresLog -> AND','operadoresLog',1,'p_operadores_log','sintactico.py',209),
+  ('operadoresLog -> EQUALS','operadoresLog',1,'p_operadores_log','sintactico.py',210),
+  ('operadoresLog -> NOTEQUALS','operadoresLog',1,'p_operadores_log','sintactico.py',211),
+  ('operadoresLog -> GREATER','operadoresLog',1,'p_operadores_log','sintactico.py',212),
+  ('operadoresLog -> LOWER','operadoresLog',1,'p_operadores_log','sintactico.py',213),
+  ('operadoresLog -> GREATER ASSIGN','operadoresLog',2,'p_operadores_log','sintactico.py',214),
+  ('operadoresLog -> LOWER ASSIGN','operadoresLog',2,'p_operadores_log','sintactico.py',215),
+  ('operadoresMat -> MINUS','operadoresMat',1,'p_operadores_mat','sintactico.py',220),
+  ('operadoresMat -> PLUS','operadoresMat',1,'p_operadores_mat','sintactico.py',221),
+  ('operadoresMat -> TIMES','operadoresMat',1,'p_operadores_mat','sintactico.py',222),
+  ('operadoresMat -> DIVIDE','operadoresMat',1,'p_operadores_mat','sintactico.py',223),
+  ('operadoresMat -> MODULE','operadoresMat',1,'p_operadores_mat','sintactico.py',224),
+  ('number -> INTV','number',1,'p_number','sintactico.py',232),
+  ('number -> FLOATV','number',1,'p_number','sintactico.py',233),
 ]
