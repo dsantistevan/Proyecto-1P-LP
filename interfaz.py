@@ -1,5 +1,5 @@
 import traceback
-from PIL import Image, ImageTk
+# from PIL import Image, ImageTk
 from tkinter import Tk, Frame, Menu, Button
 from tkinter import LEFT
 from sintactico import parser
@@ -349,24 +349,24 @@ class CodePadMainWindow(tk.Frame):
         self.root.config(menu=self.menubar)
         return
 
-    def buildToolbar(self, parent, *args, **kwargs):
-        try:
-            self.toolbar = tk.Frame(parent, bd=1, relief=FLAT)
-            self.img = Image.open("play.png")
-            self.eimg = ImageTk.PhotoImage(self.img)
-            print(self.eimg)
+    # def buildToolbar(self, parent, *args, **kwargs):
+    #     try:
+    #         self.toolbar = tk.Frame(parent, bd=1, relief=FLAT)
+    #         self.img = Image.open("play.png")
+    #         self.eimg = ImageTk.PhotoImage(self.img)
+    #         print(self.eimg)
 
-            self.exitButton = Button(self.toolbar, image=self.eimg, relief=FLAT,height=100,width=100)
-            self.exitButton.image = self.eimg
-            self.exitButton.grid(row=0,column=0)
-            # self.exitButton.pack(side=LEFT, padx=2, pady=2)
+    #         self.exitButton = Button(self.toolbar, image=self.eimg, relief=FLAT,height=100,width=100)
+    #         self.exitButton.image = self.eimg
+    #         self.exitButton.grid(row=0,column=0)
+    #         # self.exitButton.pack(side=LEFT, padx=2, pady=2)
 
-            # self.toolbar.pack(side=TOP, fill=X)
-            return self.toolbar
-        except Exception as ex:
-            print(str(ex))
+    #         # self.toolbar.pack(side=TOP, fill=X)
+    #         return self.toolbar
+    #     except Exception as ex:
+    #         print(str(ex))
        
-        #self.root.config(menu=self.menubar)  
+    #     #self.root.config(menu=self.menubar)  
 
     def buildStatusBar(self, parent, *args, **kwargs):
         self.statusBar = tk.Frame(parent, *args, **kwargs)
@@ -417,7 +417,8 @@ class CodePadMainWindow(tk.Frame):
         syntaxoptions = []
         currentmenu = None
         firstLetter, startLetter = None, None
-        for i, lexer in enumerate(sorted(get_all_lexers())):
+        # print(list(get_all_lexers()))
+        for i, lexer in enumerate(get_all_lexers()):
             if not i % 20:
                 if currentmenu:
 
