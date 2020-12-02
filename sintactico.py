@@ -84,6 +84,13 @@ def p_llamada_funcion_sin_params(p):
     '''llamada : ID LPAREN RPAREN '''
 
 
+def p_llamada_objeto(p):
+    '''llamada : ID '.' ID LPAREN args RPAREN'''
+
+def p_llamada_objeto_sin_params(p):
+    '''llamada : ID '.' ID LPAREN RPAREN'''
+
+
 def p_index(p): #David Santistevan
     '''function : ID LSBRACKET expresion RSBRACKET'''
     p[0] = names[p[1]][p[3]]
