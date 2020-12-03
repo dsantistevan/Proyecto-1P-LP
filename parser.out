@@ -1,5 +1,21 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
+Unused terminals:
+
+    COUNT
+    FIRST
+    GET
+    GREATERE
+    LAST
+    LENGTH
+    LIST
+    LISTOF
+    LOWERE
+    MUTABLELIST
+    MUTABLELISTOF
+    SETOF
+    STRINGW
+
 Grammar
 
 Rule 0     S' -> cuerpo
@@ -88,28 +104,39 @@ ASSIGN               : 53 54 66 67
 BOOLEAN              : 39
 BYTE                 : 33
 CHAR                 : 38
+COUNT                : 
 DIVIDE               : 71
 DOUBLE               : 35
 ELSE                 : 18
 EQUALS               : 62
 FALSE                : 48
+FIRST                : 
 FLOAT                : 32
 FLOATV               : 74
 FOR                  : 22
 FUNCTION             : 23 24
+GET                  : 
 GREATER              : 64 66
+GREATERE             : 
 ID                   : 22 22 23 24 26 27 28 28 29 29 30 36 40 44 53 54 55
 IF                   : 17
 IN                   : 22
 INT                  : 31
 INTV                 : 73
+LAST                 : 
 LCBRACKET            : 10 12 13 14 15
+LENGTH               : 
+LIST                 : 
+LISTOF               : 
 LONG                 : 37
 LOWER                : 65 67
+LOWERE               : 
 LPAREN               : 17 21 22 23 24 25 26 27 28 29 56
 LSBRACKET            : 30
 MINUS                : 68
 MODULE               : 72
+MUTABLELIST          : 
+MUTABLELISTOF        : 
 NOT                  : 50
 NOTEQUALS            : 63
 NULL                 : 49
@@ -120,8 +147,10 @@ RCBRACKET            : 10 12 13 14 15
 RETURN               : 16
 RPAREN               : 17 21 22 23 24 25 26 27 28 29 56
 RSBRACKET            : 30
+SETOF                : 
 SHORT                : 34
 STRING               : 46
+STRINGW              : 
 TIMES                : 70
 TRUE                 : 47
 VAL                  : 52
