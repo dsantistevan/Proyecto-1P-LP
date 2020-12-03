@@ -75,9 +75,11 @@ def p_for(p):
 #function
 def p_function(p):  #David Santistevan
     '''function : FUNCTION ID LPAREN params RPAREN instruccionesF'''
+    p[0] = p[2]
 
 def p_function_sin_params(p):  #David Santistevan
     '''function : FUNCTION ID LPAREN RPAREN instruccionesF'''
+    p[0] = p[2]
 
 def p_print(p):
     '''llamada : PRINTLN LPAREN expresion RPAREN'''
