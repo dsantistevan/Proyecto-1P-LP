@@ -283,7 +283,7 @@ def p_number(p):    #David Santistevan
             | FLOATV '''
     p[0] = p[1]
 
-def p_string_length(p):
+def p_string_length_var(p):
     '''llamada : ID '.' LENGTH LPAREN RPAREN'''
     s = names[p[1]]
     if type(s) == str:
@@ -292,17 +292,35 @@ def p_string_length(p):
         raise Exception("Variable not a String")
 
 
-def p_string_equals(p):
+def p_string_length(p):
+    '''llamada : STRING '.' LENGTH LPAREN RPAREN'''
+    p[0] = len(p[1])
+
+
+
+def p_string_equals_var(p):
     '''llamada : ID '.' EQUALSM LPAREN ID RPAREN'''
     s = names[p[1]]
     s2 = names[p[5]]
     if type(s) == str and type(s2) == str:
-        p[0] = len(s)
+        p[0] = s == s2
     else:
         raise Exception("Variable not a String")
 
+def p_string_equals(p):
+    '''llamada : STRING '.' EQUALSM LPAREN ID RPAREN'''
+    s2 = names[p[5]]
+    if type(s2) == str:
+        p[0] = p[1] == s2
+    else:
+        raise Exception("Variable not a String")
 
 def p_string_equals2(p):
+    '''llamada : STRING '.' EQUALSM LPAREN STRING RPAREN'''
+    p[0] = p[1] == p[5]
+
+
+def p_string_equals2_var(p):
     '''llamada : ID '.' EQUALSM LPAREN STRING RPAREN'''
     s = names[p[1]]
     if type(s) == str:
