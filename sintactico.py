@@ -283,16 +283,6 @@ def p_number(p):    #David Santistevan
             | FLOATV '''
     p[0] = p[1]
 
-<<<<<<< HEAD
-
-# def p_list_length(p):
-#     '''llamada : ID '.' LENGTH LPAREN RPAREN'''
-#     l = names[p[1]]
-#     if type(l) in (tuple, list):
-#         p[0] = len(l)
-#     else:
-#         raise Exception("Variable not a list")
-=======
 def p_string_length(p):
     '''llamada : ID '.' LENGTH LPAREN RPAREN'''
     s = names[p[1]]
@@ -327,7 +317,6 @@ def p_list_count(p):
         p[0] = len(l)
     else:
         raise Exception("Variable not a List")
->>>>>>> 1da17990edf57a74b73d7f4a526b56715393e6a8
 
 def p_list_first(p):
     '''llamada : ID '.' FIRST LPAREN RPAREN'''
