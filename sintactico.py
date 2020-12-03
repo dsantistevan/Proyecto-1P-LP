@@ -257,6 +257,14 @@ def p_number(p):    #David Santistevan
     p[0] = p[1]
 
 
+def p_list_length(p):
+    '''llamada : ID '.' LENGTH LPAREN RPAREN'''
+    l = names[p[1]]
+    if type(l) in (tuple, list):
+        p[0] = len(l)
+    else:
+        raise Exception("Variable not a list")
+
 
     # Error rule for syntax errors
 
