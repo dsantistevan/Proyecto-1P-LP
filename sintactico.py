@@ -116,10 +116,15 @@ def p_dato(p):  #David Santistevan
             | BOOLEAN
             | LIST
             | MUTABLELIST'''
+    p[0] = p[1]
 
 
 def p_params(p):  #David Santistevan
     '''params : ID ':' dato '''
+    names[p[1]] = "" if p[3] not in ("float", "int", "double", "byte", "long", "short") else 0
+    p[0] = p[3]
+    print(p[3])
+
 
 
 def p_params2(p): #David Santistevan
@@ -221,7 +226,6 @@ def p_expesion(p): #David Santistevan
 def p_expresion_matematica(t): #Dylan Escala
     'expresion : expresion operadoresMat expresion '
     if t[2] == '+':
-        print('suma')
         t[0] = t[1] + t[3]
     elif t[2] == '-':
         t[0] = t[1] - t[3]
