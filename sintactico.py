@@ -284,6 +284,7 @@ def p_number(p):    #David Santistevan
             | FLOATV '''
     p[0] = p[1]
 
+
 def p_string_length_var(p):
     '''llamada : ID '.' LENGTH LPAREN RPAREN'''
     s = names[p[1]]
@@ -296,7 +297,6 @@ def p_string_length_var(p):
 def p_string_length(p):
     '''llamada : STRING '.' LENGTH LPAREN RPAREN'''
     p[0] = len(p[1])
-
 
 
 def p_string_equals_var(p):
@@ -337,6 +337,7 @@ def p_list_count(p):
     else:
         raise Exception("Variable not a List")
 
+
 def p_list_first(p):
     '''llamada : ID '.' FIRST LPAREN RPAREN'''
     l = names[p[1]]
@@ -344,6 +345,7 @@ def p_list_first(p):
         p[0] = l[0]
     else:
         raise Exception("Variable not a List")
+
 
 def p_list_last(p):
     '''llamada : ID '.' LAST LPAREN RPAREN'''
@@ -353,7 +355,7 @@ def p_list_last(p):
     else:
         raise Exception("Variable not a List")
 
-    # Error rule for syntax errors
+
 def p_list_get(p):
     '''llamada : ID '.' GET LPAREN INTV RPAREN'''
     l = names[p[1]]
@@ -361,6 +363,7 @@ def p_list_get(p):
         p[0] = l[p[5]]
     else:
         raise Exception("Variable not a List")
+
 
 def p_list_get2(p):
     '''llamada : ID '.' GET LPAREN ID RPAREN'''
@@ -372,6 +375,7 @@ def p_list_get2(p):
         raise Exception("Variable not a List")
 
 
+# Error rule for syntax errors
 def p_error(p):
     print("Syntax error in input!")
     # Build the parser
