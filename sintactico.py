@@ -132,7 +132,7 @@ def p_args(p):
 
 def p_args2(p):
     '''args : args ',' args'''
-    p[1].extend(p[2])
+    p[1].extend(p[3])
     p[0] = p[1]
 
 def p_valor_id(p):
@@ -192,16 +192,16 @@ def p_declaracion(p): #David Santistevan # Fixed by Carlos Jimenez
 
 
 def p_creacion_lista(p):
-    '''llamada : LISTOF LPAREN params RPAREN'''
+    '''llamada : LISTOF LPAREN args RPAREN'''
     p[0] = tuple(p[3])
 
 
 def p_creacion_set(p):
-    '''llamada : SETOF LPAREN params RPAREN'''
+    '''llamada : SETOF LPAREN args RPAREN'''
     p[0] = set(p[3])
 
 def p_creacion_lista_mutable(p):
-    '''llamada : MUTABLELISTOF LPAREN params RPAREN'''
+    '''llamada : MUTABLELISTOF LPAREN args RPAREN'''
     p[0] = list(p[3])
 
 def p_expresion_llamada(p):

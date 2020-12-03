@@ -64,9 +64,9 @@ Rule 54    declarador -> VAL
 Rule 55    asignacion -> ID ASSIGN expresion
 Rule 56    asignacion -> declarador ID ASSIGN expresion
 Rule 57    declaracion -> declarador ID
-Rule 58    llamada -> LISTOF LPAREN params RPAREN
-Rule 59    llamada -> SETOF LPAREN params RPAREN
-Rule 60    llamada -> MUTABLELISTOF LPAREN params RPAREN
+Rule 58    llamada -> LISTOF LPAREN args RPAREN
+Rule 59    llamada -> SETOF LPAREN args RPAREN
+Rule 60    llamada -> MUTABLELISTOF LPAREN args RPAREN
 Rule 61    expresion -> llamada
 Rule 62    expresion -> LPAREN expresion RPAREN
 Rule 63    expresion -> valor
@@ -163,7 +163,7 @@ error                :
 
 Nonterminals, with rules where they appear
 
-args                 : 26 28 45 45
+args                 : 26 28 45 45 58 59 60
 asignacion           : 5
 bucles               : 7
 cuerpo               : 3 4 10 12 14 0
@@ -180,7 +180,7 @@ llamada              : 8 61
 number               : 47
 operadoresLog        : 65
 operadoresMat        : 64
-params               : 23 43 43 58 59 60
+params               : 23 43 43
 retorno              : 12 13 14 15
 sentencia            : 1 3 11
 valor                : 52 63
@@ -214,9 +214,9 @@ state 0
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -289,9 +289,9 @@ state 2
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -361,9 +361,9 @@ state 3
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -578,9 +578,9 @@ state 13
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -640,9 +640,9 @@ state 14
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -702,9 +702,9 @@ state 15
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -752,21 +752,21 @@ state 16
 
 state 17
 
-    (58) llamada -> LISTOF . LPAREN params RPAREN
+    (58) llamada -> LISTOF . LPAREN args RPAREN
 
     LPAREN          shift and go to state 40
 
 
 state 18
 
-    (59) llamada -> SETOF . LPAREN params RPAREN
+    (59) llamada -> SETOF . LPAREN args RPAREN
 
     LPAREN          shift and go to state 41
 
 
 state 19
 
-    (60) llamada -> MUTABLELISTOF . LPAREN params RPAREN
+    (60) llamada -> MUTABLELISTOF . LPAREN args RPAREN
 
     LPAREN          shift and go to state 42
 
@@ -838,9 +838,9 @@ state 27
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -891,9 +891,9 @@ state 28
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -947,9 +947,9 @@ state 29
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -1047,9 +1047,9 @@ state 32
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -1134,9 +1134,9 @@ state 34
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -1273,9 +1273,9 @@ state 39
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -1315,37 +1315,9 @@ state 39
 
 state 40
 
-    (58) llamada -> LISTOF LPAREN . params RPAREN
-    (42) params -> . ID : dato
-    (43) params -> . params , params
-
-    ID              shift and go to state 75
-
-    params                         shift and go to state 74
-
-state 41
-
-    (59) llamada -> SETOF LPAREN . params RPAREN
-    (42) params -> . ID : dato
-    (43) params -> . params , params
-
-    ID              shift and go to state 75
-
-    params                         shift and go to state 76
-
-state 42
-
-    (60) llamada -> MUTABLELISTOF LPAREN . params RPAREN
-    (42) params -> . ID : dato
-    (43) params -> . params , params
-
-    ID              shift and go to state 75
-
-    params                         shift and go to state 77
-
-state 43
-
-    (21) while -> WHILE LPAREN . expresion RPAREN
+    (58) llamada -> LISTOF LPAREN . args RPAREN
+    (44) args -> . expresion
+    (45) args -> . args , args
     (61) expresion -> . llamada
     (62) expresion -> . LPAREN expresion RPAREN
     (63) expresion -> . valor
@@ -1356,9 +1328,9 @@ state 43
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -1391,7 +1363,173 @@ state 43
     INTV            shift and go to state 52
     FLOATV          shift and go to state 58
 
-    expresion                      shift and go to state 78
+    args                           shift and go to state 74
+    expresion                      shift and go to state 62
+    llamada                        shift and go to state 48
+    valor                          shift and go to state 50
+    number                         shift and go to state 53
+
+state 41
+
+    (59) llamada -> SETOF LPAREN . args RPAREN
+    (44) args -> . expresion
+    (45) args -> . args , args
+    (61) expresion -> . llamada
+    (62) expresion -> . LPAREN expresion RPAREN
+    (63) expresion -> . valor
+    (64) expresion -> . expresion operadoresMat expresion
+    (65) expresion -> . expresion operadoresLog expresion
+    (25) llamada -> . PRINTLN LPAREN expresion RPAREN
+    (26) llamada -> . ID LPAREN args RPAREN
+    (27) llamada -> . ID LPAREN RPAREN
+    (28) llamada -> . ID . ID LPAREN args RPAREN
+    (29) llamada -> . ID . ID LPAREN RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
+    (81) llamada -> . ID . LENGTH LPAREN RPAREN
+    (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
+    (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
+    (84) llamada -> . ID . COUNT LPAREN RPAREN
+    (85) llamada -> . ID . FIRST LPAREN RPAREN
+    (86) llamada -> . ID . LAST LPAREN RPAREN
+    (87) llamada -> . ID . GET LPAREN INTV RPAREN
+    (88) llamada -> . ID . GET LPAREN ID RPAREN
+    (46) valor -> . ID
+    (47) valor -> . number
+    (48) valor -> . STRING
+    (49) valor -> . TRUE
+    (50) valor -> . FALSE
+    (51) valor -> . NULL
+    (52) valor -> . NOT valor
+    (79) number -> . INTV
+    (80) number -> . FLOATV
+
+    LPAREN          shift and go to state 49
+    PRINTLN         shift and go to state 16
+    ID              shift and go to state 46
+    LISTOF          shift and go to state 17
+    SETOF           shift and go to state 18
+    MUTABLELISTOF   shift and go to state 19
+    STRING          shift and go to state 51
+    TRUE            shift and go to state 54
+    FALSE           shift and go to state 55
+    NULL            shift and go to state 56
+    NOT             shift and go to state 57
+    INTV            shift and go to state 52
+    FLOATV          shift and go to state 58
+
+    args                           shift and go to state 75
+    expresion                      shift and go to state 62
+    llamada                        shift and go to state 48
+    valor                          shift and go to state 50
+    number                         shift and go to state 53
+
+state 42
+
+    (60) llamada -> MUTABLELISTOF LPAREN . args RPAREN
+    (44) args -> . expresion
+    (45) args -> . args , args
+    (61) expresion -> . llamada
+    (62) expresion -> . LPAREN expresion RPAREN
+    (63) expresion -> . valor
+    (64) expresion -> . expresion operadoresMat expresion
+    (65) expresion -> . expresion operadoresLog expresion
+    (25) llamada -> . PRINTLN LPAREN expresion RPAREN
+    (26) llamada -> . ID LPAREN args RPAREN
+    (27) llamada -> . ID LPAREN RPAREN
+    (28) llamada -> . ID . ID LPAREN args RPAREN
+    (29) llamada -> . ID . ID LPAREN RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
+    (81) llamada -> . ID . LENGTH LPAREN RPAREN
+    (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
+    (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
+    (84) llamada -> . ID . COUNT LPAREN RPAREN
+    (85) llamada -> . ID . FIRST LPAREN RPAREN
+    (86) llamada -> . ID . LAST LPAREN RPAREN
+    (87) llamada -> . ID . GET LPAREN INTV RPAREN
+    (88) llamada -> . ID . GET LPAREN ID RPAREN
+    (46) valor -> . ID
+    (47) valor -> . number
+    (48) valor -> . STRING
+    (49) valor -> . TRUE
+    (50) valor -> . FALSE
+    (51) valor -> . NULL
+    (52) valor -> . NOT valor
+    (79) number -> . INTV
+    (80) number -> . FLOATV
+
+    LPAREN          shift and go to state 49
+    PRINTLN         shift and go to state 16
+    ID              shift and go to state 46
+    LISTOF          shift and go to state 17
+    SETOF           shift and go to state 18
+    MUTABLELISTOF   shift and go to state 19
+    STRING          shift and go to state 51
+    TRUE            shift and go to state 54
+    FALSE           shift and go to state 55
+    NULL            shift and go to state 56
+    NOT             shift and go to state 57
+    INTV            shift and go to state 52
+    FLOATV          shift and go to state 58
+
+    args                           shift and go to state 76
+    expresion                      shift and go to state 62
+    llamada                        shift and go to state 48
+    valor                          shift and go to state 50
+    number                         shift and go to state 53
+
+state 43
+
+    (21) while -> WHILE LPAREN . expresion RPAREN
+    (61) expresion -> . llamada
+    (62) expresion -> . LPAREN expresion RPAREN
+    (63) expresion -> . valor
+    (64) expresion -> . expresion operadoresMat expresion
+    (65) expresion -> . expresion operadoresLog expresion
+    (25) llamada -> . PRINTLN LPAREN expresion RPAREN
+    (26) llamada -> . ID LPAREN args RPAREN
+    (27) llamada -> . ID LPAREN RPAREN
+    (28) llamada -> . ID . ID LPAREN args RPAREN
+    (29) llamada -> . ID . ID LPAREN RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
+    (81) llamada -> . ID . LENGTH LPAREN RPAREN
+    (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
+    (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
+    (84) llamada -> . ID . COUNT LPAREN RPAREN
+    (85) llamada -> . ID . FIRST LPAREN RPAREN
+    (86) llamada -> . ID . LAST LPAREN RPAREN
+    (87) llamada -> . ID . GET LPAREN INTV RPAREN
+    (88) llamada -> . ID . GET LPAREN ID RPAREN
+    (46) valor -> . ID
+    (47) valor -> . number
+    (48) valor -> . STRING
+    (49) valor -> . TRUE
+    (50) valor -> . FALSE
+    (51) valor -> . NULL
+    (52) valor -> . NOT valor
+    (79) number -> . INTV
+    (80) number -> . FLOATV
+
+    LPAREN          shift and go to state 49
+    PRINTLN         shift and go to state 16
+    ID              shift and go to state 46
+    LISTOF          shift and go to state 17
+    SETOF           shift and go to state 18
+    MUTABLELISTOF   shift and go to state 19
+    STRING          shift and go to state 51
+    TRUE            shift and go to state 54
+    FALSE           shift and go to state 55
+    NULL            shift and go to state 56
+    NOT             shift and go to state 57
+    INTV            shift and go to state 52
+    FLOATV          shift and go to state 58
+
+    expresion                      shift and go to state 77
     llamada                        shift and go to state 48
     valor                          shift and go to state 50
     number                         shift and go to state 53
@@ -1400,7 +1538,7 @@ state 44
 
     (22) for -> FOR LPAREN . ID IN ID RPAREN
 
-    ID              shift and go to state 79
+    ID              shift and go to state 78
 
 
 state 45
@@ -1411,7 +1549,7 @@ state 45
     (43) params -> . params , params
 
     RPAREN          shift and go to state 81
-    ID              shift and go to state 75
+    ID              shift and go to state 79
 
     params                         shift and go to state 80
 
@@ -1553,9 +1691,9 @@ state 49
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -2114,9 +2252,9 @@ state 70
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -2237,39 +2375,32 @@ state 73
 
 state 74
 
-    (58) llamada -> LISTOF LPAREN params . RPAREN
-    (43) params -> params . , params
+    (58) llamada -> LISTOF LPAREN args . RPAREN
+    (45) args -> args . , args
 
     RPAREN          shift and go to state 114
-    ,               shift and go to state 115
+    ,               shift and go to state 102
 
 
 state 75
 
-    (42) params -> ID . : dato
+    (59) llamada -> SETOF LPAREN args . RPAREN
+    (45) args -> args . , args
 
-    :               shift and go to state 116
+    RPAREN          shift and go to state 115
+    ,               shift and go to state 102
 
 
 state 76
 
-    (59) llamada -> SETOF LPAREN params . RPAREN
-    (43) params -> params . , params
+    (60) llamada -> MUTABLELISTOF LPAREN args . RPAREN
+    (45) args -> args . , args
 
-    RPAREN          shift and go to state 117
-    ,               shift and go to state 115
+    RPAREN          shift and go to state 116
+    ,               shift and go to state 102
 
 
 state 77
-
-    (60) llamada -> MUTABLELISTOF LPAREN params . RPAREN
-    (43) params -> params . , params
-
-    RPAREN          shift and go to state 118
-    ,               shift and go to state 115
-
-
-state 78
 
     (21) while -> WHILE LPAREN expresion . RPAREN
     (64) expresion -> expresion . operadoresMat expresion
@@ -2288,7 +2419,7 @@ state 78
     (72) operadoresLog -> . GREATERE
     (73) operadoresLog -> . LOWERE
 
-    RPAREN          shift and go to state 119
+    RPAREN          shift and go to state 117
     MINUS           shift and go to state 85
     PLUS            shift and go to state 86
     TIMES           shift and go to state 87
@@ -2306,11 +2437,18 @@ state 78
     operadoresMat                  shift and go to state 83
     operadoresLog                  shift and go to state 84
 
-state 79
+state 78
 
     (22) for -> FOR LPAREN ID . IN ID RPAREN
 
-    IN              shift and go to state 120
+    IN              shift and go to state 118
+
+
+state 79
+
+    (42) params -> ID . : dato
+
+    :               shift and go to state 119
 
 
 state 80
@@ -2318,8 +2456,8 @@ state 80
     (23) function -> FUNCTION ID LPAREN params . RPAREN instruccionesF
     (43) params -> params . , params
 
-    RPAREN          shift and go to state 121
-    ,               shift and go to state 115
+    RPAREN          shift and go to state 120
+    ,               shift and go to state 121
 
 
 state 81
@@ -2369,9 +2507,9 @@ state 83
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -2422,9 +2560,9 @@ state 84
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -2872,9 +3010,9 @@ state 102
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -2929,9 +3067,9 @@ state 103
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -3089,9 +3227,9 @@ state 111
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -3190,52 +3328,141 @@ state 113
 
 state 114
 
-    (58) llamada -> LISTOF LPAREN params RPAREN .
+    (58) llamada -> LISTOF LPAREN args RPAREN .
 
-    FUNCTION        reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    ID              reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    IF              reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    ELSE            reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    PRINTLN         reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    LISTOF          reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    SETOF           reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    MUTABLELISTOF   reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    VAR             reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    VAL             reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    WHILE           reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    FOR             reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    $end            reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    RCBRACKET       reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    RETURN          reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    RSBRACKET       reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    MINUS           reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    PLUS            reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    TIMES           reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    DIVIDE          reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    MODULE          reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    OR              reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    AND             reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    EQUALS          reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    NOTEQUALS       reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    GREATER         reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    LOWER           reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    GREATERE        reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    LOWERE          reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    RPAREN          reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
-    ,               reduce using rule 58 (llamada -> LISTOF LPAREN params RPAREN .)
+    FUNCTION        reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    ID              reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    IF              reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    ELSE            reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    PRINTLN         reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    LISTOF          reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    SETOF           reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    MUTABLELISTOF   reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    VAR             reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    VAL             reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    WHILE           reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    FOR             reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    $end            reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    RCBRACKET       reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    RETURN          reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    RSBRACKET       reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    MINUS           reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    PLUS            reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    TIMES           reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    DIVIDE          reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    MODULE          reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    OR              reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    AND             reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    EQUALS          reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    NOTEQUALS       reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    GREATER         reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    LOWER           reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    GREATERE        reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    LOWERE          reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    RPAREN          reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
+    ,               reduce using rule 58 (llamada -> LISTOF LPAREN args RPAREN .)
 
 
 state 115
 
-    (43) params -> params , . params
-    (42) params -> . ID : dato
-    (43) params -> . params , params
+    (59) llamada -> SETOF LPAREN args RPAREN .
 
-    ID              shift and go to state 75
+    FUNCTION        reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    ID              reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    IF              reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    ELSE            reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    PRINTLN         reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    LISTOF          reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    SETOF           reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    MUTABLELISTOF   reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    VAR             reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    VAL             reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    WHILE           reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    FOR             reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    $end            reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    RCBRACKET       reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    RETURN          reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    RSBRACKET       reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    MINUS           reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    PLUS            reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    TIMES           reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    DIVIDE          reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    MODULE          reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    OR              reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    AND             reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    EQUALS          reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    NOTEQUALS       reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    GREATER         reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    LOWER           reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    GREATERE        reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    LOWERE          reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    RPAREN          reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
+    ,               reduce using rule 59 (llamada -> SETOF LPAREN args RPAREN .)
 
-    params                         shift and go to state 140
 
 state 116
+
+    (60) llamada -> MUTABLELISTOF LPAREN args RPAREN .
+
+    FUNCTION        reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    ID              reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    IF              reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    ELSE            reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    PRINTLN         reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    LISTOF          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    SETOF           reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    MUTABLELISTOF   reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    VAR             reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    VAL             reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    WHILE           reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    FOR             reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    $end            reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    RCBRACKET       reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    RETURN          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    RSBRACKET       reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    MINUS           reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    PLUS            reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    TIMES           reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    DIVIDE          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    MODULE          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    OR              reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    AND             reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    EQUALS          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    NOTEQUALS       reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    GREATER         reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    LOWER           reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    GREATERE        reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    LOWERE          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    RPAREN          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+    ,               reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN args RPAREN .)
+
+
+state 117
+
+    (21) while -> WHILE LPAREN expresion RPAREN .
+
+    LCBRACKET       reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    ID              reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    IF              reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    ELSE            reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    PRINTLN         reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    LISTOF          reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    SETOF           reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    MUTABLELISTOF   reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    VAR             reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    VAL             reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    WHILE           reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+    FOR             reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
+
+
+state 118
+
+    (22) for -> FOR LPAREN ID IN . ID RPAREN
+
+    ID              shift and go to state 140
+
+
+state 119
 
     (42) params -> ID : . dato
     (31) dato -> . INT
@@ -3264,106 +3491,7 @@ state 116
 
     dato                           shift and go to state 142
 
-state 117
-
-    (59) llamada -> SETOF LPAREN params RPAREN .
-
-    FUNCTION        reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    ID              reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    IF              reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    ELSE            reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    PRINTLN         reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    LISTOF          reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    SETOF           reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    MUTABLELISTOF   reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    VAR             reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    VAL             reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    WHILE           reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    FOR             reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    $end            reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    RCBRACKET       reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    RETURN          reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    RSBRACKET       reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    MINUS           reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    PLUS            reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    TIMES           reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    DIVIDE          reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    MODULE          reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    OR              reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    AND             reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    EQUALS          reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    NOTEQUALS       reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    GREATER         reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    LOWER           reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    GREATERE        reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    LOWERE          reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    RPAREN          reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-    ,               reduce using rule 59 (llamada -> SETOF LPAREN params RPAREN .)
-
-
-state 118
-
-    (60) llamada -> MUTABLELISTOF LPAREN params RPAREN .
-
-    FUNCTION        reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    ID              reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    IF              reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    ELSE            reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    PRINTLN         reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    LISTOF          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    SETOF           reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    MUTABLELISTOF   reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    VAR             reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    VAL             reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    WHILE           reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    FOR             reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    $end            reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    RCBRACKET       reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    RETURN          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    RSBRACKET       reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    MINUS           reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    PLUS            reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    TIMES           reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    DIVIDE          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    MODULE          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    OR              reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    AND             reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    EQUALS          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    NOTEQUALS       reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    GREATER         reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    LOWER           reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    GREATERE        reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    LOWERE          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    RPAREN          reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-    ,               reduce using rule 60 (llamada -> MUTABLELISTOF LPAREN params RPAREN .)
-
-
-state 119
-
-    (21) while -> WHILE LPAREN expresion RPAREN .
-
-    LCBRACKET       reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    ID              reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    IF              reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    ELSE            reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    PRINTLN         reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    LISTOF          reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    SETOF           reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    MUTABLELISTOF   reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    VAR             reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    VAL             reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    WHILE           reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-    FOR             reduce using rule 21 (while -> WHILE LPAREN expresion RPAREN .)
-
-
 state 120
-
-    (22) for -> FOR LPAREN ID IN . ID RPAREN
-
-    ID              shift and go to state 153
-
-
-state 121
 
     (23) function -> FUNCTION ID LPAREN params RPAREN . instruccionesF
     (12) instruccionesF -> . LCBRACKET cuerpo retorno RCBRACKET
@@ -3374,7 +3502,17 @@ state 121
     LCBRACKET       shift and go to state 123
     :               shift and go to state 124
 
-    instruccionesF                 shift and go to state 154
+    instruccionesF                 shift and go to state 153
+
+state 121
+
+    (43) params -> params , . params
+    (42) params -> . ID : dato
+    (43) params -> . params , params
+
+    ID              shift and go to state 79
+
+    params                         shift and go to state 154
 
 state 122
 
@@ -3425,9 +3563,9 @@ state 123
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -3955,14 +4093,9 @@ state 139
 
 state 140
 
-    (43) params -> params , params .
-    (43) params -> params . , params
+    (22) for -> FOR LPAREN ID IN ID . RPAREN
 
-  ! shift/reduce conflict for , resolved as shift
-    RPAREN          reduce using rule 43 (params -> params , params .)
-    ,               shift and go to state 115
-
-  ! ,               [ reduce using rule 43 (params -> params , params .) ]
+    RPAREN          shift and go to state 164
 
 
 state 141
@@ -4074,13 +4207,6 @@ state 152
 
 state 153
 
-    (22) for -> FOR LPAREN ID IN ID . RPAREN
-
-    RPAREN          shift and go to state 164
-
-
-state 154
-
     (23) function -> FUNCTION ID LPAREN params RPAREN instruccionesF .
 
     FUNCTION        reduce using rule 23 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
@@ -4098,6 +4224,18 @@ state 154
     $end            reduce using rule 23 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
     RCBRACKET       reduce using rule 23 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
     RETURN          reduce using rule 23 (function -> FUNCTION ID LPAREN params RPAREN instruccionesF .)
+
+
+state 154
+
+    (43) params -> params , params .
+    (43) params -> params . , params
+
+  ! shift/reduce conflict for , resolved as shift
+    RPAREN          reduce using rule 43 (params -> params , params .)
+    ,               shift and go to state 121
+
+  ! ,               [ reduce using rule 43 (params -> params , params .) ]
 
 
 state 155
@@ -4129,9 +4267,9 @@ state 157
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -4473,9 +4611,9 @@ state 168
     (27) llamada -> . ID LPAREN RPAREN
     (28) llamada -> . ID . ID LPAREN args RPAREN
     (29) llamada -> . ID . ID LPAREN RPAREN
-    (58) llamada -> . LISTOF LPAREN params RPAREN
-    (59) llamada -> . SETOF LPAREN params RPAREN
-    (60) llamada -> . MUTABLELISTOF LPAREN params RPAREN
+    (58) llamada -> . LISTOF LPAREN args RPAREN
+    (59) llamada -> . SETOF LPAREN args RPAREN
+    (60) llamada -> . MUTABLELISTOF LPAREN args RPAREN
     (81) llamada -> . ID . LENGTH LPAREN RPAREN
     (82) llamada -> . ID . EQUALSM LPAREN ID RPAREN
     (83) llamada -> . ID . EQUALSM LPAREN STRING RPAREN
@@ -4632,4 +4770,4 @@ WARNING: shift/reduce conflict for LOWER in state 126 resolved as shift
 WARNING: shift/reduce conflict for GREATERE in state 126 resolved as shift
 WARNING: shift/reduce conflict for LOWERE in state 126 resolved as shift
 WARNING: shift/reduce conflict for , in state 128 resolved as shift
-WARNING: shift/reduce conflict for , in state 140 resolved as shift
+WARNING: shift/reduce conflict for , in state 154 resolved as shift
