@@ -715,9 +715,11 @@ class CodePadMainWindow(tk.Frame):
 
         current_code = self.getCurrentEditor().getTextContent()
         start_index = current_code.find(') {')
+        number_of_new_lines = 0
         if current_code.find(') {',start_index+2) < 0 or current_code.find(') {',start_index+2) < 0:
             end_index = current_code.find('}')
             func = current_code[start_index:end_index]
+            number_of_new_lines = func.count('\n')
             print(func)
             current_code = current_code[:start_index] + func.replace('\n','') + current_code[end_index:]
             
@@ -729,7 +731,7 @@ class CodePadMainWindow(tk.Frame):
                     print(result, type(result))
                     self.console.insert(tk.END, str(result[0])+'\n')
                 except Exception as ex:
-                    self.console.insert(tk.END, 'Syntax error on line {}: {}\n'.format(i+1, str(ex)))
+                    self.console.insert(tk.END, 'Syntax error on line {}: {}\n'.format(i+1+number_of_new_lines, str(ex)))
             
 
     def findTextCurrent(self):
