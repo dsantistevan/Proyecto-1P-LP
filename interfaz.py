@@ -721,8 +721,8 @@ class CodePadMainWindow(tk.Frame):
                     result = parser.parse(line)
                     print(result, type(result))
                     self.console.insert(tk.END, str(result[0])+'\n')
-                except Exception:
-                    self.console.insert(tk.END, 'Syntax error on line {}\n'.format(i+1))
+                except Exception as ex:
+                    self.console.insert(tk.END, 'Syntax error on line {}: {}\n'.format(i+1, str(ex)))
             
 
     def findTextCurrent(self):

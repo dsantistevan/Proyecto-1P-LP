@@ -212,7 +212,7 @@ def p_expresion_matematica(t): #Dylan Escala
             t[0] = t[1] / t[3]
         else:
             print("Can't divide by 0")
-            raise ZeroDivisionError('number division by 0')
+            raise ZeroDivisionError('Number division by 0')
     elif t[2] == '%':
         t[0] = t[1] % t[3]
 
@@ -265,13 +265,13 @@ def p_number(p):    #David Santistevan
     p[0] = p[1]
 
 
-def p_list_length(p):
-    '''llamada : ID '.' LENGTH LPAREN RPAREN'''
-    l = names[p[1]]
-    if type(l) in (tuple, list):
-        p[0] = len(l)
-    else:
-        raise Exception("Variable not a list")
+# def p_list_length(p):
+#     '''llamada : ID '.' LENGTH LPAREN RPAREN'''
+#     l = names[p[1]]
+#     if type(l) in (tuple, list):
+#         p[0] = len(l)
+#     else:
+#         raise Exception("Variable not a list")
 
 
     # Error rule for syntax errors

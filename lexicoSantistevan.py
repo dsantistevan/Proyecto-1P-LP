@@ -86,8 +86,9 @@ t_ignore_COMMENT2 = r'\/\*[^(\*\/)]* \*\/'
 
 # Error handling rule
 def t_error(t):
-    print("No es reconocido '%s'" % t.value[0])
-    t.lexer.skip(1)
+    # print("No es reconocido '%s'" % t.value[0])
+    # t.lexer.skip(1)
+    raise Exception("No es reconocido '%s'" % t.value[0])
 
 lexer = lex.lex()
 # Test it out
