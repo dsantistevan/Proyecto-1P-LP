@@ -195,6 +195,11 @@ def p_creacion_lista(p):
     '''llamada : LISTOF LPAREN params RPAREN'''
     p[0] = tuple(p[3])
 
+
+def p_creacion_set(p):
+    '''llamada : SETOF LPAREN params RPAREN'''
+    p[0] = set(p[3])
+
 def p_creacion_lista_mutable(p):
     '''llamada : MUTABLELISTOF LPAREN params RPAREN'''
     p[0] = list(p[3])
