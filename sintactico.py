@@ -113,7 +113,9 @@ def p_dato(p):  #David Santistevan
             | ID
             | LONG
             | CHAR
-            | BOOLEAN'''
+            | BOOLEAN
+            | LIST
+            | MUTABLELIST'''
 
 
 def p_params(p):  #David Santistevan
@@ -189,6 +191,18 @@ def p_declaracion(p): #David Santistevan # Fixed by Carlos Jimenez
     names[p[2]] = ""
 
 
+def p_creacion_lista(p):
+    '''llamada : LISTOF LPAREN params RPAREN'''
+    p[0] = tuple(p[3])
+
+def p_creacion_lista_mutable(p):
+    '''llamada : MUTABLELISTOF LPAREN params RPAREN'''
+    p[0] = list(p[3])
+
+def p_expresion_llamada(p):
+    '''expresion : llamada'''
+    p[0] = p[1]
+
 
 def p_exresion(p): #David Santistevan
     '''expresion : LPAREN expresion RPAREN'''
@@ -242,8 +256,8 @@ def p_operadores_log(p):    #Dylan Escala
                     | NOTEQUALS
                     | GREATER
                     | LOWER
-                    | GREATER ASSIGN
-                    | LOWER ASSIGN'''
+                    | GREATERE
+                    | LOWERE'''
     p[0] = p[1]
 
 
@@ -264,17 +278,74 @@ def p_number(p):    #David Santistevan
             | FLOATV '''
     p[0] = p[1]
 
-
-def p_list_length(p):
+def p_string_length(p):
     '''llamada : ID '.' LENGTH LPAREN RPAREN'''
+    s = names[p[1]]
+    if type(s) == str:
+        p[0] = len(s)
+    else:
+        raise Exception("Variable not a String")
+
+
+def p_string_equals(p):
+    '''llamada : ID '.' EQUALSM LPAREN ID RPAREN'''
+    s = names[p[1]]
+    s2 = names[p[5]]
+    if type(s) == str and type(s2) == str:
+        p[0] = len(s)
+    else:
+        raise Exception("Variable not a String")
+
+
+def p_string_equals2(p):
+    '''llamada : ID '.' EQUALSM LPAREN STRING RPAREN'''
+    s = names[p[1]]
+    if type(s) == str:
+        p[0] = s == p[5]
+    else:
+        raise Exception("Variable not a String")
+
+def p_list_count(p):
+    '''llamada : ID '.' COUNT LPAREN RPAREN'''
     l = names[p[1]]
     if type(l) in (tuple, list):
         p[0] = len(l)
     else:
-        raise Exception("Variable not a list")
+        raise Exception("Variable not a List")
 
+def p_list_first(p):
+    '''llamada : ID '.' FIRST LPAREN RPAREN'''
+    l = names[p[1]]
+    if type(l) in (tuple, list):
+        p[0] = l[0]
+    else:
+        raise Exception("Variable not a List")
+
+def p_list_last(p):
+    '''llamada : ID '.' LAST LPAREN RPAREN'''
+    l = names[p[1]]
+    if type(l) in (tuple, list):
+        p[0] = l[-1]
+    else:
+        raise Exception("Variable not a List")
 
     # Error rule for syntax errors
+def p_list_get(p):
+    '''llamada : ID '.' GET LPAREN INTV RPAREN'''
+    l = names[p[1]]
+    if type(l) in (tuple, list):
+        p[0] = l[p[5]]
+    else:
+        raise Exception("Variable not a List")
+
+def p_list_get2(p):
+    '''llamada : ID '.' GET LPAREN ID RPAREN'''
+    l = names[p[1]]
+    i = names[p[5]]
+    if type(l) in (tuple, list) and type(i) == int and i>=0:
+        p[0] = l[i]
+    else:
+        raise Exception("Variable not a List")
 
 
 def p_error(p):
