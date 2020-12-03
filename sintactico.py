@@ -218,6 +218,14 @@ def p_expresion_logica(t): #Dylan Escala
         t[0] = t[1] == t[3]
     elif t[2] == '!=':
         t[0] = t[1] != t[3]
+    elif t[2] =='>':
+        t[0] = t[1] > t[3]
+    elif t[2] =='>=':
+        t[0] = t[1] >= t[3]
+    elif t[2] =='<':
+        t[0] = t[1] < t[3]
+    elif t[2] =='<=':
+        t[0] = t[1] <= t[3]
 
 def p_operadores_log(p):    #Dylan Escala
     '''operadoresLog :  OR
