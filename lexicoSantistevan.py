@@ -4,9 +4,10 @@ from ply import lex
 reservadas={'var':'VAR','while':'WHILE','if':'IF','else':'ELSE','for':'FOR', "true" : "TRUE", 'false':'FALSE',
             'return': 'RETURN', 'null':'NULL', 'int':'INT', 'byte':'BYTE', 'float':'FLOAT', 'short':'SHORT',
             'long':'LONG', 'double':'DOUBLE', 'boolean':'BOOLEAN', 'char':'CHAR', 'fun':'FUNCTION', 'val':'VAL','in':'IN',
-            'println' : 'PRINTLN', 'string':'STRINGW', 'val':'VAL','List':'LIST','listOf':'LISTOF','MutableList':'MUTABLELIST',
-            'mutableListOf':'MUTABLELISTOF', 'get':'GET', 'first':'FIRST','last':'LAST','count':'COUNT', 'length':'LENGTH','equals':'EQUALS',
-            'setOf':'SETOF'}
+            'println' : 'PRINTLN', 'string':'STRINGW','List':'LIST','listOf':'LISTOF','MutableList':'MUTABLELIST',
+            'mutableListOf':'MUTABLELISTOF', 'get':'GET', 'first':'FIRST','last':'LAST','count':'COUNT', 'length':'LENGTH','equals':'EQUALSM',
+            'setOf':'SETOF'
+}
 
 tokens = (
     'ID',
