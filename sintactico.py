@@ -221,6 +221,7 @@ def p_expesion(p): #David Santistevan
 def p_expresion_matematica(t): #Dylan Escala
     'expresion : expresion operadoresMat expresion '
     if t[2] == '+':
+        print('suma')
         t[0] = t[1] + t[3]
     elif t[2] == '-':
         t[0] = t[1] - t[3]
@@ -391,7 +392,7 @@ def analizarArchivoJimenez(nombre= "codigoSintacticoJimenez.txt"):
 #     try:
 #         print()
 #         print(names)
-#         s = input('calc > ')
+#         s = input('>>> ')
 #     except EOFError:
 #         break
 #     #if not s: continue

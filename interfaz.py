@@ -714,6 +714,13 @@ class CodePadMainWindow(tk.Frame):
         #     tkMessageBox.showerror('Run Error', 'Must save the file in order to be run!')
 
         current_code = self.getCurrentEditor().getTextContent()
+        start_index = current_code.find(') {')
+        if current_code.find(') {',start_index+2) < 0 or current_code.find(') {',start_index+2) < 0:
+            end_index = current_code.find('}')
+            func = current_code[start_index:end_index]
+            print(func)
+            current_code = current_code[:start_index] + func.replace('\n','') + current_code[end_index:]
+            
         for i,line in enumerate(current_code.split('\n')):
             print(current_code.split('\n'))
             if line:
