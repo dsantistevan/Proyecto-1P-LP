@@ -39,6 +39,14 @@ def p_instrucciones_funcion(p): #David Santistevan
 def p_instrucciones_funcion_retorno(p): #David Santistevan
     '''instruccionesF : LCBRACKET retorno RCBRACKET'''
 
+
+def p_instrucciones_funcion_dato(p): #David Santistevan
+    '''instruccionesF : ':' dato LCBRACKET cuerpo retorno RCBRACKET'''
+
+
+def p_instrucciones_funcion_retorno_dato(p): #David Santistevan
+    '''instruccionesF : ':' dato LCBRACKET retorno RCBRACKET'''
+
 def p_retorno(p):   #David Santistevan # Fixed by Carlos Jimenez
     '''retorno : RETURN expresion '''
 
